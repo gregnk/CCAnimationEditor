@@ -1,0 +1,2 @@
+copy D:\Projects\Md2Html\Md2Html\src\Md2Html\bin\Release\Md2Html.exe D:\Projects\GameToolProjects\CCAnimationEditor\Tools /Y
+copy D:\Projects\Md2Html\Md2Html\src\Md2Html\bin\Release\MarkdownSharp.dll D:\Projects\GameToolProjects\CCAnimationEditor\Tools /Y
