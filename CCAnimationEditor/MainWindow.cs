@@ -13,7 +13,9 @@ using System.Windows.Forms;
 
 // TODO: Implement multi entity animations
 // TODO: Clean this entire thing up and put it into different class files
-// TODO: Disable size-adjustment for angle-based arrays
+
+// TODO: Add an "Export to GIF" function
+// TODO: Add some documentation as to what each property does
 
 namespace CCAnimationEditor
 {
@@ -773,7 +775,6 @@ namespace CCAnimationEditor
             // Check if the file exists
             if (File.Exists(sheetPath))
             {
-                // BUG: The sheet image is used instead of the sheet itself
                 Image sheetImg = Image.FromFile(sheetPath);
                 Bitmap animImgBmp = new Bitmap(sheetImg);
 
