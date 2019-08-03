@@ -381,7 +381,6 @@ namespace CCAnimationEditor
         }
 
         private void AnimCheckBox_Click(object sender, EventArgs e)
-        private void AnimCheckBox_CheckStateChanged(object sender, EventArgs e)
         {
             UpdateAnimValues();
         }
