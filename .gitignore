@@ -109,3 +109,4 @@ UpgradeLog*.XML
 
 # Those files go on the wiki
 Docs/
+/.vs
