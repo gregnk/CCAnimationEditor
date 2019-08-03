@@ -380,6 +380,7 @@ namespace CCAnimationEditor
             UpdateAnimValues();
         }
 
+        private void AnimCheckBox_Click(object sender, EventArgs e)
         private void AnimCheckBox_CheckStateChanged(object sender, EventArgs e)
         {
             UpdateAnimValues();
@@ -1396,6 +1397,7 @@ namespace CCAnimationEditor
                         Checked = boolean,
                     };
 
+                    checkBox.Click += AnimCheckBox_Click;
                     checkBox.CheckStateChanged += AnimCheckBox_CheckStateChanged;
 
                     animPropInputs.Add(checkBox);
