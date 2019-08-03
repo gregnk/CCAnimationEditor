@@ -36,7 +36,6 @@ namespace CCAnimationEditor
         private List<Control> animPropInputs = new List<Control>();
 
         // Editor settings
-        // TODO: Implement save thingy (later)
         private bool unsavedChanges = false;
         private bool playAnim = false;
         private int animDir = 0;
@@ -104,6 +103,25 @@ namespace CCAnimationEditor
         private void MainWindow_Closed(object sender, EventArgs e)
         {
 
+            
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Ask the user if they want to save any saved changes
+            if (unsavedChanges)
+            {
+                DialogResult confirmDlg = MetroMessageBox.Show(this, "There are unsaved changes, would you like to save them?", "Warning", MessageBoxButtons.YesNoCancel);
+
+                if (confirmDlg == DialogResult.Yes)
+                    SaveFile(animationFilePath);
+
+                else if (confirmDlg == DialogResult.No) { } // Do nothing
+
+                else if (confirmDlg == DialogResult.Cancel)
+                    e.Cancel = true;
+
+            }
         }
 
         // Menu bar
@@ -188,6 +206,8 @@ namespace CCAnimationEditor
                     if (Settings.CreateAnimBackup)
                         animationFile.CreateBackup();
 
+                    unsavedChanges = false;
+
                     // Set the window title
                     Text = "CCAnimationEditor - " + Path.GetFileName(openFileDialog.FileName);
                     Refresh();
@@ -205,35 +225,32 @@ namespace CCAnimationEditor
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (animationFilePath != null)
-                animationFile.SaveFile(animationFilePath);
+                SaveFile(animationFilePath);
 
             else
             {
-                SaveFileDialog saveAsDialog = new SaveFileDialog
-                {
-                    Filter = "JSON File|*.json",
-                    InitialDirectory = Settings.CCInstallDir + @"assets\data\animations\",
-                    Title = "Save as"
-                };
-
-                if (saveAsDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // Update file path
-                    animationFile.FilePath = saveAsDialog.FileName;
-
-                    // Update the window title
-                    Text = "CCAnimationEditor - " + Path.GetFileName(saveAsDialog.FileName);
-                    Refresh();
-
-                    animationFilePath = animationFile.FilePath;
-
-                    // Save the file
-                    animationFile.SaveFile(animationFile.FilePath);
-                }
+                SaveFileAs();
             }
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileAs();
+        }
+
+        private void SaveFile(string animationFilePath)
+        {
+            animationFile.SaveFile(animationFilePath);
+
+            if (unsavedChanges)
+            {
+                unsavedChanges = false;
+
+                Text.Substring(Text.Length - 1);
+            }
+        }
+
+        private void SaveFileAs()
         {
             SaveFileDialog saveAsDialog = new SaveFileDialog
             {
@@ -255,6 +272,21 @@ namespace CCAnimationEditor
 
                 // Save the file
                 animationFile.SaveFile(animationFile.FilePath);
+
+                unsavedChanges = false;
+            }
+        }
+
+        // Unsaved changes functions
+        private void SetUnsavedChanges()
+        {
+            if (unsavedChanges == false)
+            {
+                unsavedChanges = true;
+
+                // Add an asterisk to the end of the file name
+                Text += "*";
+                Refresh();
             }
         }
 
@@ -372,6 +404,8 @@ namespace CCAnimationEditor
             UpdateSheetList();
             sheetCmb.SelectedIndex = index;
             DisplaySheet();
+
+            SetUnsavedChanges();
         }
 
         // Real-time updating - Animations 
@@ -459,6 +493,8 @@ namespace CCAnimationEditor
             UpdateAnimList();
             animCmb.SelectedIndex = index;
             DisplayAnim();
+
+            SetUnsavedChanges();
         }
 
         private void AnimArrayTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -561,6 +597,8 @@ namespace CCAnimationEditor
                     prop.SetValue(anim, array2);
                 }
             }
+
+            SetUnsavedChanges();
         }
 
         // Add and remove buttons - Sheets
@@ -1115,6 +1153,8 @@ namespace CCAnimationEditor
 
                     // Switch to the array editor
                     SwitchToArrayEditor(array, propIndex);
+
+                    SetUnsavedChanges();
                 }
             }
         }
@@ -1137,6 +1177,8 @@ namespace CCAnimationEditor
 
                 // Switch back
                 SwitchToAnimEditor();
+
+                SetUnsavedChanges();
             }
         }
 
@@ -1397,7 +1439,6 @@ namespace CCAnimationEditor
                     };
 
                     checkBox.Click += AnimCheckBox_Click;
-                    checkBox.CheckStateChanged += AnimCheckBox_CheckStateChanged;
 
                     animPropInputs.Add(checkBox);
                     animPropsPnl.Controls.Add(animPropInputs[pos]);
@@ -1729,5 +1770,6 @@ namespace CCAnimationEditor
 
             return 1;
         }
+
     }
 }

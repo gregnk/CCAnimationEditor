@@ -708,6 +708,7 @@
             this.Text = "CCAnimationEditor";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Closed += new System.EventHandler(this.MainWindow_Closed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Shown += new System.EventHandler(this.MainWindow_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.styleManager)).EndInit();
             this.fileContextMenu.ResumeLayout(false);
