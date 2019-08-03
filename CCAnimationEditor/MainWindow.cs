@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Media;
-using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 
 // TODO: Implement multi entity animations
@@ -101,21 +99,11 @@ namespace CCAnimationEditor
                 Settings.ShowDevWarning = false;
                 Settings.SaveSettings();
             }
-
-            // Generate controls
-            //GenerateSheetControls();
-            //GenerateAnimControls();
-
-            // Put blank sheet
-            //animationFile = new AnimationFile();
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
-            //if (Debugger.IsAttached)
-            //{
-            //    Settings.DeleteSettings();
-            //}
+
         }
 
         // Menu bar
@@ -1735,7 +1723,6 @@ namespace CCAnimationEditor
             if (animationFile.Animations[animCmb.SelectedIndex].Frames != null)
             {
                 int interval = (int)Math.Ceiling(animationFile.Animations[animCmb.SelectedIndex].Time / animationFile.Animations[animCmb.SelectedIndex].Frames.Length / speedDouble * 10000);
-                //return (interval > 0) ? interval : 1; // HACK
                 return interval;
             }
 
