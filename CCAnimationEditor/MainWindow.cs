@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 // TODO: Add an "Export to GIF" function
 // TODO: Add some documentation as to what each property does
+// TODO: Make the UI setup more efficient
 
 namespace CCAnimationEditor
 {
