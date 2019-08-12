@@ -1612,6 +1612,7 @@ namespace CCAnimationEditor
             UpdateAnimArrayControlValues();
         }
 
+        // NOTE: This is really slow
         private void GenerateAnim2dArrayControls(int[][] array, string arrayName)
         {
             int row = 0;
