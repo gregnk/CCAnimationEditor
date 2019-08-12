@@ -647,7 +647,7 @@
             this.editorTabs.Controls.Add(this.animationsTab);
             this.editorTabs.Location = new System.Drawing.Point(23, 92);
             this.editorTabs.Name = "editorTabs";
-            this.editorTabs.SelectedIndex = 1;
+            this.editorTabs.SelectedIndex = 0;
             this.editorTabs.Size = new System.Drawing.Size(1240, 645);
             this.editorTabs.TabIndex = 0;
             this.editorTabs.Tag = "";
@@ -662,6 +662,7 @@
             this.copySheetBtn.Text = "++";
             this.copySheetBtn.UseSelectable = true;
             this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
+            this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
             // 
             // sheetImgPnl
             // 
@@ -716,6 +717,7 @@
             this.copyAnimBtn.Text = "++";
             this.copyAnimBtn.UseSelectable = true;
             this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
+            this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
             // 
             // MainWindow
             // 
