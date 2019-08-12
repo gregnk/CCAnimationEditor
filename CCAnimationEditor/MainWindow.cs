@@ -604,6 +604,8 @@ namespace CCAnimationEditor
         }
 
         // Add and remove buttons - Sheets
+        // TODO: Add the ability to-rearrange items on the list
+
         private void AddSheetBtn_Click(object sender, EventArgs e)
         {
             // Add a new sheet
@@ -642,6 +644,19 @@ namespace CCAnimationEditor
                 else
                     sheetCmb.SelectedIndex = oldSheetIndex;
             }
+        }
+
+        private void CopySheetBtn_Click(object sender, EventArgs e)
+        {
+            // Make sure that there is at least one sheet
+            if (animationFile == null || animationFile.Sheets.Count < 2) return;
+
+            // Copy the current sheet
+            animationFile.Sheets.Add(animationFile.Sheets[sheetCmb.SelectedIndex]);
+
+            // Select the copied sheet
+            UpdateSheetList();
+            sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
         }
 
         // Add and remove buttons - Animations
@@ -685,6 +700,19 @@ namespace CCAnimationEditor
                 else
                     animCmb.SelectedIndex = oldAnimIndex;
             }
+        }
+
+        private void CopyAnimBtn_Click(object sender, EventArgs e)
+        {
+            // Make sure that there is at least one anim
+            if (animationFile == null || animationFile.Animations.Count < 2) return;
+
+            // Copy the current anim
+            animationFile.Animations.Add(animationFile.Animations[animCmb.SelectedIndex]);
+
+            // Select the copied anim
+            UpdateAnimList();
+            animCmb.SelectedIndex = animCmb.Items.Count - 1;
         }
 
         // List update functions
@@ -1772,6 +1800,5 @@ namespace CCAnimationEditor
 
             return 1;
         }
-
     }
 }
