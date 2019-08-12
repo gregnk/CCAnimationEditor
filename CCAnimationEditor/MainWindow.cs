@@ -882,7 +882,7 @@ namespace CCAnimationEditor
                 {
                     if (anim.FlipX != null && anim.Frames != null)
                     {
-                        // HACK This is an assumption (When do the frames go back up?)
+                        // HACK: This is an assumption (When do the frames go back up?)
                         if (anim.Dirs == 16)
                         {
                             if (anim.FlipX[animDir] == 1 && animDir >= 9)
