@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,5 +43,27 @@ namespace CCAnimationEditor
             DateTime buildDate = File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location);
             return buildDate.ToString("yyyy-MM-dd HH:mm");
         }
+
+        public static bool CheckForUpdates()
+        {
+            // Check for the latest version
+            string latestVerString = null;
+
+            try
+            {
+                latestVerString = new WebClient().DownloadString("http://gregnk.com/update/CCAnimationEditor.txt");
+            }
+
+            catch
+            {
+                return false;
+            }
+
+            if (latestVerString != GetVersionString() && latestVerString != null)
+                return true;
+            else
+                return false;
+        }
+
     }
 }

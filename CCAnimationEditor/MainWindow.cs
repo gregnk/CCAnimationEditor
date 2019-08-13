@@ -102,6 +102,18 @@ namespace CCAnimationEditor
                 Settings.ShowDevWarning = false;
                 Settings.SaveSettings();
             }
+
+//#if !DEBUG
+            //if (Program.CheckForUpdates())
+            //{
+            //    DialogResult updateDlg = MetroMessageBox.Show(this, "An update is available! Would you like to download it?", "Notice", MessageBoxButtons.YesNo);
+
+            //    if (updateDlg == DialogResult.Yes)
+            //    {
+
+            //    }
+            //}
+//#endif
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
