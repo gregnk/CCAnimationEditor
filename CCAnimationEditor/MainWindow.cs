@@ -118,8 +118,7 @@ namespace CCAnimationEditor
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
-
-            
+            tt.Dispose();
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
