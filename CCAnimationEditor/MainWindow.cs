@@ -103,15 +103,19 @@ namespace CCAnimationEditor
             }
 
 //#if !DEBUG
-            //if (Program.CheckForUpdates())
-            //{
-            //    DialogResult updateDlg = MetroMessageBox.Show(this, "An update is available! Would you like to download it?", "Notice", MessageBoxButtons.YesNo);
+            if (Settings.CheckForUpdates)
+            {
+                if (Program.CheckForUpdates())
+                {
+                    DialogResult updateDlg = MetroMessageBox.Show(this, "An update is available! Would you like to download it?" + Environment.NewLine
+                        + "(You can disable this check in settings)", "Notice", MessageBoxButtons.YesNo);
 
-            //    if (updateDlg == DialogResult.Yes)
-            //    {
-
-            //    }
-            //}
+                    if (updateDlg == DialogResult.Yes)
+                    {
+                        Program.DownloadLatestVersion();
+                    }
+                }
+            }
 //#endif
         }
 
@@ -859,7 +863,7 @@ namespace CCAnimationEditor
                 int frameRowOffset = 0;
 
                 // Frames takes priority over DirFrames
-                int frame = (anim.Frames != null) ? anim.Frames[animFrameIndex] : 
+                int frame = (anim.Frames != null) ? anim.Frames[animFrameIndex] :
                     (anim.DirFrames != null) ? anim.DirFrames[animDir][animFrameIndex] : 0;
 
                 // Determine where the frame is on the sheet
@@ -906,13 +910,13 @@ namespace CCAnimationEditor
 
                         else if (anim.Dirs == 6)
                         {
-                            if (anim.FlipX[animDir] == 1 && animDir >= 4) 
+                            if (anim.FlipX[animDir] == 1 && animDir >= 4)
                                 frameRowOffset -= animDir - 3;
                         }
 
                         else if (anim.Dirs == 4)
                         {
-                            if (anim.FlipX[animDir] == 1 && animDir >= 3) 
+                            if (anim.FlipX[animDir] == 1 && animDir >= 3)
                                 frameRowOffset -= animDir - 2;
                         }
 
@@ -1292,7 +1296,7 @@ namespace CCAnimationEditor
 
                 else
                     return;
-                        
+
 
                 // Set the frame text
                 frameTxt.Text = animFrameIndex.ToString();

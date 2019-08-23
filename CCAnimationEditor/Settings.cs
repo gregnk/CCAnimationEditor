@@ -20,12 +20,14 @@ namespace CCAnimationEditor
         private static bool showDevWarning = true;
         private static bool accecptedLicense = false;
         private static bool createAnimBackup = true;
+        private static bool checkForUpdates = true;
 
         public static string CCInstallDir { get => ccInstallDir; set => ccInstallDir = value; }
         public static List<string> RecentFiles { get => recentFiles; set => recentFiles = value; }
         public static bool ShowDevWarning { get => showDevWarning; set => showDevWarning = value; }
         public static bool AccecptedLicense { get => accecptedLicense; set => accecptedLicense = value; }
         public static bool CreateAnimBackup { get => createAnimBackup; set => createAnimBackup = value; }
+        public static bool CheckForUpdates { get => checkForUpdates; set => checkForUpdates = value; }
 
         public static void SaveSettings()
         {
@@ -55,6 +57,10 @@ namespace CCAnimationEditor
 
             root.AppendChild(doc.CreateElement("CreateAnimBackup"));
             root["CreateAnimBackup"].InnerText = CreateAnimBackup.ToString();
+
+            root.AppendChild(doc.CreateElement("CheckForUpdates"));
+            root["CheckForUpdates"].InnerText = CheckForUpdates.ToString();
+
             doc.Save(SettingsFile);
         }
 
@@ -76,6 +82,7 @@ namespace CCAnimationEditor
                 ShowDevWarning = bool.Parse(root["ShowDevWarning"].InnerText);
                 AccecptedLicense = bool.Parse(root["AccecptedLicense"].InnerText);
                 CreateAnimBackup = bool.Parse(root["CreateAnimBackup"].InnerText);
+                CheckForUpdates = bool.Parse(root["CheckForUpdates"].InnerText);
             }
 
             catch

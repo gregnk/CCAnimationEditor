@@ -44,6 +44,7 @@ namespace CCAnimationEditor
         {
             Settings.CCInstallDir = ccInstDirTb.Text;
             Settings.CreateAnimBackup = createBackupChk.Checked;
+            Settings.CheckForUpdates = checkUpdateChk.Checked;
 
             Settings.SaveSettings();
             Close();
@@ -63,6 +64,7 @@ namespace CCAnimationEditor
         {
             ccInstDirTb.Text = Settings.CCInstallDir;
             createBackupChk.Checked = Settings.CreateAnimBackup;
+            checkUpdateChk.Checked = Settings.CheckForUpdates;
         }
     }
 }

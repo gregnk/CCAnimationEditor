@@ -38,6 +38,8 @@
             this.revertChangesBtn = new MetroFramework.Controls.MetroButton();
             this.createBackupLbl = new MetroFramework.Controls.MetroLabel();
             this.createBackupChk = new MetroFramework.Controls.MetroCheckBox();
+            this.checkUpdateChk = new MetroFramework.Controls.MetroCheckBox();
+            this.checkUpdatesLbl = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.styleManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +146,32 @@
             this.createBackupChk.Text = " ";
             this.createBackupChk.UseSelectable = true;
             // 
+            // checkUpdateChk
+            // 
+            this.checkUpdateChk.AutoSize = true;
+            this.checkUpdateChk.Location = new System.Drawing.Point(231, 135);
+            this.checkUpdateChk.Name = "checkUpdateChk";
+            this.checkUpdateChk.Size = new System.Drawing.Size(26, 15);
+            this.checkUpdateChk.TabIndex = 9;
+            this.checkUpdateChk.Text = " ";
+            this.checkUpdateChk.UseSelectable = true;
+            // 
+            // checkUpdatesLbl
+            // 
+            this.checkUpdatesLbl.AutoSize = true;
+            this.checkUpdatesLbl.Location = new System.Drawing.Point(23, 132);
+            this.checkUpdatesLbl.Name = "checkUpdatesLbl";
+            this.checkUpdatesLbl.Size = new System.Drawing.Size(179, 19);
+            this.checkUpdatesLbl.TabIndex = 8;
+            this.checkUpdatesLbl.Text = "Check for updates on startup";
+            // 
             // SettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 392);
+            this.Controls.Add(this.checkUpdateChk);
+            this.Controls.Add(this.checkUpdatesLbl);
             this.Controls.Add(this.createBackupChk);
             this.Controls.Add(this.createBackupLbl);
             this.Controls.Add(this.revertChangesBtn);
@@ -181,5 +204,7 @@
         private MetroFramework.Controls.MetroButton revertChangesBtn;
         private MetroFramework.Controls.MetroCheckBox createBackupChk;
         private MetroFramework.Controls.MetroLabel createBackupLbl;
+        private MetroFramework.Controls.MetroCheckBox checkUpdateChk;
+        private MetroFramework.Controls.MetroLabel checkUpdatesLbl;
     }
 }

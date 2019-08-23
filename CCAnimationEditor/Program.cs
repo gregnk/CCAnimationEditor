@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -44,9 +45,8 @@ namespace CCAnimationEditor
             return buildDate.ToString("yyyy-MM-dd HH:mm");
         }
 
-        public static bool CheckForUpdates()
+        public static string GetLatestVersionString()
         {
-            // Check for the latest version
             string latestVerString = null;
 
             try
@@ -56,8 +56,16 @@ namespace CCAnimationEditor
 
             catch
             {
-                return false;
+                return null;
             }
+
+            return latestVerString;
+        }
+
+        public static bool CheckForUpdates()
+        {
+            // Check for the latest version
+            string latestVerString = GetLatestVersionString();
 
             if (latestVerString != GetVersionString() && latestVerString != null)
                 return true;
@@ -65,5 +73,10 @@ namespace CCAnimationEditor
                 return false;
         }
 
+        // TODO: Change this to download the program automatically
+        public static void DownloadLatestVersion()
+        {
+            Process.Start(string.Format("https://github.com/gregnk/CCAnimationEditor/releases/download/{0}/CCAnimationEditor-{0}.zip", GetLatestVersionString()));
+        }
     }
 }
