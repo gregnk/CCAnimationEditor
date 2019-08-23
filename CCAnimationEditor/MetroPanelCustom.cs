@@ -34,9 +34,9 @@ namespace CCAnimationEditor
                 pe.Graphics.InterpolationMode = InterpolationMode.Value;
 
             // Params to reduce flickering
-            this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
             // Run the paint base method
             base.OnPaintBackground(pe);
