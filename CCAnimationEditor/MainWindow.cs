@@ -831,7 +831,6 @@ namespace CCAnimationEditor
             }
         }
 
-        // TODO: Make this more fluid with animations
         // NOTE: I imagine this is where a lot of the bugs are going to end up
         private void DisplayAnim()
         {
