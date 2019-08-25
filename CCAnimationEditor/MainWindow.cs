@@ -102,7 +102,7 @@ namespace CCAnimationEditor
                 Settings.SaveSettings();
             }
 
-//#if !DEBUG
+#if !DEBUG
             if (Settings.CheckForUpdates)
             {
                 if (Program.CheckForUpdates())
@@ -116,7 +116,7 @@ namespace CCAnimationEditor
                     }
                 }
             }
-//#endif
+#endif
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
