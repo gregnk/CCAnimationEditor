@@ -158,6 +158,16 @@ namespace CCAnimationEditor
         // Menu bar - File items
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (unsavedChanges)
+            {
+                DialogResult confirm = ConfirmUnsavedChanges();
+
+                if (confirm == DialogResult.Cancel)
+                    return;
+                else
+                    unsavedChanges = false;
+            }
+
             // Reset the loaded file
             animationFile = new AnimationFile();
 
