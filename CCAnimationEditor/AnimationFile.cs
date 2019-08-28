@@ -386,10 +386,7 @@ namespace CCAnimationEditor
 
                 catch (Exception e)
                 {
-                    Console.WriteLine("===========");
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine(e.StackTrace);
-                    Console.WriteLine("===========");
+                    Program.WriteExecptionOutputToConsole(e);
                     return false;
                 }
             }

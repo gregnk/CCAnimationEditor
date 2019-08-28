@@ -78,5 +78,13 @@ namespace CCAnimationEditor
         {
             Process.Start(string.Format("https://github.com/gregnk/CCAnimationEditor/releases/download/{0}/CCAnimationEditor-{0}.zip", GetLatestVersionString()));
         }
+
+        public static void WriteExecptionOutputToConsole(Exception e)
+        {
+            Console.WriteLine("===========");
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.StackTrace);
+            Console.WriteLine("===========");
+        }
     }
 }

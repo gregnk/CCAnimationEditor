@@ -973,10 +973,7 @@ namespace CCAnimationEditor
                 // Reset the panel and play an error if the user enters something invalid
                 catch (Exception e)
                 {
-                    Console.WriteLine("===========");
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine(e.StackTrace);
-                    Console.WriteLine("===========");
+                    Program.WriteExecptionOutputToConsole(e);
 
                     SystemSounds.Beep.Play();
                     animImgPnl.BackgroundImage = sheetImg;
