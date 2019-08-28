@@ -129,16 +129,12 @@ namespace CCAnimationEditor
             // Ask the user if they want to save any saved changes
             if (unsavedChanges)
             {
-                DialogResult confirmDlg = MetroMessageBox.Show(this, "There are unsaved changes, would you like to save them?", "Warning", MessageBoxButtons.YesNoCancel);
+                DialogResult confirm = ConfirmUnsavedChanges();
 
-                if (confirmDlg == DialogResult.Yes)
-                    SaveFile(animationFilePath);
-
-                else if (confirmDlg == DialogResult.No) { } // Do nothing
-
-                else if (confirmDlg == DialogResult.Cancel)
+                if (confirm == DialogResult.Yes || confirm == DialogResult.No)
                     e.Cancel = true;
-
+                else if (confirm == DialogResult.Cancel)
+                    e.Cancel = false;
             }
         }
 
@@ -189,16 +185,10 @@ namespace CCAnimationEditor
             {
                 if (unsavedChanges)
                 {
-                    DialogResult confirmDlg = MetroMessageBox.Show(this, "There are unsaved changes, would you like to save them?", "Warning", MessageBoxButtons.YesNoCancel);
+                    DialogResult confirm = ConfirmUnsavedChanges();
 
-                    if (confirmDlg == DialogResult.Yes)
-                        SaveFile(animationFilePath);
-
-                    else if (confirmDlg == DialogResult.No) { } // Do nothing
-
-                    else if (confirmDlg == DialogResult.Cancel)
+                    if (confirm == DialogResult.Cancel)
                         return;
-
                 }
 
                 // Set the animation file path var
@@ -320,6 +310,25 @@ namespace CCAnimationEditor
                 Text += "*";
                 Refresh();
             }
+        }
+
+        private DialogResult ConfirmUnsavedChanges()
+        {
+            DialogResult confirmDlg = MetroMessageBox.Show(this, "There are unsaved changes, would you like to save them?", "Warning", MessageBoxButtons.YesNoCancel);
+
+            if (confirmDlg == DialogResult.Yes)
+            {
+                SaveFile(animationFilePath);
+                return DialogResult.Yes;
+            }
+
+            else if (confirmDlg == DialogResult.No)
+                return DialogResult.No;
+
+            else if (confirmDlg == DialogResult.Cancel)
+                return DialogResult.Cancel;
+
+            return DialogResult.Cancel; // Dummy code
         }
 
         // Menu bar - Help items
