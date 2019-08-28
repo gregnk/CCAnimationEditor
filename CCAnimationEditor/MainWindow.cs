@@ -350,6 +350,8 @@ namespace CCAnimationEditor
             // Get the selected sheet from the combo box
             MetroComboBox animSheetCmb = (MetroComboBox)animPropInputs[1];
             animationFile.Animations[animCmb.SelectedIndex].Sheet = animSheetCmb.SelectedItem.ToString();
+
+            SetUnsavedChanges();
             DisplayAnim();
         }
 
@@ -359,6 +361,8 @@ namespace CCAnimationEditor
 
             MetroComboBox animShapeTypeCmb = (MetroComboBox)animPropInputs[2];
             animationFile.Animations[animCmb.SelectedIndex].ShapeType = animShapeTypeCmb.SelectedItem.ToString();
+
+            SetUnsavedChanges();
             DisplayAnim();
         }
 
@@ -382,6 +386,7 @@ namespace CCAnimationEditor
                 }
             }
 
+            SetUnsavedChanges();
             DisplayAnim();
         }
 
