@@ -187,6 +187,20 @@ namespace CCAnimationEditor
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                if (unsavedChanges)
+                {
+                    DialogResult confirmDlg = MetroMessageBox.Show(this, "There are unsaved changes, would you like to save them?", "Warning", MessageBoxButtons.YesNoCancel);
+
+                    if (confirmDlg == DialogResult.Yes)
+                        SaveFile(animationFilePath);
+
+                    else if (confirmDlg == DialogResult.No) { } // Do nothing
+
+                    else if (confirmDlg == DialogResult.Cancel)
+                        return;
+
+                }
+
                 // Set the animation file path var
                 animationFilePath = openFileDialog.FileName;
 
