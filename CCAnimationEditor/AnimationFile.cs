@@ -395,11 +395,6 @@ namespace CCAnimationEditor
             }
         }
 
-        private Animation LoadAnimSubs(Animation anim)
-        {
-            return anim;
-        }
-
         public Sheet FindSheet(string name)
         {
             foreach (Sheet sheet in Sheets)
