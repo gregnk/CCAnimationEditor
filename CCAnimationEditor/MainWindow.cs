@@ -1008,7 +1008,7 @@ namespace CCAnimationEditor
                     if (prop.Name == "Sheet")
                     {
                         MetroComboBox comboBox = (MetroComboBox)animPropInputs[pos++];
-                        comboBox.SelectedIndexChanged += AnimSheetCmb_SelectionChangeCommitted;
+                        comboBox.SelectionChangeCommitted += AnimSheetCmb_SelectionChangeCommitted;
 
                         comboBox.Items.Clear();
 
