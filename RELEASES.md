@@ -1,6 +1,6 @@
 # CCAnimationEditor Releases
 
-## v0.2.0 (2019-08-28)
+## v0.2.0 (2019-08-29)
 
 * Added confirmation dialog when closing with unsaved changes
 * Added the ability to duplicate animations and sheets
