@@ -132,9 +132,9 @@ namespace CCAnimationEditor
                 DialogResult confirm = ConfirmUnsavedChanges();
 
                 if (confirm == DialogResult.Yes || confirm == DialogResult.No)
-                    e.Cancel = true;
-                else if (confirm == DialogResult.Cancel)
                     e.Cancel = false;
+                else if (confirm == DialogResult.Cancel)
+                    e.Cancel = true;
             }
         }
 
