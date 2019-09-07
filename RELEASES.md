@@ -3,6 +3,7 @@
 ## v0.2.1 (2019-09-07)
 
 * Fixed a bug related to the unsaved changes dialog
+* Fixed a bug related to the about screen
 
 ## v0.2.0 (2019-08-29)
 
