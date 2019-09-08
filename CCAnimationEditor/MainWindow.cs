@@ -126,7 +126,7 @@ namespace CCAnimationEditor
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Ask the user if they want to save any saved changes
+            // Ask the user if they want to save any unsaved changes
             if (unsavedChanges)
             {
                 DialogResult confirm = ConfirmUnsavedChanges();
