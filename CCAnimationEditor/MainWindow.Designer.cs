@@ -45,6 +45,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.animTimer = new System.Windows.Forms.Timer(this.components);
             this.animationsTab = new MetroFramework.Controls.MetroTabPage();
+            this.copyAnimBtn = new MetroFramework.Controls.MetroButton();
             this.animClearBtn = new MetroFramework.Controls.MetroButton();
             this.animBackBtn = new MetroFramework.Controls.MetroButton();
             this.animSpeedTxt = new MetroFramework.Controls.MetroTextBox();
@@ -63,19 +64,18 @@
             this.addAnimBtn = new MetroFramework.Controls.MetroButton();
             this.animCmb = new MetroFramework.Controls.MetroComboBox();
             this.animLbl = new MetroFramework.Controls.MetroLabel();
+            this.animImgPnl = new CCAnimationEditor.MetroPanelCustom();
             this.sheetsTab = new MetroFramework.Controls.MetroTabPage();
+            this.sheetList = new MetroFramework.Controls.MetroListView();
+            this.copySheetBtn = new MetroFramework.Controls.MetroButton();
             this.toggleSheetBgBtn = new MetroFramework.Controls.MetroButton();
+            this.sheetImgPnl = new CCAnimationEditor.MetroPanelCustom();
             this.sheetPropTxt = new MetroFramework.Controls.MetroTextBox();
             this.sheetPropLbl = new MetroFramework.Controls.MetroLabel();
             this.removeSheetBtn = new MetroFramework.Controls.MetroButton();
             this.addSheetBtn = new MetroFramework.Controls.MetroButton();
-            this.sheetCmb = new MetroFramework.Controls.MetroComboBox();
             this.sheetLbl = new MetroFramework.Controls.MetroLabel();
             this.editorTabs = new MetroFramework.Controls.MetroTabControl();
-            this.copySheetBtn = new MetroFramework.Controls.MetroButton();
-            this.sheetImgPnl = new CCAnimationEditor.MetroPanelCustom();
-            this.animImgPnl = new CCAnimationEditor.MetroPanelCustom();
-            this.copyAnimBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.styleManager)).BeginInit();
             this.fileContextMenu.SuspendLayout();
             this.helpContextMenu.SuspendLayout();
@@ -226,12 +226,23 @@
             this.animationsTab.HorizontalScrollbarSize = 10;
             this.animationsTab.Location = new System.Drawing.Point(4, 38);
             this.animationsTab.Name = "animationsTab";
-            this.animationsTab.Size = new System.Drawing.Size(1232, 603);
+            this.animationsTab.Size = new System.Drawing.Size(1407, 603);
             this.animationsTab.TabIndex = 1;
             this.animationsTab.Text = "Animations";
             this.animationsTab.VerticalScrollbarBarColor = true;
             this.animationsTab.VerticalScrollbarHighlightOnWheel = false;
             this.animationsTab.VerticalScrollbarSize = 10;
+            // 
+            // copyAnimBtn
+            // 
+            this.copyAnimBtn.Location = new System.Drawing.Point(373, 15);
+            this.copyAnimBtn.Name = "copyAnimBtn";
+            this.copyAnimBtn.Size = new System.Drawing.Size(31, 29);
+            this.copyAnimBtn.TabIndex = 27;
+            this.copyAnimBtn.Text = "++";
+            this.copyAnimBtn.UseSelectable = true;
+            this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
+            this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
             // 
             // animClearBtn
             // 
@@ -523,8 +534,31 @@
             this.animLbl.TabIndex = 10;
             this.animLbl.Text = "Animation";
             // 
+            // animImgPnl
+            // 
+            this.animImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.animImgPnl.BackColor = System.Drawing.Color.Black;
+            this.animImgPnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.animImgPnl.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.animImgPnl.HorizontalScrollbarBarColor = true;
+            this.animImgPnl.HorizontalScrollbarHighlightOnWheel = false;
+            this.animImgPnl.HorizontalScrollbarSize = 10;
+            this.animImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.animImgPnl.Location = new System.Drawing.Point(732, 15);
+            this.animImgPnl.Name = "animImgPnl";
+            this.animImgPnl.Size = new System.Drawing.Size(672, 588);
+            this.animImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.animImgPnl.TabIndex = 2;
+            this.animImgPnl.UseCustomBackColor = true;
+            this.animImgPnl.VerticalScrollbarBarColor = true;
+            this.animImgPnl.VerticalScrollbarHighlightOnWheel = false;
+            this.animImgPnl.VerticalScrollbarSize = 10;
+            // 
             // sheetsTab
             // 
+            this.sheetsTab.Controls.Add(this.sheetList);
             this.sheetsTab.Controls.Add(this.copySheetBtn);
             this.sheetsTab.Controls.Add(this.toggleSheetBgBtn);
             this.sheetsTab.Controls.Add(this.sheetImgPnl);
@@ -532,19 +566,46 @@
             this.sheetsTab.Controls.Add(this.sheetPropLbl);
             this.sheetsTab.Controls.Add(this.removeSheetBtn);
             this.sheetsTab.Controls.Add(this.addSheetBtn);
-            this.sheetsTab.Controls.Add(this.sheetCmb);
             this.sheetsTab.Controls.Add(this.sheetLbl);
             this.sheetsTab.HorizontalScrollbarBarColor = true;
             this.sheetsTab.HorizontalScrollbarHighlightOnWheel = false;
             this.sheetsTab.HorizontalScrollbarSize = 10;
             this.sheetsTab.Location = new System.Drawing.Point(4, 38);
             this.sheetsTab.Name = "sheetsTab";
-            this.sheetsTab.Size = new System.Drawing.Size(1232, 603);
+            this.sheetsTab.Size = new System.Drawing.Size(1407, 603);
             this.sheetsTab.TabIndex = 0;
             this.sheetsTab.Text = "Sheets";
             this.sheetsTab.VerticalScrollbarBarColor = true;
             this.sheetsTab.VerticalScrollbarHighlightOnWheel = false;
             this.sheetsTab.VerticalScrollbarSize = 10;
+            // 
+            // sheetList
+            // 
+            this.sheetList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.sheetList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.sheetList.FullRowSelect = true;
+            this.sheetList.HideSelection = false;
+            this.sheetList.Location = new System.Drawing.Point(103, 60);
+            this.sheetList.Name = "sheetList";
+            this.sheetList.OwnerDraw = true;
+            this.sheetList.Size = new System.Drawing.Size(189, 417);
+            this.sheetList.TabIndex = 25;
+            this.sheetList.UseCompatibleStateImageBehavior = false;
+            this.sheetList.UseSelectable = true;
+            this.sheetList.View = System.Windows.Forms.View.List;
+            this.sheetList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.SheetList_ItemSelectionChanged);
+            this.sheetList.Click += new System.EventHandler(this.SheetList_Click);
+            // 
+            // copySheetBtn
+            // 
+            this.copySheetBtn.Location = new System.Drawing.Point(373, 15);
+            this.copySheetBtn.Name = "copySheetBtn";
+            this.copySheetBtn.Size = new System.Drawing.Size(31, 29);
+            this.copySheetBtn.TabIndex = 24;
+            this.copySheetBtn.Text = "++";
+            this.copySheetBtn.UseSelectable = true;
+            this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
+            this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
             // 
             // toggleSheetBgBtn
             // 
@@ -556,6 +617,28 @@
             this.toggleSheetBgBtn.Text = "Toggle BG";
             this.toggleSheetBgBtn.UseSelectable = true;
             this.toggleSheetBgBtn.Click += new System.EventHandler(this.ToggleBgBtn_Click);
+            // 
+            // sheetImgPnl
+            // 
+            this.sheetImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sheetImgPnl.BackColor = System.Drawing.Color.Black;
+            this.sheetImgPnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.sheetImgPnl.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.sheetImgPnl.HorizontalScrollbarBarColor = true;
+            this.sheetImgPnl.HorizontalScrollbarHighlightOnWheel = false;
+            this.sheetImgPnl.HorizontalScrollbarSize = 10;
+            this.sheetImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.sheetImgPnl.Location = new System.Drawing.Point(732, 15);
+            this.sheetImgPnl.Name = "sheetImgPnl";
+            this.sheetImgPnl.Size = new System.Drawing.Size(672, 588);
+            this.sheetImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.sheetImgPnl.TabIndex = 10;
+            this.sheetImgPnl.UseCustomBackColor = true;
+            this.sheetImgPnl.VerticalScrollbarBarColor = true;
+            this.sheetImgPnl.VerticalScrollbarHighlightOnWheel = false;
+            this.sheetImgPnl.VerticalScrollbarSize = 10;
             // 
             // sheetPropTxt
             // 
@@ -572,7 +655,7 @@
             this.sheetPropTxt.CustomButton.UseSelectable = true;
             this.sheetPropTxt.CustomButton.Visible = false;
             this.sheetPropTxt.Lines = new string[0];
-            this.sheetPropTxt.Location = new System.Drawing.Point(104, 55);
+            this.sheetPropTxt.Location = new System.Drawing.Point(522, 15);
             this.sheetPropTxt.MaxLength = 32767;
             this.sheetPropTxt.Name = "sheetPropTxt";
             this.sheetPropTxt.PasswordChar = '\0';
@@ -591,7 +674,7 @@
             // sheetPropLbl
             // 
             this.sheetPropLbl.AutoSize = true;
-            this.sheetPropLbl.Location = new System.Drawing.Point(5, 57);
+            this.sheetPropLbl.Location = new System.Drawing.Point(423, 18);
             this.sheetPropLbl.Name = "sheetPropLbl";
             this.sheetPropLbl.Size = new System.Drawing.Size(38, 19);
             this.sheetPropLbl.TabIndex = 8;
@@ -618,17 +701,6 @@
             this.addSheetBtn.UseSelectable = true;
             this.addSheetBtn.Click += new System.EventHandler(this.AddSheetBtn_Click);
             // 
-            // sheetCmb
-            // 
-            this.sheetCmb.FormattingEnabled = true;
-            this.sheetCmb.ItemHeight = 23;
-            this.sheetCmb.Location = new System.Drawing.Point(104, 15);
-            this.sheetCmb.Name = "sheetCmb";
-            this.sheetCmb.Size = new System.Drawing.Size(188, 29);
-            this.sheetCmb.TabIndex = 4;
-            this.sheetCmb.UseSelectable = true;
-            this.sheetCmb.SelectedIndexChanged += new System.EventHandler(this.SheetCmb_SelectedIndexChanged);
-            // 
             // sheetLbl
             // 
             this.sheetLbl.AutoSize = true;
@@ -648,82 +720,16 @@
             this.editorTabs.Location = new System.Drawing.Point(23, 92);
             this.editorTabs.Name = "editorTabs";
             this.editorTabs.SelectedIndex = 0;
-            this.editorTabs.Size = new System.Drawing.Size(1240, 645);
+            this.editorTabs.Size = new System.Drawing.Size(1415, 645);
             this.editorTabs.TabIndex = 0;
             this.editorTabs.Tag = "";
             this.editorTabs.UseSelectable = true;
-            // 
-            // copySheetBtn
-            // 
-            this.copySheetBtn.Location = new System.Drawing.Point(373, 15);
-            this.copySheetBtn.Name = "copySheetBtn";
-            this.copySheetBtn.Size = new System.Drawing.Size(31, 29);
-            this.copySheetBtn.TabIndex = 24;
-            this.copySheetBtn.Text = "++";
-            this.copySheetBtn.UseSelectable = true;
-            this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
-            this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
-            // 
-            // sheetImgPnl
-            // 
-            this.sheetImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sheetImgPnl.BackColor = System.Drawing.Color.Black;
-            this.sheetImgPnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.sheetImgPnl.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.sheetImgPnl.HorizontalScrollbarBarColor = true;
-            this.sheetImgPnl.HorizontalScrollbarHighlightOnWheel = false;
-            this.sheetImgPnl.HorizontalScrollbarSize = 10;
-            this.sheetImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.sheetImgPnl.Location = new System.Drawing.Point(410, 15);
-            this.sheetImgPnl.Name = "sheetImgPnl";
-            this.sheetImgPnl.Size = new System.Drawing.Size(819, 588);
-            this.sheetImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.sheetImgPnl.TabIndex = 10;
-            this.sheetImgPnl.UseCustomBackColor = true;
-            this.sheetImgPnl.VerticalScrollbarBarColor = true;
-            this.sheetImgPnl.VerticalScrollbarHighlightOnWheel = false;
-            this.sheetImgPnl.VerticalScrollbarSize = 10;
-            // 
-            // animImgPnl
-            // 
-            this.animImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.animImgPnl.BackColor = System.Drawing.Color.Black;
-            this.animImgPnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.animImgPnl.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.animImgPnl.HorizontalScrollbarBarColor = true;
-            this.animImgPnl.HorizontalScrollbarHighlightOnWheel = false;
-            this.animImgPnl.HorizontalScrollbarSize = 10;
-            this.animImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.animImgPnl.Location = new System.Drawing.Point(410, 15);
-            this.animImgPnl.Name = "animImgPnl";
-            this.animImgPnl.Size = new System.Drawing.Size(819, 588);
-            this.animImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.animImgPnl.TabIndex = 2;
-            this.animImgPnl.UseCustomBackColor = true;
-            this.animImgPnl.VerticalScrollbarBarColor = true;
-            this.animImgPnl.VerticalScrollbarHighlightOnWheel = false;
-            this.animImgPnl.VerticalScrollbarSize = 10;
-            // 
-            // copyAnimBtn
-            // 
-            this.copyAnimBtn.Location = new System.Drawing.Point(373, 15);
-            this.copyAnimBtn.Name = "copyAnimBtn";
-            this.copyAnimBtn.Size = new System.Drawing.Size(31, 29);
-            this.copyAnimBtn.TabIndex = 27;
-            this.copyAnimBtn.Text = "++";
-            this.copyAnimBtn.UseSelectable = true;
-            this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
-            this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1286, 760);
+            this.ClientSize = new System.Drawing.Size(1461, 760);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.helpBtn);
             this.Controls.Add(this.fileBtn);
@@ -774,7 +780,6 @@
         private MetroFramework.Controls.MetroLabel sheetPropLbl;
         private MetroFramework.Controls.MetroButton removeSheetBtn;
         private MetroFramework.Controls.MetroButton addSheetBtn;
-        private MetroFramework.Controls.MetroComboBox sheetCmb;
         private MetroFramework.Controls.MetroLabel sheetLbl;
         private MetroFramework.Controls.MetroTabPage animationsTab;
         private MetroFramework.Controls.MetroButton animBackBtn;
@@ -798,6 +803,7 @@
         private MetroFramework.Controls.MetroButton animClearBtn;
         private MetroFramework.Controls.MetroButton copySheetBtn;
         private MetroFramework.Controls.MetroButton copyAnimBtn;
+        private MetroFramework.Controls.MetroListView sheetList;
     }
 }
 

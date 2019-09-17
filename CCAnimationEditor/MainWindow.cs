@@ -209,7 +209,7 @@ namespace CCAnimationEditor
 
                 if (animationFile.LoadFile(animationFilePath) == true)
                 {
-                    if (sheetCmb.Items.Count == 0)
+                    if (sheetList.Items.Count == 0)
                         GenerateSheetControls();
 
                     if (animCmb.Items.Count == 0)
@@ -220,7 +220,7 @@ namespace CCAnimationEditor
                     UpdateAnimList();
 
                     // Display the first animation and sheet
-                    sheetCmb.SelectedIndex = 0;
+                    sheetList.Items[0].Selected = true;
                     animCmb.SelectedIndex = 0;
 
                     // Reset the animation player
@@ -432,10 +432,10 @@ namespace CCAnimationEditor
         private void UpdateSheetValues()
         {
             // Make sure the sheet is not null
-            if (animationFile.Sheets.Count == 0 || sheetCmb.SelectedIndex < 0) return;
+            if (animationFile.Sheets.Count == 0 || sheetList.SelectedIndices[0] < 0) return;
 
             // Update the class values
-            Sheet sheet = animationFile.Sheets[sheetCmb.SelectedIndex];
+            Sheet sheet = animationFile.Sheets[sheetList.SelectedIndices[0]];
             int pos = 0;
             foreach (var prop in sheet.GetType().GetProperties())
             {
@@ -455,10 +455,10 @@ namespace CCAnimationEditor
             }
 
             // Update the property values
-            int index = sheetCmb.SelectedIndex;
+            int index = sheetList.SelectedIndices[0];
             UpdateSheetControlValues();
             UpdateSheetList();
-            sheetCmb.SelectedIndex = index;
+            sheetList.Items[index].Selected = true;
             DisplaySheet();
 
             SetUnsavedChanges();
@@ -665,13 +665,13 @@ namespace CCAnimationEditor
             // Add a new sheet
             animationFile.Sheets.Add(new Sheet());
 
-            if (sheetCmb.Items.Count == 0)
+            if (sheetList.Items.Count == 0)
                 GenerateSheetControls();
 
 
             // Switch to the new sheet
             UpdateSheetList();
-            sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
+            sheetList.Items[sheetList.Items.Count - 1].Selected = true;
 
             if (animationFile.Animations.Count > 0)
                 UpdateAnimControlValues();
@@ -685,7 +685,7 @@ namespace CCAnimationEditor
             // Confirm before deleting the sheet
             if (MetroMessageBox.Show(this, "This will delete the sheet, confirm?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                int oldSheetIndex = sheetCmb.SelectedIndex;
+                int oldSheetIndex = sheetList.SelectedIndices[0];
 
                 // Remove the sheet from the array
                 animationFile.Sheets.Remove(animationFile.Sheets[oldSheetIndex]);
@@ -693,10 +693,10 @@ namespace CCAnimationEditor
                 // Display the next available sheet
                 UpdateSheetList();
 
-                if (oldSheetIndex >= sheetCmb.Items.Count)
-                    sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
+                if (oldSheetIndex >= sheetList.Items.Count)
+                    sheetList.Items[sheetList.Items.Count - 1].Selected = true;
                 else
-                    sheetCmb.SelectedIndex = oldSheetIndex;
+                    sheetList.Items[oldSheetIndex].Selected = true;
             }
         }
 
@@ -706,11 +706,11 @@ namespace CCAnimationEditor
             if (animationFile == null || animationFile.Sheets.Count < 2) return;
 
             // Copy the current sheet
-            animationFile.Sheets.Add(animationFile.Sheets[sheetCmb.SelectedIndex]);
+            animationFile.Sheets.Add(animationFile.Sheets[sheetList.SelectedIndices[0]]);
 
             // Select the copied sheet
             UpdateSheetList();
-            sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
+            sheetList.Items[sheetList.Items.Count - 1].Selected = true;
         }
 
         // Add and remove buttons - Animations
@@ -773,7 +773,7 @@ namespace CCAnimationEditor
         private void UpdateSheetList()
         {
             // Clear the combo box
-            sheetCmb.Items.Clear();
+            sheetList.Items.Clear();
 
             // Clear the image panel
             sheetImgPnl.BackgroundImage = null;
@@ -781,7 +781,7 @@ namespace CCAnimationEditor
             // Add each sheet in the array
             foreach (Sheet sheet in animationFile.Sheets)
             {
-                sheetCmb.Items.Add(sheet.Name);
+                sheetList.Items.Add(sheet.Name);
             }
         }
 
@@ -801,8 +801,10 @@ namespace CCAnimationEditor
         // Display functions
         private void DisplaySheet()
         {
+            if (sheetList.SelectedIndices.Count == 0) return;
+
             // Get the current sheet
-            Sheet sheet = animationFile.Sheets[sheetCmb.SelectedIndex];
+            Sheet sheet = animationFile.Sheets[sheetList.SelectedIndices[0]];
 
             // Get the sheet relative to the game's install dir
             string sheetPath = GetSheetPath(sheet);
@@ -862,11 +864,13 @@ namespace CCAnimationEditor
 
         private void UpdateSheetControlValues()
         {
+            if (sheetList.SelectedIndices.Count == 0) return;
+
             // Go through each control and update the value
             int pos = 0;
-            foreach (var prop in animationFile.Sheets[sheetCmb.SelectedIndex].GetType().GetProperties())
+            foreach (var prop in animationFile.Sheets[sheetList.SelectedIndices[0]].GetType().GetProperties())
             {
-                sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetCmb.SelectedIndex]).ToString();
+                sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
                 pos++;
             }
         }
@@ -1862,5 +1866,15 @@ namespace CCAnimationEditor
             tt.Show("Duplicate", copyAnimBtn);
         }
 
+        private void SheetList_Click(object sender, EventArgs e)
+        {
+            DisplaySheet();
+            UpdateSheetControlValues();
+        }
+
+        private void SheetList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
