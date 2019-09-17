@@ -875,7 +875,6 @@ namespace CCAnimationEditor
             }
         }
 
-        // NOTE: I imagine this is where a lot of the bugs are going to end up
         private void DisplayAnim()
         {
             // Get the current anim
