@@ -795,7 +795,7 @@ namespace CCAnimationEditor
 
                 // Remove controls if there's no anims left
                 if (animationFile.Animations.Count == 0)
-                    ResetSheetControls()
+                    ResetSheetControls();
             }
         }
 
