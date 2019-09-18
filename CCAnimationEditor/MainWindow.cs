@@ -61,7 +61,7 @@ namespace CCAnimationEditor
             editorTabs.SelectedIndex = 0;
 
             // Set some default values
-            animationFile.Doctype = "MUTLI_DIR_ANIMATION";
+            animationFile.Doctype = "MULTI_DIR_ANIMATION";
             animationFile.Sheets = new List<Sheet>();
             animationFile.Animations = new List<Animation>();
 
@@ -177,7 +177,7 @@ namespace CCAnimationEditor
             animationFile = new AnimationFile();
 
             // Set some default values
-            animationFile.Doctype = "MUTLI_DIR_ANIMATION";
+            animationFile.Doctype = "MULTI_DIR_ANIMATION";
             animationFile.Sheets = new List<Sheet>();
             animationFile.Animations = new List<Animation>();
 
