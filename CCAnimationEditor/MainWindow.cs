@@ -215,8 +215,6 @@ namespace CCAnimationEditor
                 animationFilePath = openFileDialog.FileName;
 
                 // Load that file
-                animationFile = new AnimationFile();
-
                 if (animationFile.LoadFile(animationFilePath) == true)
                 {
                     if (sheetCmb.Items.Count == 0)

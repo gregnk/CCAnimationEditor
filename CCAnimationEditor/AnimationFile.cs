@@ -281,6 +281,8 @@ namespace CCAnimationEditor
 
                     // Sheets
                     IList<JToken> sheetsJson = animJsonObj["namedSheets"].Children().ToList();
+                    Sheets.Clear();
+
                     foreach (JToken sheetJson in sheetsJson)
                     {
                         Sheet sheet = new Sheet();
