@@ -44,40 +44,43 @@ namespace CCAnimationEditor
                 writer.WriteValue(Doctype);
 
                 // Sheets
-                writer.WritePropertyName("namedSheets");
-                writer.WriteStartObject();
-
-                foreach (Sheet sheet in Sheets)
+                if (Sheets != null)
                 {
-                    writer.WritePropertyName(sheet.Name);
+                    writer.WritePropertyName("namedSheets");
                     writer.WriteStartObject();
 
-                    writer.WritePropertyName("src");
-                    writer.WriteValue(sheet.Src.Replace("\\/", "/"));
-
-                    if (sheet.XCount > 0)
+                    foreach (Sheet sheet in Sheets)
                     {
-                        writer.WritePropertyName("xCount");
-                        writer.WriteValue(sheet.XCount);
+                        writer.WritePropertyName(sheet.Name);
+                        writer.WriteStartObject();
+
+                        writer.WritePropertyName("src");
+                        writer.WriteValue(sheet.Src.Replace("\\/", "/"));
+
+                        if (sheet.XCount > 0)
+                        {
+                            writer.WritePropertyName("xCount");
+                            writer.WriteValue(sheet.XCount);
+                        }
+
+                        writer.WritePropertyName("offX");
+                        writer.WriteValue(sheet.OffX);
+
+                        writer.WritePropertyName("offY");
+                        writer.WriteValue(sheet.OffY);
+
+                        writer.WritePropertyName("width");
+                        writer.WriteValue(sheet.Width);
+
+                        writer.WritePropertyName("height");
+                        writer.WriteValue(sheet.Height);
+
+                        writer.WriteEndObject();
                     }
 
-                    writer.WritePropertyName("offX");
-                    writer.WriteValue(sheet.OffX);
-
-                    writer.WritePropertyName("offY");
-                    writer.WriteValue(sheet.OffY);
-
-                    writer.WritePropertyName("width");
-                    writer.WriteValue(sheet.Width);
-
-                    writer.WritePropertyName("height");
-                    writer.WriteValue(sheet.Height);
-
+                    // Sheets end
                     writer.WriteEndObject();
                 }
-
-                // Sheets end
-                writer.WriteEndObject();
 
                 // Offset
                 // TODO: Actually implement the Offset value into the editor
@@ -91,159 +94,162 @@ namespace CCAnimationEditor
 
                     writer.WritePropertyName("z");
                     writer.WriteValue(Offset.Z);
-                }
 
                 // Offset end
                 writer.WriteEndObject();
+                }
 
-                // Sort the SUBs
-                var sub1 = Animations.GroupBy(anim => new { anim.Sheet, anim.Dirs, anim.ShapeType });
-
-                // SUB 1
-                writer.WritePropertyName("SUB");
-                writer.WriteStartArray();
-
-                foreach (var group in sub1)
+                if (Animations != null)
                 {
-                    var groupList = group.ToList();
+                    // Sort the SUBs
+                    var sub1 = Animations.GroupBy(anim => new { anim.Sheet, anim.Dirs, anim.ShapeType });
 
-                    writer.WriteStartObject();
-
-                    writer.WritePropertyName("sheet");
-                    writer.WriteValue(groupList[0].Sheet);
-
-                    writer.WritePropertyName("shapeType");
-                    writer.WriteValue(groupList[0].ShapeType);
-
-                    if (groupList[0].Dirs != 0)
-                    {
-                        writer.WritePropertyName("dirs");
-                        writer.WriteValue(groupList[0].Dirs);
-                    }
-
-                    // Sort again
-                    var sub2 = groupList.GroupBy(anim => new { anim.FlipX, anim.TileOffsets, anim.AnchorOffsetX, anim.AnchorOffsetY, anim.AnchorOffsetZ });
-
-                    // SUB 2
+                    // SUB 1
                     writer.WritePropertyName("SUB");
                     writer.WriteStartArray();
-                    foreach (var group2 in sub2)
+
+                    foreach (var group in sub1)
                     {
+                        var groupList = group.ToList();
+
                         writer.WriteStartObject();
 
-                        var groupList2 = group2.ToList();
+                        writer.WritePropertyName("sheet");
+                        writer.WriteValue(groupList[0].Sheet);
 
-                        // Output a default value if the group's var is null
+                        writer.WritePropertyName("shapeType");
+                        writer.WriteValue(groupList[0].ShapeType);
 
-                        // FlipX
-                        if (groupList2[0].FlipX != null)
+                        if (groupList[0].Dirs != 0)
                         {
-                            writer.WritePropertyName("flipX");
-                            WriteIntArray(writer, groupList2[0].FlipX);
+                            writer.WritePropertyName("dirs");
+                            writer.WriteValue(groupList[0].Dirs);
                         }
 
-                        else
-                        {
-                            writer.WritePropertyName("flipX");
-                            WriteIntArray(writer, new int[] { 0 });
-                        }
+                        // Sort again
+                        var sub2 = groupList.GroupBy(anim => new { anim.FlipX, anim.TileOffsets, anim.AnchorOffsetX, anim.AnchorOffsetY, anim.AnchorOffsetZ });
 
-                        // TileOffsets
-                        if (groupList2[0].TileOffsets != null)
-                        {
-                            writer.WritePropertyName("tileOffsets");
-                            WriteIntArray(writer, groupList2[0].TileOffsets);
-                        }
-
-                        else
-                        {
-                            writer.WritePropertyName("tileOffsets");
-                            WriteIntArray(writer, new int[] { 0 });
-                        }
-
-                        // AnchorOffsetX
-                        if (groupList2[0].AnchorOffsetX != null)
-                        {
-                            writer.WritePropertyName("anchorOffsetX");
-                            WriteIntArray(writer, groupList2[0].AnchorOffsetX);
-                        }
-
-                        else
-                        {
-                            writer.WritePropertyName("anchorOffsetX");
-                            WriteIntArray(writer, new int[] { 0 });
-                        }
-
-                        // AnchorOffsetY
-                        if (groupList2[0].AnchorOffsetY != null)
-                        {
-                            writer.WritePropertyName("anchorOffsetY");
-                            WriteIntArray(writer, groupList2[0].AnchorOffsetY);
-                        }
-
-                        else
-                        {
-                            writer.WritePropertyName("anchorOffsetY");
-                            WriteIntArray(writer, new int[] { 0 });
-                        }
-
-                        // AnchorOffsetZ
-                        if (groupList2[0].AnchorOffsetY != null)
-                        {
-                            writer.WritePropertyName("anchorOffsetZ");
-                            WriteIntArray(writer, groupList2[0].AnchorOffsetZ);
-                        }
-
-                        else
-                        {
-                            writer.WritePropertyName("anchorOffsetZ");
-                            WriteIntArray(writer, new int[] { 0 });
-                        }
-
-                        // SUB 3
+                        // SUB 2
                         writer.WritePropertyName("SUB");
                         writer.WriteStartArray();
-
-                        foreach (Animation anim in groupList2)
+                        foreach (var group2 in sub2)
                         {
                             writer.WriteStartObject();
 
-                            writer.WritePropertyName("name");
-                            writer.WriteValue(anim.Name);
+                            var groupList2 = group2.ToList();
 
-                            writer.WritePropertyName("time");
-                            writer.WriteValue(anim.Time);
+                            // Output a default value if the group's var is null
 
-                            writer.WritePropertyName("repeat");
-                            writer.WriteValue(anim.Repeat);
-
-                            if (anim.Frames != null)
+                            // FlipX
+                            if (groupList2[0].FlipX != null)
                             {
-                                writer.WritePropertyName("frames");
-                                WriteIntArray(writer, anim.Frames);
+                                writer.WritePropertyName("flipX");
+                                WriteIntArray(writer, groupList2[0].FlipX);
                             }
 
-                            if (anim.DirFrames != null)
+                            else
                             {
-                                writer.WritePropertyName("dirFrames");
-                                Write2dIntArray(writer, anim.DirFrames);
+                                writer.WritePropertyName("flipX");
+                                WriteIntArray(writer, new int[] { 0 });
                             }
 
+                            // TileOffsets
+                            if (groupList2[0].TileOffsets != null)
+                            {
+                                writer.WritePropertyName("tileOffsets");
+                                WriteIntArray(writer, groupList2[0].TileOffsets);
+                            }
+
+                            else
+                            {
+                                writer.WritePropertyName("tileOffsets");
+                                WriteIntArray(writer, new int[] { 0 });
+                            }
+
+                            // AnchorOffsetX
+                            if (groupList2[0].AnchorOffsetX != null)
+                            {
+                                writer.WritePropertyName("anchorOffsetX");
+                                WriteIntArray(writer, groupList2[0].AnchorOffsetX);
+                            }
+
+                            else
+                            {
+                                writer.WritePropertyName("anchorOffsetX");
+                                WriteIntArray(writer, new int[] { 0 });
+                            }
+
+                            // AnchorOffsetY
+                            if (groupList2[0].AnchorOffsetY != null)
+                            {
+                                writer.WritePropertyName("anchorOffsetY");
+                                WriteIntArray(writer, groupList2[0].AnchorOffsetY);
+                            }
+
+                            else
+                            {
+                                writer.WritePropertyName("anchorOffsetY");
+                                WriteIntArray(writer, new int[] { 0 });
+                            }
+
+                            // AnchorOffsetZ
+                            if (groupList2[0].AnchorOffsetY != null)
+                            {
+                                writer.WritePropertyName("anchorOffsetZ");
+                                WriteIntArray(writer, groupList2[0].AnchorOffsetZ);
+                            }
+
+                            else
+                            {
+                                writer.WritePropertyName("anchorOffsetZ");
+                                WriteIntArray(writer, new int[] { 0 });
+                            }
+
+                            // SUB 3
+                            writer.WritePropertyName("SUB");
+                            writer.WriteStartArray();
+
+                            foreach (Animation anim in groupList2)
+                            {
+                                writer.WriteStartObject();
+
+                                writer.WritePropertyName("name");
+                                writer.WriteValue(anim.Name);
+
+                                writer.WritePropertyName("time");
+                                writer.WriteValue(anim.Time);
+
+                                writer.WritePropertyName("repeat");
+                                writer.WriteValue(anim.Repeat);
+
+                                if (anim.Frames != null)
+                                {
+                                    writer.WritePropertyName("frames");
+                                    WriteIntArray(writer, anim.Frames);
+                                }
+
+                                if (anim.DirFrames != null)
+                                {
+                                    writer.WritePropertyName("dirFrames");
+                                    Write2dIntArray(writer, anim.DirFrames);
+                                }
+
+                                writer.WriteEndObject();
+                            }
+
+                            writer.WriteEndArray();
                             writer.WriteEndObject();
                         }
 
+                        // SUB 2 end
                         writer.WriteEndArray();
+
                         writer.WriteEndObject();
                     }
 
-                    // SUB 2 end
+                    // SUB 1 end
                     writer.WriteEndArray();
-
-                    writer.WriteEndObject();
                 }
-
-                // SUB 1 end
-                writer.WriteEndArray();
 
                 // File end
                 writer.WriteEndObject();
