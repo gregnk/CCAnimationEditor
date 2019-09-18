@@ -60,6 +60,11 @@ namespace CCAnimationEditor
             // Set the default tab to sheets
             editorTabs.SelectedIndex = 0;
 
+            // Set some default values
+            animationFile.Doctype = "MUTLI_DIR_ANIMATION";
+            animationFile.Sheets = new List<Sheet>();
+            animationFile.Animations = new List<Animation>();
+
             // Set the install dir if it is not set
             if (Settings.CCInstallDir == "")
             {
@@ -170,6 +175,11 @@ namespace CCAnimationEditor
 
             // Reset the loaded file
             animationFile = new AnimationFile();
+
+            // Set some default values
+            animationFile.Doctype = "MUTLI_DIR_ANIMATION";
+            animationFile.Sheets = new List<Sheet>();
+            animationFile.Animations = new List<Animation>();
 
             ResetSheetControls();
             ResetAnimControls();
