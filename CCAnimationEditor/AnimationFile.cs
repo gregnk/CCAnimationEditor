@@ -80,17 +80,18 @@ namespace CCAnimationEditor
                 writer.WriteEndObject();
 
                 // Offset
-                writer.WritePropertyName("offset");
-                writer.WriteStartObject();
+                // TODO: Actually implement the Offset value into the editor
+                if (Offset != null)
+                {
+                    writer.WritePropertyName("x");
+                    writer.WriteValue(Offset.X);
 
-                writer.WritePropertyName("x");
-                writer.WriteValue(Offset.X);
+                    writer.WritePropertyName("y");
+                    writer.WriteValue(Offset.Y);
 
-                writer.WritePropertyName("y");
-                writer.WriteValue(Offset.Y);
-
-                writer.WritePropertyName("z");
-                writer.WriteValue(Offset.Z);
+                    writer.WritePropertyName("z");
+                    writer.WriteValue(Offset.Z);
+                }
 
                 // Offset end
                 writer.WriteEndObject();
