@@ -10,7 +10,7 @@ using System.Media;
 using System.Windows.Forms;
 
 // TODO: Implement multi entity animations
-// TODO: Clean this entire thing up and put it into different class files
+// TODO: This file is an absolute fucking mess, Clean this entire thing up and put it into different class files
 
 // TODO: Add an "Export to GIF" function
 // TODO: Add some documentation as to what each property does
