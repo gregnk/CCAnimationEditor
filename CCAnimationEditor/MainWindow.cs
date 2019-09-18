@@ -732,6 +732,10 @@ namespace CCAnimationEditor
                     sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
                 else
                     sheetCmb.SelectedIndex = oldSheetIndex;
+
+                // Remove controls if there's no sheets left
+                if (animationFile.Sheets.Count == 0)
+                    ResetSheetControls();
             }
         }
 
@@ -788,6 +792,10 @@ namespace CCAnimationEditor
                     animCmb.SelectedIndex = animCmb.Items.Count - 1;
                 else
                     animCmb.SelectedIndex = oldAnimIndex;
+
+                // Remove controls if there's no anims left
+                if (animationFile.Animations.Count == 0)
+                    ResetSheetControls()
             }
         }
 
