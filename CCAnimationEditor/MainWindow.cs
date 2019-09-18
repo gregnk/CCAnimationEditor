@@ -272,18 +272,23 @@ namespace CCAnimationEditor
 
         private void SaveFile(string animationFilePath)
         {
+            if (VerifyFile() == false) return;
+
             animationFile.SaveFile(animationFilePath);
 
             if (unsavedChanges)
             {
                 unsavedChanges = false;
 
+                // Remove the unsaved changes indicator
                 Text.Substring(Text.Length - 1);
             }
         }
 
         private void SaveFileAs()
         {
+            if (VerifyFile() == false) return;
+
             SaveFileDialog saveAsDialog = new SaveFileDialog
             {
                 Filter = "JSON File|*.json",
@@ -307,6 +312,25 @@ namespace CCAnimationEditor
 
                 unsavedChanges = false;
             }
+        }
+
+        private bool VerifyFile()
+        {
+            // Check if the file can be saved without crashing
+            if (animationFile.Sheets == null && animationFile.Animations == null)
+            {
+                    MetroMessageBox.Show(this, "No animations or sheets are defined", "Error", MessageBoxButtons.OK);
+                    return false;
+            }
+
+            else if (animationFile.Sheets.Count == 0 && animationFile.Animations.Count == 0)
+            {
+                MetroMessageBox.Show(this, "No animations or sheets are defined", "Error", MessageBoxButtons.OK);
+                return false;
+            }
+
+            else
+                return true;
         }
 
         // Unsaved changes functions
