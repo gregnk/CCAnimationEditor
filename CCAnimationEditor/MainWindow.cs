@@ -228,8 +228,11 @@ namespace CCAnimationEditor
                     UpdateAnimList();
 
                     // Display the first animation and sheet
-                    sheetCmb.SelectedIndex = 0;
-                    animCmb.SelectedIndex = 0;
+                    if (sheetCmb.Items.Count > 0)
+                        sheetCmb.SelectedIndex = 0;
+
+                    if (animCmb.Items.Count > 0)
+                        animCmb.SelectedIndex = 0;
 
                     // Reset the animation player
                     animFrameIndex = 0;
