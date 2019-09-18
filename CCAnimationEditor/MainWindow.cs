@@ -782,10 +782,10 @@ namespace CCAnimationEditor
             {
                 int oldAnimIndex = animCmb.SelectedIndex;
 
-                // Remove the sheet from the array
+                // Remove the anim from the array
                 animationFile.Animations.Remove(animationFile.Animations[oldAnimIndex]);
 
-                // Display the next available sheet
+                // Display the next available anim
                 UpdateAnimList();
 
                 if (oldAnimIndex >= animCmb.Items.Count)
