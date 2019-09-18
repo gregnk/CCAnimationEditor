@@ -10,6 +10,7 @@ using System.Media;
 using System.Windows.Forms;
 
 // TODO: Implement multi entity animations
+// TODO: Implement support for patch files
 // TODO: This file is an absolute fucking mess, clean this entire thing up and put it into different class files
 
 // TODO: Add an "Export to GIF" function
