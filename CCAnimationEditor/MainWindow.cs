@@ -218,11 +218,19 @@ namespace CCAnimationEditor
                 // Load that file
                 if (animationFile.LoadFile(animationFilePath) == true)
                 {
+                    // Generate controls if there are none
                     if (sheetCmb.Items.Count == 0)
                         GenerateSheetControls();
 
                     if (animCmb.Items.Count == 0)
                         GenerateAnimControls();
+
+                    // Reset controls if there are no items
+                    if (animationFile.Animations.Count == 0)
+                        ResetAnimControls();
+
+                    if (animationFile.Animations.Count == 0)
+                        ResetAnimControls();
 
                     // Update the arrays
                     UpdateSheetList();
