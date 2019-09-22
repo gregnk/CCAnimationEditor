@@ -717,6 +717,8 @@ namespace CCAnimationEditor
             UpdateSheetList();
             sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
 
+            SetUnsavedChanges();
+
             if (animationFile.Animations.Count > 0)
                 UpdateAnimControlValues();
         }
@@ -737,6 +739,8 @@ namespace CCAnimationEditor
                 // Display the next available sheet
                 UpdateSheetList();
 
+                SetUnsavedChanges();
+
                 if (oldSheetIndex >= sheetCmb.Items.Count)
                     sheetCmb.SelectedIndex = sheetCmb.Items.Count - 1;
                 else
@@ -755,6 +759,7 @@ namespace CCAnimationEditor
 
             // Copy the current sheet
             animationFile.Sheets.Add(animationFile.Sheets[sheetCmb.SelectedIndex]);
+            SetUnsavedChanges();
 
             // Select the copied sheet
             UpdateSheetList();
@@ -775,7 +780,7 @@ namespace CCAnimationEditor
 
                 UpdateAnimList();
                 animCmb.SelectedIndex = animCmb.Items.Count - 1;
-
+                SetUnsavedChanges();
             }
 
             else
@@ -797,6 +802,8 @@ namespace CCAnimationEditor
                 // Display the next available anim
                 UpdateAnimList();
 
+                SetUnsavedChanges();
+
                 if (oldAnimIndex >= animCmb.Items.Count)
                     animCmb.SelectedIndex = animCmb.Items.Count - 1;
                 else
@@ -815,6 +822,7 @@ namespace CCAnimationEditor
 
             // Copy the current anim
             animationFile.Animations.Add(animationFile.Animations[animCmb.SelectedIndex]);
+            SetUnsavedChanges();
 
             // Select the copied anim
             UpdateAnimList();
