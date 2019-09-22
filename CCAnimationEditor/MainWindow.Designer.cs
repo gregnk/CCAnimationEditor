@@ -585,10 +585,10 @@
             this.sheetList.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.sheetList.FullRowSelect = true;
             this.sheetList.HideSelection = false;
-            this.sheetList.Location = new System.Drawing.Point(103, 60);
+            this.sheetList.Location = new System.Drawing.Point(86, 18);
             this.sheetList.Name = "sheetList";
             this.sheetList.OwnerDraw = true;
-            this.sheetList.Size = new System.Drawing.Size(189, 417);
+            this.sheetList.Size = new System.Drawing.Size(189, 477);
             this.sheetList.TabIndex = 25;
             this.sheetList.UseCompatibleStateImageBehavior = false;
             this.sheetList.UseSelectable = true;
@@ -598,11 +598,11 @@
             // 
             // copySheetBtn
             // 
-            this.copySheetBtn.Location = new System.Drawing.Point(373, 15);
+            this.copySheetBtn.Location = new System.Drawing.Point(86, 571);
             this.copySheetBtn.Name = "copySheetBtn";
-            this.copySheetBtn.Size = new System.Drawing.Size(31, 29);
+            this.copySheetBtn.Size = new System.Drawing.Size(189, 29);
             this.copySheetBtn.TabIndex = 24;
-            this.copySheetBtn.Text = "++";
+            this.copySheetBtn.Text = "Copy";
             this.copySheetBtn.UseSelectable = true;
             this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
             this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
@@ -610,9 +610,9 @@
             // toggleSheetBgBtn
             // 
             this.toggleSheetBgBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.toggleSheetBgBtn.Location = new System.Drawing.Point(284, 498);
+            this.toggleSheetBgBtn.Location = new System.Drawing.Point(568, 501);
             this.toggleSheetBgBtn.Name = "toggleSheetBgBtn";
-            this.toggleSheetBgBtn.Size = new System.Drawing.Size(83, 35);
+            this.toggleSheetBgBtn.Size = new System.Drawing.Size(83, 29);
             this.toggleSheetBgBtn.TabIndex = 23;
             this.toggleSheetBgBtn.Text = "Toggle BG";
             this.toggleSheetBgBtn.UseSelectable = true;
@@ -655,7 +655,7 @@
             this.sheetPropTxt.CustomButton.UseSelectable = true;
             this.sheetPropTxt.CustomButton.Visible = false;
             this.sheetPropTxt.Lines = new string[0];
-            this.sheetPropTxt.Location = new System.Drawing.Point(522, 15);
+            this.sheetPropTxt.Location = new System.Drawing.Point(463, 18);
             this.sheetPropTxt.MaxLength = 32767;
             this.sheetPropTxt.Name = "sheetPropTxt";
             this.sheetPropTxt.PasswordChar = '\0';
@@ -674,7 +674,7 @@
             // sheetPropLbl
             // 
             this.sheetPropLbl.AutoSize = true;
-            this.sheetPropLbl.Location = new System.Drawing.Point(423, 18);
+            this.sheetPropLbl.Location = new System.Drawing.Point(355, 18);
             this.sheetPropLbl.Name = "sheetPropLbl";
             this.sheetPropLbl.Size = new System.Drawing.Size(38, 19);
             this.sheetPropLbl.TabIndex = 8;
@@ -683,21 +683,21 @@
             // 
             // removeSheetBtn
             // 
-            this.removeSheetBtn.Location = new System.Drawing.Point(336, 15);
+            this.removeSheetBtn.Location = new System.Drawing.Point(86, 536);
             this.removeSheetBtn.Name = "removeSheetBtn";
-            this.removeSheetBtn.Size = new System.Drawing.Size(31, 29);
+            this.removeSheetBtn.Size = new System.Drawing.Size(189, 29);
             this.removeSheetBtn.TabIndex = 6;
-            this.removeSheetBtn.Text = "-";
+            this.removeSheetBtn.Text = "Remove";
             this.removeSheetBtn.UseSelectable = true;
             this.removeSheetBtn.Click += new System.EventHandler(this.RemoveSheetBtn_Click);
             // 
             // addSheetBtn
             // 
-            this.addSheetBtn.Location = new System.Drawing.Point(299, 15);
+            this.addSheetBtn.Location = new System.Drawing.Point(86, 501);
             this.addSheetBtn.Name = "addSheetBtn";
-            this.addSheetBtn.Size = new System.Drawing.Size(31, 29);
+            this.addSheetBtn.Size = new System.Drawing.Size(189, 29);
             this.addSheetBtn.TabIndex = 5;
-            this.addSheetBtn.Text = "+";
+            this.addSheetBtn.Text = "Add";
             this.addSheetBtn.UseSelectable = true;
             this.addSheetBtn.Click += new System.EventHandler(this.AddSheetBtn_Click);
             // 
