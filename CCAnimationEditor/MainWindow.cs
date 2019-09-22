@@ -1888,11 +1888,6 @@ namespace CCAnimationEditor
             return 1;
         }
 
-        private void CopySheetBtn_MouseHover(object sender, EventArgs e)
-        {
-            tt.Show("Duplicate", copySheetBtn);
-        }
-
         private void CopyAnimBtn_MouseHover(object sender, EventArgs e)
         {
             tt.Show("Duplicate", copyAnimBtn);

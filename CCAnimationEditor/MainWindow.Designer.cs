@@ -605,7 +605,6 @@
             this.copySheetBtn.Text = "Copy";
             this.copySheetBtn.UseSelectable = true;
             this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
-            this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
             // 
             // toggleSheetBgBtn
             // 
