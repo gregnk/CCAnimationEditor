@@ -864,14 +864,47 @@ namespace CCAnimationEditor
 
         private void UpdateSheetControlValues()
         {
-            if (sheetList.SelectedIndices.Count == 0) return;
-
             // Go through each control and update the value
             int pos = 0;
-            foreach (var prop in animationFile.Sheets[sheetList.SelectedIndices[0]].GetType().GetProperties())
+
+            // One item selected
+            if (sheetList.SelectedIndices.Count == 1)
             {
-                sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
-                pos++;
+                foreach (var prop in animationFile.Sheets[sheetList.SelectedIndices[0]].GetType().GetProperties())
+                {
+                    sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
+                    sheetPropInputs[pos].UseCustomBackColor = false;
+                    pos++;
+                }
+            }
+
+            // Multiple items selected
+            else if (sheetList.SelectedIndices.Count > 1)
+            {
+                foreach (var prop in animationFile.Sheets[sheetList.SelectedIndices[0]].GetType().GetProperties())
+                {
+                    sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
+                    sheetPropInputs[pos].UseCustomBackColor = false;
+
+                    for (int selectedIndex = 1; selectedIndex < sheetList.SelectedIndices.Count; selectedIndex++)
+                    {
+                        // Mark properties with different values
+                        string rs = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
+                        string ls = prop.GetValue(animationFile.Sheets[selectedIndex]).ToString();
+
+                        if (prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString() != prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[selectedIndex]]).ToString())
+                        {
+                            sheetPropInputs[pos].Text = "";
+                            sheetPropInputs[pos].UseCustomBackColor = true;
+                            sheetPropInputs[pos].BackColor = Color.FromArgb(93, 17, 93);
+                            break;
+                        }
+                    }
+
+                    pos++;
+                }
+                    
+                Refresh();
             }
         }
 
@@ -1873,7 +1906,7 @@ namespace CCAnimationEditor
 
         private void SheetList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            
+
         }
     }
 }
