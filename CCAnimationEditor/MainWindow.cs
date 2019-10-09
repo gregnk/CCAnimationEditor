@@ -18,6 +18,8 @@ using System.Windows.Forms;
 // TODO: Make the UI setup more efficient
 // TODO: Add the ability to edit multiple items at once
 
+// UnresolvedMergeConflict: Merge this with ui-revamp once I'm done with my break (Don't know when that's going to end...)
+
 namespace CCAnimationEditor
 {
     public partial class MainWindow : MetroForm
