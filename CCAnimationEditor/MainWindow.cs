@@ -472,6 +472,7 @@ namespace CCAnimationEditor
             DisplayAnim();
         }
 
+        // TODO: Make the real-time updating more efficient (have it only update the property that was changed)
         // Real-time updating - Sheets
         private void SheetTextBox_KeyUp(object sender, EventArgs e)
         {
