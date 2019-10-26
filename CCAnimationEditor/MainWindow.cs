@@ -13,10 +13,10 @@ using System.Windows.Forms;
 // TODO: Implement support for patch files
 // TODO: This file is an absolute fucking mess, clean this entire thing up and put it into different class files
 
-// TODO: Add an "Export to GIF" function
+// IDEA: Add an "Export to GIF" function
 // TODO: Add some documentation as to what each property does
-// TODO: Make the UI setup more efficient
-// TODO: Add the ability to edit multiple items at once
+// FEATURE: Make the UI setup more efficient
+// FEATURE: Add the ability to edit multiple items at once
 
 namespace CCAnimationEditor
 {
@@ -912,13 +912,13 @@ namespace CCAnimationEditor
             else
                 sheetImgPnl.BackgroundImage = Properties.Resources.SrcNotFound;
 
-            // TODO: Have it draw a grid showing the sprites
+            // FEATURE: Have the editor draw a grid showing the sprites
         }
 
 
         private void DrawSheetGrid()
         {
-            // NOTE: This is unfinished
+            // UNFINISHED: The grid function (this code is just some shit I copied from stackoverflow)
             Graphics g = this.CreateGraphics();
             Pen p = new Pen(Color.Blue);
             Rectangle rect1 = new Rectangle(10, 10, 100, 50);

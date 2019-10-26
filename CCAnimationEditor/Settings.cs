@@ -120,7 +120,7 @@ namespace CCAnimationEditor
                 }
             }
 
-            // TODO: Have it scan for CrossCode.exe if it is not in the common locations
+            // IDEA: Have it scan for CrossCode.exe if it is not in the common locations
             return false;
         }
 
