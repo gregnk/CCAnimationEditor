@@ -396,7 +396,7 @@ namespace CCAnimationEditor
             about.ShowDialog();
         }
 
-        // List updating
+        // Automatic list update call functions
         private void SheetList_Click(object sender, EventArgs e)
         {
             DisplaySheet();
