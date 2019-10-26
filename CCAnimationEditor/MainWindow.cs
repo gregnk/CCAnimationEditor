@@ -397,7 +397,13 @@ namespace CCAnimationEditor
         }
 
         // List updating
-        private void SheetCmb_SelectedIndexChanged(object sender, EventArgs e)
+        private void SheetList_Click(object sender, EventArgs e)
+        {
+            DisplaySheet();
+            UpdateSheetControlValues();
+        }
+
+        private void SheetList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             DisplaySheet();
             UpdateSheetControlValues();
@@ -1950,17 +1956,6 @@ namespace CCAnimationEditor
         private void CopyAnimBtn_MouseHover(object sender, EventArgs e)
         {
             tt.Show("Duplicate", copyAnimBtn);
-        }
-
-        private void SheetList_Click(object sender, EventArgs e)
-        {
-            DisplaySheet();
-            UpdateSheetControlValues();
-        }
-
-        private void SheetList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-
         }
     }
 }
