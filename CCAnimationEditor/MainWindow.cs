@@ -764,6 +764,7 @@ namespace CCAnimationEditor
             if (animationFile == null || animationFile.Sheets.Count < 2) return;
 
             // Copy the current sheet
+            // TODO: Add code for copying multiple sheets
             animationFile.Sheets.Add(animationFile.Sheets[sheetList.SelectedIndices[0]]);
             SetUnsavedChanges();
 
