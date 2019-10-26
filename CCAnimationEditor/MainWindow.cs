@@ -241,8 +241,6 @@ namespace CCAnimationEditor
 
                     if (animCmb.Items.Count > 0)
                         animCmb.SelectedIndex = 0;
-                    
-                    animCmb.SelectedIndex = 0;
 
                     // Reset the animation player
                     animFrameIndex = 0;
