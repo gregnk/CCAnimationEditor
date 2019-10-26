@@ -570,7 +570,7 @@
             this.sheetsTab.HorizontalScrollbarSize = 10;
             this.sheetsTab.Location = new System.Drawing.Point(4, 38);
             this.sheetsTab.Name = "sheetsTab";
-            this.sheetsTab.Size = new System.Drawing.Size(1217, 603);
+            this.sheetsTab.Size = new System.Drawing.Size(1232, 603);
             this.sheetsTab.TabIndex = 0;
             this.sheetsTab.Text = "Sheets";
             this.sheetsTab.VerticalScrollbarBarColor = true;
@@ -607,7 +607,7 @@
             // toggleSheetBgBtn
             // 
             this.toggleSheetBgBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.toggleSheetBgBtn.Location = new System.Drawing.Point(477, 501);
+            this.toggleSheetBgBtn.Location = new System.Drawing.Point(468, 501);
             this.toggleSheetBgBtn.Name = "toggleSheetBgBtn";
             this.toggleSheetBgBtn.Size = new System.Drawing.Size(83, 29);
             this.toggleSheetBgBtn.TabIndex = 23;
@@ -629,7 +629,7 @@
             this.sheetImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             this.sheetImgPnl.Location = new System.Drawing.Point(566, 15);
             this.sheetImgPnl.Name = "sheetImgPnl";
-            this.sheetImgPnl.Size = new System.Drawing.Size(648, 588);
+            this.sheetImgPnl.Size = new System.Drawing.Size(652, 588);
             this.sheetImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.sheetImgPnl.TabIndex = 10;
             this.sheetImgPnl.UseCustomBackColor = true;
@@ -652,7 +652,7 @@
             this.sheetPropTxt.CustomButton.UseSelectable = true;
             this.sheetPropTxt.CustomButton.Visible = false;
             this.sheetPropTxt.Lines = new string[0];
-            this.sheetPropTxt.Location = new System.Drawing.Point(372, 18);
+            this.sheetPropTxt.Location = new System.Drawing.Point(363, 18);
             this.sheetPropTxt.MaxLength = 32767;
             this.sheetPropTxt.Name = "sheetPropTxt";
             this.sheetPropTxt.PasswordChar = '\0';
@@ -708,7 +708,7 @@
             this.editorTabs.Location = new System.Drawing.Point(23, 92);
             this.editorTabs.Name = "editorTabs";
             this.editorTabs.SelectedIndex = 0;
-            this.editorTabs.Size = new System.Drawing.Size(1225, 645);
+            this.editorTabs.Size = new System.Drawing.Size(1240, 645);
             this.editorTabs.TabIndex = 0;
             this.editorTabs.Tag = "";
             this.editorTabs.UseSelectable = true;
@@ -717,7 +717,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 760);
+            this.ClientSize = new System.Drawing.Size(1286, 760);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.helpBtn);
             this.Controls.Add(this.fileBtn);
