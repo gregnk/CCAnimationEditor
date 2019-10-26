@@ -708,7 +708,7 @@ namespace CCAnimationEditor
         }
 
         // Add and remove buttons - Sheets
-        // TODO: Add the ability to-rearrange items on the list
+        // TODO: Add the ability to re-arrange items on the list
 
         private void AddSheetBtn_Click(object sender, EventArgs e)
         {
