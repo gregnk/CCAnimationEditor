@@ -476,6 +476,10 @@ namespace CCAnimationEditor
         // Real-time updating - Sheets
         private void SheetTextBox_KeyUp(object sender, EventArgs e)
         {
+            MetroTextBox textBox = (MetroTextBox)sender;
+            if (textBox.UseCustomBackColor)
+                textBox.UseCustomBackColor = false;
+
             UpdateSheetValues();
         }
 
@@ -485,22 +489,42 @@ namespace CCAnimationEditor
             if (animationFile.Sheets.Count == 0 || sheetList.SelectedIndices[0] < 0) return;
 
             // Update the class values
-            Sheet sheet = animationFile.Sheets[sheetList.SelectedIndices[0]];
-            int pos = 0;
-            foreach (var prop in sheet.GetType().GetProperties())
-            {
-                if (prop.GetValue(sheet) != null)
-                {
-                    // Strings
-                    if (prop.GetValue(sheet) is string)
-                        prop.SetValue(sheet, sheetPropInputs[pos++].Text);
+            List<Sheet> sheets = new List<Sheet>();
 
-                    // Ints
-                    else if (prop.GetValue(sheet) is int)
+            // One item selected
+            if (sheetList.SelectedIndices.Count == 1)
+                sheets.Add(animationFile.Sheets[sheetList.SelectedIndices[0]]);
+            
+            // Multiple items selected
+            else if (sheetList.SelectedIndices.Count > 1)
+            {
+                foreach (int selectedSheetIndex in sheetList.SelectedIndices)
+                    sheets.Add(animationFile.Sheets[selectedSheetIndex]);
+            }
+
+            foreach (Sheet sheet in sheets)
+            {
+                int pos = 0;
+                foreach (var prop in sheet.GetType().GetProperties())
+                {
+                    if (sheetPropInputs[pos].UseCustomBackColor == false)
                     {
-                        int.TryParse(sheetPropInputs[pos++].Text, out int outInt);
-                        prop.SetValue(sheet, outInt);
+                        if (prop.GetValue(sheet) != null)
+                        {
+                            // Strings
+                            if (prop.GetValue(sheet) is string)
+                                prop.SetValue(sheet, sheetPropInputs[pos].Text);
+
+                            // Ints
+                            else if (prop.GetValue(sheet) is int)
+                            {
+                                int.TryParse(sheetPropInputs[pos].Text, out int outInt);
+                                prop.SetValue(sheet, outInt);
+                            }
+                        }
                     }
+
+                    pos++;
                 }
             }
 
