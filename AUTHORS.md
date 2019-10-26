@@ -11,7 +11,7 @@ ac2pic
 
 **Special Thanks**
 
-Ari Delopulous
+Ari Delopoulos
 
 Nicholas Fernandes
 

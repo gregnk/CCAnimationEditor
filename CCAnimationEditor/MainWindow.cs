@@ -10,7 +10,8 @@ using System.Media;
 using System.Windows.Forms;
 
 // TODO: Implement multi entity animations
-// TODO: Clean this entire thing up and put it into different class files
+// TODO: Implement support for patch files
+// TODO: This file is an absolute fucking mess, clean this entire thing up and put it into different class files
 
 // TODO: Add an "Export to GIF" function
 // TODO: Add some documentation as to what each property does
@@ -59,6 +60,11 @@ namespace CCAnimationEditor
         {
             // Set the default tab to sheets
             editorTabs.SelectedIndex = 0;
+
+            // Set some default values
+            animationFile.Doctype = "MULTI_DIR_ANIMATION";
+            animationFile.Sheets = new List<Sheet>();
+            animationFile.Animations = new List<Animation>();
 
             // Set the install dir if it is not set
             if (Settings.CCInstallDir == "")
@@ -171,6 +177,11 @@ namespace CCAnimationEditor
             // Reset the loaded file
             animationFile = new AnimationFile();
 
+            // Set some default values
+            animationFile.Doctype = "MULTI_DIR_ANIMATION";
+            animationFile.Sheets = new List<Sheet>();
+            animationFile.Animations = new List<Animation>();
+
             ResetSheetControls();
             ResetAnimControls();
             UpdateSheetList();
@@ -205,8 +216,6 @@ namespace CCAnimationEditor
                 animationFilePath = openFileDialog.FileName;
 
                 // Load that file
-                animationFile = new AnimationFile();
-
                 if (animationFile.LoadFile(animationFilePath) == true)
                 {
                     if (sheetList.Items.Count == 0)
@@ -215,12 +224,24 @@ namespace CCAnimationEditor
                     if (animCmb.Items.Count == 0)
                         GenerateAnimControls();
 
+                    // Reset controls if there are no items
+                    if (animationFile.Animations.Count == 0)
+                        ResetAnimControls();
+
+                    if (animationFile.Animations.Count == 0)
+                        ResetAnimControls();
+
                     // Update the arrays
                     UpdateSheetList();
                     UpdateAnimList();
 
                     // Display the first animation and sheet
-                    sheetList.Items[0].Selected = true;
+                    if (sheetList.Items.Count > 0)
+                        sheetList.Items[0].Selected = true;
+
+                    if (animCmb.Items.Count > 0)
+                        animCmb.SelectedIndex = 0;
+                    
                     animCmb.SelectedIndex = 0;
 
                     // Reset the animation player
@@ -272,18 +293,23 @@ namespace CCAnimationEditor
 
         private void SaveFile(string animationFilePath)
         {
+            if (VerifyFile() == false) return;
+
             animationFile.SaveFile(animationFilePath);
 
             if (unsavedChanges)
             {
                 unsavedChanges = false;
 
+                // Remove the unsaved changes indicator
                 Text.Substring(Text.Length - 1);
             }
         }
 
         private void SaveFileAs()
         {
+            if (VerifyFile() == false) return;
+
             SaveFileDialog saveAsDialog = new SaveFileDialog
             {
                 Filter = "JSON File|*.json",
@@ -307,6 +333,25 @@ namespace CCAnimationEditor
 
                 unsavedChanges = false;
             }
+        }
+
+        private bool VerifyFile()
+        {
+            // Check if the file can be saved without crashing
+            if (animationFile.Sheets == null && animationFile.Animations == null)
+            {
+                    MetroMessageBox.Show(this, "No animations or sheets are defined", "Error", MessageBoxButtons.OK);
+                    return false;
+            }
+
+            else if (animationFile.Sheets.Count == 0 && animationFile.Animations.Count == 0)
+            {
+                MetroMessageBox.Show(this, "No animations or sheets are defined", "Error", MessageBoxButtons.OK);
+                return false;
+            }
+
+            else
+                return true;
         }
 
         // Unsaved changes functions
@@ -673,6 +718,8 @@ namespace CCAnimationEditor
             UpdateSheetList();
             sheetList.Items[sheetList.Items.Count - 1].Selected = true;
 
+            SetUnsavedChanges();
+
             if (animationFile.Animations.Count > 0)
                 UpdateAnimControlValues();
         }
@@ -697,6 +744,12 @@ namespace CCAnimationEditor
                     sheetList.Items[sheetList.Items.Count - 1].Selected = true;
                 else
                     sheetList.Items[oldSheetIndex].Selected = true;
+
+                Refresh();
+
+                // Remove controls if there's no sheets left
+                if (animationFile.Sheets.Count == 0)
+                    ResetSheetControls();
             }
         }
 
@@ -707,6 +760,7 @@ namespace CCAnimationEditor
 
             // Copy the current sheet
             animationFile.Sheets.Add(animationFile.Sheets[sheetList.SelectedIndices[0]]);
+            SetUnsavedChanges();
 
             // Select the copied sheet
             UpdateSheetList();
@@ -727,7 +781,7 @@ namespace CCAnimationEditor
 
                 UpdateAnimList();
                 animCmb.SelectedIndex = animCmb.Items.Count - 1;
-
+                SetUnsavedChanges();
             }
 
             else
@@ -743,16 +797,22 @@ namespace CCAnimationEditor
             {
                 int oldAnimIndex = animCmb.SelectedIndex;
 
-                // Remove the sheet from the array
+                // Remove the anim from the array
                 animationFile.Animations.Remove(animationFile.Animations[oldAnimIndex]);
 
-                // Display the next available sheet
+                // Display the next available anim
                 UpdateAnimList();
+
+                SetUnsavedChanges();
 
                 if (oldAnimIndex >= animCmb.Items.Count)
                     animCmb.SelectedIndex = animCmb.Items.Count - 1;
                 else
                     animCmb.SelectedIndex = oldAnimIndex;
+
+                // Remove controls if there's no anims left
+                if (animationFile.Animations.Count == 0)
+                    ResetAnimControls();
             }
         }
 
@@ -763,6 +823,7 @@ namespace CCAnimationEditor
 
             // Copy the current anim
             animationFile.Animations.Add(animationFile.Animations[animCmb.SelectedIndex]);
+            SetUnsavedChanges();
 
             // Select the copied anim
             UpdateAnimList();

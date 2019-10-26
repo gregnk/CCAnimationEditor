@@ -1,5 +1,11 @@
 # CCAnimationEditor Releases
 
+## v0.2.2 (2019-09-21)
+
+* Fixed several bugs related to saving and loading new files created in the editor
+* Fixed a bug where the sheet editor controls would be reset when removing an animation
+* Fixed a bug where unsaved changes would not be indicated when adding, removing or copying sheets and animations
+
 ## v0.2.1 (2019-09-07)
 
 * Fixed a bug related to the unsaved changes dialog
