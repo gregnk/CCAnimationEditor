@@ -894,51 +894,58 @@ namespace CCAnimationEditor
         {
             if (sheetList.SelectedIndices.Count == 0) return;
 
-            // Get the current sheet
-            Sheet sheet = animationFile.Sheets[sheetList.SelectedIndices[0]];
+            // Display nothing if more than one sheet is selected
+            if (sheetList.SelectedIndices.Count > 1)
+                sheetImgPnl.BackgroundImage = null;
 
-            // Get the sheet relative to the game's install dir
-            string sheetPath = GetSheetPath(sheet);
-
-            // Check if the file exists
-            if (File.Exists(sheetPath))
-            {
-                Image sheetImg = Image.FromFile(sheetPath);
-
-                // Crop the image to the specified portion
-                Bitmap sheetImgBmp = new Bitmap(sheetImg);
-                try
-                {
-                    Bitmap sheetImgBmpCropped = sheetImgBmp.Clone(
-                        new Rectangle(
-                            sheet.OffX,
-                            sheet.OffY,
-                            sheet.XCount > 0 ? sheet.Width * sheet.XCount : sheetImg.Width - sheet.OffX,
-                            sheetImg.Height - sheet.OffY),
-                        sheetImgBmp.PixelFormat
-                        );
-
-                    // Apply the image to the panel
-                    sheetImgPnl.BackgroundImage = sheetImgBmpCropped;
-                    sheetImg.Dispose();
-                }
-
-                // Reset the panel and play an error if the user enters something invalid
-                catch
-                {
-                    SystemSounds.Beep.Play();
-                    sheetImgPnl.BackgroundImage = sheetImg;
-                }
-
-                // Dispose the bmp to avoid a memory leak
-                sheetImgBmp.Dispose();
-            }
-
-            // Put a placeholder image if the sheet does not exist
             else
-                sheetImgPnl.BackgroundImage = Properties.Resources.SrcNotFound;
+            {
+                // Get the current sheet
+                Sheet sheet = animationFile.Sheets[sheetList.SelectedIndices[0]];
 
-            // FEATURE: Have the editor draw a grid showing the sprites
+                // Get the sheet relative to the game's install dir
+                string sheetPath = GetSheetPath(sheet);
+
+                // Check if the file exists
+                if (File.Exists(sheetPath))
+                {
+                    Image sheetImg = Image.FromFile(sheetPath);
+
+                    // Crop the image to the specified portion
+                    Bitmap sheetImgBmp = new Bitmap(sheetImg);
+                    try
+                    {
+                        Bitmap sheetImgBmpCropped = sheetImgBmp.Clone(
+                            new Rectangle(
+                                sheet.OffX,
+                                sheet.OffY,
+                                sheet.XCount > 0 ? sheet.Width * sheet.XCount : sheetImg.Width - sheet.OffX,
+                                sheetImg.Height - sheet.OffY),
+                            sheetImgBmp.PixelFormat
+                            );
+
+                        // Apply the image to the panel
+                        sheetImgPnl.BackgroundImage = sheetImgBmpCropped;
+                        sheetImg.Dispose();
+                    }
+
+                    // Reset the panel and play an error if the user enters something invalid
+                    catch
+                    {
+                        SystemSounds.Beep.Play();
+                        sheetImgPnl.BackgroundImage = sheetImg;
+                    }
+
+                    // Dispose the bmp to avoid a memory leak
+                    sheetImgBmp.Dispose();
+                }
+
+                // Put a placeholder image if the sheet does not exist
+                else
+                    sheetImgPnl.BackgroundImage = Properties.Resources.SrcNotFound;
+
+                // FEATURE: Have the editor draw a grid showing the sprites
+            }
         }
 
 
