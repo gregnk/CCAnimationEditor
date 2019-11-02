@@ -1390,6 +1390,7 @@ namespace CCAnimationEditor
         }
 
         // Functions for switching between the array editor and animation editor on the animations panel
+        // FEATURE: Have arrays be edited on the same page
         private void SwitchToAnimEditor()
         {
             // Go back to the animation editor
