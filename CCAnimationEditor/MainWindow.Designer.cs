@@ -62,19 +62,18 @@
             this.animPropLbl = new MetroFramework.Controls.MetroLabel();
             this.removeAnimBtn = new MetroFramework.Controls.MetroButton();
             this.addAnimBtn = new MetroFramework.Controls.MetroButton();
-            this.animCmb = new MetroFramework.Controls.MetroComboBox();
-            this.animLbl = new MetroFramework.Controls.MetroLabel();
-            this.animImgPnl = new CCAnimationEditor.MetroPanelCustom();
             this.sheetsTab = new MetroFramework.Controls.MetroTabPage();
             this.sheetList = new MetroFramework.Controls.MetroListView();
             this.copySheetBtn = new MetroFramework.Controls.MetroButton();
             this.toggleSheetBgBtn = new MetroFramework.Controls.MetroButton();
-            this.sheetImgPnl = new CCAnimationEditor.MetroPanelCustom();
             this.sheetPropTxt = new MetroFramework.Controls.MetroTextBox();
             this.sheetPropLbl = new MetroFramework.Controls.MetroLabel();
             this.removeSheetBtn = new MetroFramework.Controls.MetroButton();
             this.addSheetBtn = new MetroFramework.Controls.MetroButton();
             this.editorTabs = new MetroFramework.Controls.MetroTabControl();
+            this.animList = new MetroFramework.Controls.MetroListView();
+            this.sheetImgPnl = new CCAnimationEditor.MetroPanelCustom();
+            this.animImgPnl = new CCAnimationEditor.MetroPanelCustom();
             ((System.ComponentModel.ISupportInitialize)(this.styleManager)).BeginInit();
             this.fileContextMenu.SuspendLayout();
             this.helpContextMenu.SuspendLayout();
@@ -203,6 +202,7 @@
             // 
             // animationsTab
             // 
+            this.animationsTab.Controls.Add(this.animList);
             this.animationsTab.Controls.Add(this.copyAnimBtn);
             this.animationsTab.Controls.Add(this.animClearBtn);
             this.animationsTab.Controls.Add(this.animBackBtn);
@@ -217,15 +217,13 @@
             this.animationsTab.Controls.Add(this.animPropsPnl);
             this.animationsTab.Controls.Add(this.removeAnimBtn);
             this.animationsTab.Controls.Add(this.addAnimBtn);
-            this.animationsTab.Controls.Add(this.animCmb);
-            this.animationsTab.Controls.Add(this.animLbl);
             this.animationsTab.Controls.Add(this.animImgPnl);
             this.animationsTab.HorizontalScrollbarBarColor = true;
             this.animationsTab.HorizontalScrollbarHighlightOnWheel = false;
             this.animationsTab.HorizontalScrollbarSize = 10;
             this.animationsTab.Location = new System.Drawing.Point(4, 38);
             this.animationsTab.Name = "animationsTab";
-            this.animationsTab.Size = new System.Drawing.Size(1217, 603);
+            this.animationsTab.Size = new System.Drawing.Size(1232, 603);
             this.animationsTab.TabIndex = 1;
             this.animationsTab.Text = "Animations";
             this.animationsTab.VerticalScrollbarBarColor = true;
@@ -234,11 +232,11 @@
             // 
             // copyAnimBtn
             // 
-            this.copyAnimBtn.Location = new System.Drawing.Point(373, 15);
+            this.copyAnimBtn.Location = new System.Drawing.Point(3, 571);
             this.copyAnimBtn.Name = "copyAnimBtn";
-            this.copyAnimBtn.Size = new System.Drawing.Size(31, 29);
+            this.copyAnimBtn.Size = new System.Drawing.Size(189, 29);
             this.copyAnimBtn.TabIndex = 27;
-            this.copyAnimBtn.Text = "++";
+            this.copyAnimBtn.Text = "Copy";
             this.copyAnimBtn.UseSelectable = true;
             this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
             this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
@@ -246,9 +244,9 @@
             // animClearBtn
             // 
             this.animClearBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.animClearBtn.Location = new System.Drawing.Point(195, 544);
+            this.animClearBtn.Location = new System.Drawing.Point(379, 536);
             this.animClearBtn.Name = "animClearBtn";
-            this.animClearBtn.Size = new System.Drawing.Size(83, 35);
+            this.animClearBtn.Size = new System.Drawing.Size(83, 29);
             this.animClearBtn.TabIndex = 26;
             this.animClearBtn.Text = "Clear";
             this.animClearBtn.UseSelectable = true;
@@ -258,9 +256,9 @@
             // animBackBtn
             // 
             this.animBackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.animBackBtn.Location = new System.Drawing.Point(195, 498);
+            this.animBackBtn.Location = new System.Drawing.Point(379, 501);
             this.animBackBtn.Name = "animBackBtn";
-            this.animBackBtn.Size = new System.Drawing.Size(83, 35);
+            this.animBackBtn.Size = new System.Drawing.Size(83, 29);
             this.animBackBtn.TabIndex = 25;
             this.animBackBtn.Text = "Back";
             this.animBackBtn.UseSelectable = true;
@@ -284,7 +282,7 @@
             this.animSpeedTxt.CustomButton.Visible = false;
             this.animSpeedTxt.Lines = new string[] {
         "1"};
-            this.animSpeedTxt.Location = new System.Drawing.Point(59, 556);
+            this.animSpeedTxt.Location = new System.Drawing.Point(269, 560);
             this.animSpeedTxt.MaxLength = 32767;
             this.animSpeedTxt.Name = "animSpeedTxt";
             this.animSpeedTxt.PasswordChar = '\0';
@@ -305,7 +303,7 @@
             // 
             this.animSpeedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.animSpeedLbl.AutoSize = true;
-            this.animSpeedLbl.Location = new System.Drawing.Point(5, 557);
+            this.animSpeedLbl.Location = new System.Drawing.Point(217, 560);
             this.animSpeedLbl.Name = "animSpeedLbl";
             this.animSpeedLbl.Size = new System.Drawing.Size(46, 19);
             this.animSpeedLbl.TabIndex = 23;
@@ -314,9 +312,9 @@
             // toggleAnimBgBtn
             // 
             this.toggleAnimBgBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.toggleAnimBgBtn.Location = new System.Drawing.Point(284, 498);
+            this.toggleAnimBgBtn.Location = new System.Drawing.Point(468, 501);
             this.toggleAnimBgBtn.Name = "toggleAnimBgBtn";
-            this.toggleAnimBgBtn.Size = new System.Drawing.Size(83, 35);
+            this.toggleAnimBgBtn.Size = new System.Drawing.Size(83, 29);
             this.toggleAnimBgBtn.TabIndex = 22;
             this.toggleAnimBgBtn.Text = "Toggle BG";
             this.toggleAnimBgBtn.UseSelectable = true;
@@ -339,7 +337,7 @@
             this.dirTxt.CustomButton.Visible = false;
             this.dirTxt.Lines = new string[] {
         "0"};
-            this.dirTxt.Location = new System.Drawing.Point(59, 527);
+            this.dirTxt.Location = new System.Drawing.Point(269, 531);
             this.dirTxt.MaxLength = 32767;
             this.dirTxt.Name = "dirTxt";
             this.dirTxt.PasswordChar = '\0';
@@ -360,7 +358,7 @@
             // 
             this.dirLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dirLbl.AutoSize = true;
-            this.dirLbl.Location = new System.Drawing.Point(4, 529);
+            this.dirLbl.Location = new System.Drawing.Point(214, 533);
             this.dirLbl.Name = "dirLbl";
             this.dirLbl.Size = new System.Drawing.Size(26, 19);
             this.dirLbl.TabIndex = 20;
@@ -383,7 +381,7 @@
             this.frameTxt.CustomButton.Visible = false;
             this.frameTxt.Lines = new string[] {
         "0"};
-            this.frameTxt.Location = new System.Drawing.Point(59, 498);
+            this.frameTxt.Location = new System.Drawing.Point(269, 501);
             this.frameTxt.MaxLength = 32767;
             this.frameTxt.Name = "frameTxt";
             this.frameTxt.PasswordChar = '\0';
@@ -404,7 +402,7 @@
             // 
             this.frameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.frameLbl.AutoSize = true;
-            this.frameLbl.Location = new System.Drawing.Point(4, 499);
+            this.frameLbl.Location = new System.Drawing.Point(216, 501);
             this.frameLbl.Name = "frameLbl";
             this.frameLbl.Size = new System.Drawing.Size(47, 19);
             this.frameLbl.TabIndex = 18;
@@ -413,9 +411,9 @@
             // playPauseBtn
             // 
             this.playPauseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.playPauseBtn.Location = new System.Drawing.Point(284, 544);
+            this.playPauseBtn.Location = new System.Drawing.Point(468, 536);
             this.playPauseBtn.Name = "playPauseBtn";
-            this.playPauseBtn.Size = new System.Drawing.Size(83, 35);
+            this.playPauseBtn.Size = new System.Drawing.Size(83, 29);
             this.playPauseBtn.TabIndex = 17;
             this.playPauseBtn.Text = "Play";
             this.playPauseBtn.UseSelectable = true;
@@ -433,9 +431,9 @@
             this.animPropsPnl.HorizontalScrollbarBarColor = true;
             this.animPropsPnl.HorizontalScrollbarHighlightOnWheel = false;
             this.animPropsPnl.HorizontalScrollbarSize = 10;
-            this.animPropsPnl.Location = new System.Drawing.Point(4, 50);
+            this.animPropsPnl.Location = new System.Drawing.Point(210, 3);
             this.animPropsPnl.Name = "animPropsPnl";
-            this.animPropsPnl.Size = new System.Drawing.Size(363, 431);
+            this.animPropsPnl.Size = new System.Drawing.Size(350, 478);
             this.animPropsPnl.TabIndex = 16;
             this.animPropsPnl.VerticalScrollbar = true;
             this.animPropsPnl.VerticalScrollbarBarColor = false;
@@ -444,7 +442,7 @@
             // 
             // animPropEditBtn
             // 
-            this.animPropEditBtn.Location = new System.Drawing.Point(100, 37);
+            this.animPropEditBtn.Location = new System.Drawing.Point(144, 46);
             this.animPropEditBtn.Name = "animPropEditBtn";
             this.animPropEditBtn.Size = new System.Drawing.Size(188, 23);
             this.animPropEditBtn.TabIndex = 18;
@@ -467,7 +465,7 @@
             this.animPropTxt.CustomButton.UseSelectable = true;
             this.animPropTxt.CustomButton.Visible = false;
             this.animPropTxt.Lines = new string[0];
-            this.animPropTxt.Location = new System.Drawing.Point(100, 5);
+            this.animPropTxt.Location = new System.Drawing.Point(144, 15);
             this.animPropTxt.MaxLength = 32767;
             this.animPropTxt.Name = "animPropTxt";
             this.animPropTxt.PasswordChar = '\0';
@@ -486,7 +484,7 @@
             // animPropLbl
             // 
             this.animPropLbl.AutoSize = true;
-            this.animPropLbl.Location = new System.Drawing.Point(1, 7);
+            this.animPropLbl.Location = new System.Drawing.Point(0, 15);
             this.animPropLbl.Name = "animPropLbl";
             this.animPropLbl.Size = new System.Drawing.Size(38, 19);
             this.animPropLbl.TabIndex = 16;
@@ -495,65 +493,23 @@
             // 
             // removeAnimBtn
             // 
-            this.removeAnimBtn.Location = new System.Drawing.Point(336, 15);
+            this.removeAnimBtn.Location = new System.Drawing.Point(3, 536);
             this.removeAnimBtn.Name = "removeAnimBtn";
-            this.removeAnimBtn.Size = new System.Drawing.Size(31, 29);
+            this.removeAnimBtn.Size = new System.Drawing.Size(189, 29);
             this.removeAnimBtn.TabIndex = 13;
-            this.removeAnimBtn.Text = "-";
+            this.removeAnimBtn.Text = "Remove";
             this.removeAnimBtn.UseSelectable = true;
             this.removeAnimBtn.Click += new System.EventHandler(this.RemoveAnimBtn_Click);
             // 
             // addAnimBtn
             // 
-            this.addAnimBtn.Location = new System.Drawing.Point(299, 15);
+            this.addAnimBtn.Location = new System.Drawing.Point(3, 501);
             this.addAnimBtn.Name = "addAnimBtn";
-            this.addAnimBtn.Size = new System.Drawing.Size(31, 29);
+            this.addAnimBtn.Size = new System.Drawing.Size(189, 29);
             this.addAnimBtn.TabIndex = 12;
-            this.addAnimBtn.Text = "+";
+            this.addAnimBtn.Text = "Add";
             this.addAnimBtn.UseSelectable = true;
             this.addAnimBtn.Click += new System.EventHandler(this.AddAnimBtn_Click);
-            // 
-            // animCmb
-            // 
-            this.animCmb.FormattingEnabled = true;
-            this.animCmb.ItemHeight = 23;
-            this.animCmb.Location = new System.Drawing.Point(104, 15);
-            this.animCmb.Name = "animCmb";
-            this.animCmb.Size = new System.Drawing.Size(188, 29);
-            this.animCmb.TabIndex = 11;
-            this.animCmb.UseSelectable = true;
-            this.animCmb.SelectedIndexChanged += new System.EventHandler(this.AnimCmb_SelectedIndexChanged);
-            // 
-            // animLbl
-            // 
-            this.animLbl.AutoSize = true;
-            this.animLbl.Location = new System.Drawing.Point(4, 18);
-            this.animLbl.Name = "animLbl";
-            this.animLbl.Size = new System.Drawing.Size(69, 19);
-            this.animLbl.TabIndex = 10;
-            this.animLbl.Text = "Animation";
-            // 
-            // animImgPnl
-            // 
-            this.animImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.animImgPnl.BackColor = System.Drawing.Color.Black;
-            this.animImgPnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.animImgPnl.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.animImgPnl.HorizontalScrollbarBarColor = true;
-            this.animImgPnl.HorizontalScrollbarHighlightOnWheel = false;
-            this.animImgPnl.HorizontalScrollbarSize = 10;
-            this.animImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.animImgPnl.Location = new System.Drawing.Point(566, 15);
-            this.animImgPnl.Name = "animImgPnl";
-            this.animImgPnl.Size = new System.Drawing.Size(648, 588);
-            this.animImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.animImgPnl.TabIndex = 2;
-            this.animImgPnl.UseCustomBackColor = true;
-            this.animImgPnl.VerticalScrollbarBarColor = true;
-            this.animImgPnl.VerticalScrollbarHighlightOnWheel = false;
-            this.animImgPnl.VerticalScrollbarSize = 10;
             // 
             // sheetsTab
             // 
@@ -582,21 +538,22 @@
             this.sheetList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.sheetList.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.sheetList.FullRowSelect = true;
+            this.sheetList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.sheetList.HideSelection = false;
-            this.sheetList.Location = new System.Drawing.Point(15, 18);
+            this.sheetList.Location = new System.Drawing.Point(3, 18);
             this.sheetList.Name = "sheetList";
             this.sheetList.OwnerDraw = true;
             this.sheetList.Size = new System.Drawing.Size(189, 477);
             this.sheetList.TabIndex = 25;
             this.sheetList.UseCompatibleStateImageBehavior = false;
             this.sheetList.UseSelectable = true;
-            this.sheetList.View = System.Windows.Forms.View.List;
+            this.sheetList.View = System.Windows.Forms.View.Details;
             this.sheetList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.SheetList_ItemSelectionChanged);
             this.sheetList.Click += new System.EventHandler(this.SheetList_Click);
             // 
             // copySheetBtn
             // 
-            this.copySheetBtn.Location = new System.Drawing.Point(15, 571);
+            this.copySheetBtn.Location = new System.Drawing.Point(3, 571);
             this.copySheetBtn.Name = "copySheetBtn";
             this.copySheetBtn.Size = new System.Drawing.Size(189, 29);
             this.copySheetBtn.TabIndex = 24;
@@ -614,6 +571,98 @@
             this.toggleSheetBgBtn.Text = "Toggle BG";
             this.toggleSheetBgBtn.UseSelectable = true;
             this.toggleSheetBgBtn.Click += new System.EventHandler(this.ToggleBgBtn_Click);
+            // 
+            // sheetPropTxt
+            // 
+            // 
+            // 
+            // 
+            this.sheetPropTxt.CustomButton.Image = null;
+            this.sheetPropTxt.CustomButton.Location = new System.Drawing.Point(164, 1);
+            this.sheetPropTxt.CustomButton.Name = "";
+            this.sheetPropTxt.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.sheetPropTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.sheetPropTxt.CustomButton.TabIndex = 1;
+            this.sheetPropTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.sheetPropTxt.CustomButton.UseSelectable = true;
+            this.sheetPropTxt.CustomButton.Visible = false;
+            this.sheetPropTxt.Lines = new string[0];
+            this.sheetPropTxt.Location = new System.Drawing.Point(360, 18);
+            this.sheetPropTxt.MaxLength = 32767;
+            this.sheetPropTxt.Name = "sheetPropTxt";
+            this.sheetPropTxt.PasswordChar = '\0';
+            this.sheetPropTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.sheetPropTxt.SelectedText = "";
+            this.sheetPropTxt.SelectionLength = 0;
+            this.sheetPropTxt.SelectionStart = 0;
+            this.sheetPropTxt.ShortcutsEnabled = true;
+            this.sheetPropTxt.Size = new System.Drawing.Size(188, 25);
+            this.sheetPropTxt.TabIndex = 9;
+            this.sheetPropTxt.UseSelectable = true;
+            this.sheetPropTxt.Visible = false;
+            this.sheetPropTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.sheetPropTxt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // sheetPropLbl
+            // 
+            this.sheetPropLbl.AutoSize = true;
+            this.sheetPropLbl.Location = new System.Drawing.Point(210, 18);
+            this.sheetPropLbl.Name = "sheetPropLbl";
+            this.sheetPropLbl.Size = new System.Drawing.Size(38, 19);
+            this.sheetPropLbl.TabIndex = 8;
+            this.sheetPropLbl.Text = "Prop";
+            this.sheetPropLbl.Visible = false;
+            // 
+            // removeSheetBtn
+            // 
+            this.removeSheetBtn.Location = new System.Drawing.Point(3, 536);
+            this.removeSheetBtn.Name = "removeSheetBtn";
+            this.removeSheetBtn.Size = new System.Drawing.Size(189, 29);
+            this.removeSheetBtn.TabIndex = 6;
+            this.removeSheetBtn.Text = "Remove";
+            this.removeSheetBtn.UseSelectable = true;
+            this.removeSheetBtn.Click += new System.EventHandler(this.RemoveSheetBtn_Click);
+            // 
+            // addSheetBtn
+            // 
+            this.addSheetBtn.Location = new System.Drawing.Point(3, 501);
+            this.addSheetBtn.Name = "addSheetBtn";
+            this.addSheetBtn.Size = new System.Drawing.Size(189, 29);
+            this.addSheetBtn.TabIndex = 5;
+            this.addSheetBtn.Text = "Add";
+            this.addSheetBtn.UseSelectable = true;
+            this.addSheetBtn.Click += new System.EventHandler(this.AddSheetBtn_Click);
+            // 
+            // editorTabs
+            // 
+            this.editorTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.editorTabs.Controls.Add(this.sheetsTab);
+            this.editorTabs.Controls.Add(this.animationsTab);
+            this.editorTabs.Location = new System.Drawing.Point(23, 92);
+            this.editorTabs.Name = "editorTabs";
+            this.editorTabs.SelectedIndex = 0;
+            this.editorTabs.Size = new System.Drawing.Size(1240, 645);
+            this.editorTabs.TabIndex = 0;
+            this.editorTabs.Tag = "";
+            this.editorTabs.UseSelectable = true;
+            // 
+            // animList
+            // 
+            this.animList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.animList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.animList.FullRowSelect = true;
+            this.animList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.animList.HideSelection = false;
+            this.animList.Location = new System.Drawing.Point(3, 18);
+            this.animList.Name = "animList";
+            this.animList.OwnerDraw = true;
+            this.animList.Size = new System.Drawing.Size(189, 477);
+            this.animList.TabIndex = 28;
+            this.animList.UseCompatibleStateImageBehavior = false;
+            this.animList.UseSelectable = true;
+            this.animList.View = System.Windows.Forms.View.Details;
             // 
             // sheetImgPnl
             // 
@@ -637,81 +686,27 @@
             this.sheetImgPnl.VerticalScrollbarHighlightOnWheel = false;
             this.sheetImgPnl.VerticalScrollbarSize = 10;
             // 
-            // sheetPropTxt
+            // animImgPnl
             // 
-            // 
-            // 
-            // 
-            this.sheetPropTxt.CustomButton.Image = null;
-            this.sheetPropTxt.CustomButton.Location = new System.Drawing.Point(164, 1);
-            this.sheetPropTxt.CustomButton.Name = "";
-            this.sheetPropTxt.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.sheetPropTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.sheetPropTxt.CustomButton.TabIndex = 1;
-            this.sheetPropTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.sheetPropTxt.CustomButton.UseSelectable = true;
-            this.sheetPropTxt.CustomButton.Visible = false;
-            this.sheetPropTxt.Lines = new string[0];
-            this.sheetPropTxt.Location = new System.Drawing.Point(363, 18);
-            this.sheetPropTxt.MaxLength = 32767;
-            this.sheetPropTxt.Name = "sheetPropTxt";
-            this.sheetPropTxt.PasswordChar = '\0';
-            this.sheetPropTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.sheetPropTxt.SelectedText = "";
-            this.sheetPropTxt.SelectionLength = 0;
-            this.sheetPropTxt.SelectionStart = 0;
-            this.sheetPropTxt.ShortcutsEnabled = true;
-            this.sheetPropTxt.Size = new System.Drawing.Size(188, 25);
-            this.sheetPropTxt.TabIndex = 9;
-            this.sheetPropTxt.UseSelectable = true;
-            this.sheetPropTxt.Visible = false;
-            this.sheetPropTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.sheetPropTxt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // sheetPropLbl
-            // 
-            this.sheetPropLbl.AutoSize = true;
-            this.sheetPropLbl.Location = new System.Drawing.Point(248, 18);
-            this.sheetPropLbl.Name = "sheetPropLbl";
-            this.sheetPropLbl.Size = new System.Drawing.Size(38, 19);
-            this.sheetPropLbl.TabIndex = 8;
-            this.sheetPropLbl.Text = "Prop";
-            this.sheetPropLbl.Visible = false;
-            // 
-            // removeSheetBtn
-            // 
-            this.removeSheetBtn.Location = new System.Drawing.Point(15, 536);
-            this.removeSheetBtn.Name = "removeSheetBtn";
-            this.removeSheetBtn.Size = new System.Drawing.Size(189, 29);
-            this.removeSheetBtn.TabIndex = 6;
-            this.removeSheetBtn.Text = "Remove";
-            this.removeSheetBtn.UseSelectable = true;
-            this.removeSheetBtn.Click += new System.EventHandler(this.RemoveSheetBtn_Click);
-            // 
-            // addSheetBtn
-            // 
-            this.addSheetBtn.Location = new System.Drawing.Point(15, 501);
-            this.addSheetBtn.Name = "addSheetBtn";
-            this.addSheetBtn.Size = new System.Drawing.Size(189, 29);
-            this.addSheetBtn.TabIndex = 5;
-            this.addSheetBtn.Text = "Add";
-            this.addSheetBtn.UseSelectable = true;
-            this.addSheetBtn.Click += new System.EventHandler(this.AddSheetBtn_Click);
-            // 
-            // editorTabs
-            // 
-            this.editorTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.animImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.editorTabs.Controls.Add(this.sheetsTab);
-            this.editorTabs.Controls.Add(this.animationsTab);
-            this.editorTabs.Location = new System.Drawing.Point(23, 92);
-            this.editorTabs.Name = "editorTabs";
-            this.editorTabs.SelectedIndex = 0;
-            this.editorTabs.Size = new System.Drawing.Size(1240, 645);
-            this.editorTabs.TabIndex = 0;
-            this.editorTabs.Tag = "";
-            this.editorTabs.UseSelectable = true;
+            this.animImgPnl.BackColor = System.Drawing.Color.Black;
+            this.animImgPnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.animImgPnl.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.animImgPnl.HorizontalScrollbarBarColor = true;
+            this.animImgPnl.HorizontalScrollbarHighlightOnWheel = false;
+            this.animImgPnl.HorizontalScrollbarSize = 10;
+            this.animImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.animImgPnl.Location = new System.Drawing.Point(566, 15);
+            this.animImgPnl.Name = "animImgPnl";
+            this.animImgPnl.Size = new System.Drawing.Size(652, 588);
+            this.animImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.animImgPnl.TabIndex = 2;
+            this.animImgPnl.UseCustomBackColor = true;
+            this.animImgPnl.VerticalScrollbarBarColor = true;
+            this.animImgPnl.VerticalScrollbarHighlightOnWheel = false;
+            this.animImgPnl.VerticalScrollbarSize = 10;
             // 
             // MainWindow
             // 
@@ -784,13 +779,12 @@
         private MetroFramework.Controls.MetroLabel animPropLbl;
         private MetroFramework.Controls.MetroButton removeAnimBtn;
         private MetroFramework.Controls.MetroButton addAnimBtn;
-        private MetroFramework.Controls.MetroComboBox animCmb;
-        private MetroFramework.Controls.MetroLabel animLbl;
         private MetroPanelCustom animImgPnl;
         private MetroFramework.Controls.MetroButton animClearBtn;
         private MetroFramework.Controls.MetroButton copySheetBtn;
         private MetroFramework.Controls.MetroButton copyAnimBtn;
         private MetroFramework.Controls.MetroListView sheetList;
+        private MetroFramework.Controls.MetroListView animList;
     }
 }
 
