@@ -642,7 +642,7 @@
             this.editorTabs.Controls.Add(this.animationsTab);
             this.editorTabs.Location = new System.Drawing.Point(23, 92);
             this.editorTabs.Name = "editorTabs";
-            this.editorTabs.SelectedIndex = 0;
+            this.editorTabs.SelectedIndex = 1;
             this.editorTabs.Size = new System.Drawing.Size(1240, 645);
             this.editorTabs.TabIndex = 0;
             this.editorTabs.Tag = "";
@@ -678,7 +678,7 @@
             this.sheetImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             this.sheetImgPnl.Location = new System.Drawing.Point(566, 15);
             this.sheetImgPnl.Name = "sheetImgPnl";
-            this.sheetImgPnl.Size = new System.Drawing.Size(652, 588);
+            this.sheetImgPnl.Size = new System.Drawing.Size(663, 588);
             this.sheetImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.sheetImgPnl.TabIndex = 10;
             this.sheetImgPnl.UseCustomBackColor = true;
@@ -700,7 +700,7 @@
             this.animImgPnl.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             this.animImgPnl.Location = new System.Drawing.Point(566, 15);
             this.animImgPnl.Name = "animImgPnl";
-            this.animImgPnl.Size = new System.Drawing.Size(652, 588);
+            this.animImgPnl.Size = new System.Drawing.Size(663, 588);
             this.animImgPnl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.animImgPnl.TabIndex = 2;
             this.animImgPnl.UseCustomBackColor = true;
