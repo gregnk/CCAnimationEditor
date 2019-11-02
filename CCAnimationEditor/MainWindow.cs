@@ -66,6 +66,10 @@ namespace CCAnimationEditor
             animationFile.Sheets = new List<Sheet>();
             animationFile.Animations = new List<Animation>();
 
+            // Add a column to the list
+            sheetList.Columns.Add(new ColumnHeader { Width = sheetList.Size.Width - 5});
+            animList.Columns.Add(new ColumnHeader { Width = animList.Size.Width - 5});
+
             // Set the install dir if it is not set
             if (Settings.CCInstallDir == "")
             {
