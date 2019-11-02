@@ -239,7 +239,6 @@
             this.copyAnimBtn.Text = "Copy";
             this.copyAnimBtn.UseSelectable = true;
             this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
-            this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
             // 
             // animClearBtn
             // 

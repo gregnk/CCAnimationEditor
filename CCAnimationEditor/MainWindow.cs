@@ -1990,10 +1990,5 @@ namespace CCAnimationEditor
 
             return 1;
         }
-
-        private void CopyAnimBtn_MouseHover(object sender, EventArgs e)
-        {
-            tt.Show("Duplicate", copyAnimBtn);
-        }
     }
 }
