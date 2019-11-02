@@ -413,7 +413,23 @@ namespace CCAnimationEditor
             UpdateSheetControlValues();
         }
 
-        private void AnimCmb_SelectedIndexChanged(object sender, EventArgs e)
+        private void AnimList_Click(object sender, EventArgs e)
+        {
+            if (editingArray)
+            {
+                editingArray = false;
+                ResetAnimControls();
+                GenerateAnimControls();
+                animBackBtn.Visible = false;
+                animClearBtn.Visible = false;
+            }
+
+            animFrameIndex = 0;
+            DisplayAnim();
+            UpdateAnimControlValues();
+        }
+
+        private void AnimList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (editingArray)
             {
@@ -1012,6 +1028,8 @@ namespace CCAnimationEditor
 
         private void DisplayAnim()
         {
+            if (animList.SelectedIndices.Count == 0) return;
+
             // Get the current anim
             Animation anim = animationFile.Animations[animList.SelectedIndices[0]];
             Sheet animSheet = animationFile.FindSheet(anim.Sheet);
@@ -1147,6 +1165,8 @@ namespace CCAnimationEditor
 
         private void UpdateAnimControlValues()
         {
+            if (animList.SelectedIndices.Count == 0) return;
+
             int pos = 0;
             foreach (var prop in animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperties())
             {
