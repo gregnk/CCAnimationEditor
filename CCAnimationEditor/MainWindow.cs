@@ -67,8 +67,8 @@ namespace CCAnimationEditor
             animationFile.Animations = new List<Animation>();
 
             // Add a column to the list
-            sheetList.Columns.Add(new ColumnHeader { Width = sheetList.Size.Width - 5});
-            animList.Columns.Add(new ColumnHeader { Width = animList.Size.Width - 5});
+            sheetList.Columns.Add(new ColumnHeader { Width = sheetList.Size.Width - 5 });
+            animList.Columns.Add(new ColumnHeader { Width = animList.Size.Width - 5 });
 
             // Set the install dir if it is not set
             if (Settings.CCInstallDir == "")
@@ -342,8 +342,8 @@ namespace CCAnimationEditor
             // Check if the file can be saved without crashing
             if (animationFile.Sheets == null && animationFile.Animations == null)
             {
-                    MetroMessageBox.Show(this, "No animations or sheets are defined", "Error", MessageBoxButtons.OK);
-                    return false;
+                MetroMessageBox.Show(this, "No animations or sheets are defined", "Error", MessageBoxButtons.OK);
+                return false;
             }
 
             else if (animationFile.Sheets.Count == 0 && animationFile.Animations.Count == 0)
@@ -514,7 +514,7 @@ namespace CCAnimationEditor
             // One item selected
             if (sheetList.SelectedIndices.Count == 1)
                 sheets.Add(animationFile.Sheets[sheetList.SelectedIndices[0]]);
-            
+
             // Multiple items selected
             else if (sheetList.SelectedIndices.Count > 1)
             {
@@ -992,6 +992,7 @@ namespace CCAnimationEditor
             // One item selected
             if (sheetList.SelectedIndices.Count == 1)
             {
+
                 foreach (var prop in animationFile.Sheets[sheetList.SelectedIndices[0]].GetType().GetProperties())
                 {
                     sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
@@ -1025,7 +1026,7 @@ namespace CCAnimationEditor
 
                     pos++;
                 }
-                    
+
                 Refresh();
             }
         }
@@ -1249,8 +1250,9 @@ namespace CCAnimationEditor
                         animPropInputs[pos++].Text = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
 
                 }
-
             }
+
+
 
             // Set anim speed
             animTimer.Interval = GetAnimTimerInterval();
