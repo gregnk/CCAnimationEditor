@@ -561,6 +561,10 @@ namespace CCAnimationEditor
         // Real-time updating - Animations 
         private void AnimTextBox_KeyUp(object sender, EventArgs e)
         {
+            MetroTextBox textBox = (MetroTextBox)sender;
+            if (textBox.UseCustomBackColor)
+                textBox.UseCustomBackColor = false;
+
             UpdateAnimValues();
         }
 
@@ -1170,6 +1174,31 @@ namespace CCAnimationEditor
             int pos = 0;
             foreach (var prop in animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperties())
             {
+                if (animList.SelectedIndices.Count > 1)
+                {
+                    if (!(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[]) && !(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[][]) && !(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is null))
+                    {
+                        for (int selectedIndex = 1; selectedIndex < animList.SelectedIndices.Count; selectedIndex++)
+                        {
+
+                            // Mark properties with different values
+                            string rs = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
+                            string ls = prop.GetValue(animationFile.Animations[selectedIndex]).ToString();
+
+                            if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString() != prop.GetValue(animationFile.Animations[animList.SelectedIndices[selectedIndex]]).ToString())
+                            {
+
+                                animPropInputs[pos].Text = "";
+                                animPropInputs[pos].BackColor = Color.FromArgb(93, 17, 93);
+
+                                if (animPropInputs[pos] is MetroTextBox textBox)
+                                    textBox.UseCustomBackColor = true;
+
+                                break;
+                            }
+                        }
+                    }
+                }
 
                 // Arrays
                 if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[] array)
