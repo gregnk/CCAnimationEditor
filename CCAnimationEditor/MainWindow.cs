@@ -1181,15 +1181,13 @@ namespace CCAnimationEditor
                     {
                         for (int selectedIndex = 1; selectedIndex < animList.SelectedIndices.Count; selectedIndex++)
                         {
-
+                            // TODO: Add this for other types of input controls
                             // Mark properties with different values
                             string rs = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
                             string ls = prop.GetValue(animationFile.Animations[selectedIndex]).ToString();
 
                             if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString() != prop.GetValue(animationFile.Animations[animList.SelectedIndices[selectedIndex]]).ToString())
                             {
-
-                                animPropInputs[pos].Text = "";
                                 animPropInputs[pos].BackColor = Color.FromArgb(93, 17, 93);
 
                                 if (animPropInputs[pos] is MetroTextBox textBox)
@@ -1247,7 +1245,20 @@ namespace CCAnimationEditor
                     }
 
                     else if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) != null)
-                        animPropInputs[pos++].Text = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
+                    {
+                        if (animPropInputs[pos] is MetroTextBox textBox)
+                        {
+                            if (textBox.UseCustomBackColor)
+                                textBox.Text = "";
+                            else
+                                animPropInputs[pos].Text = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
+                        }
+                        else
+                            animPropInputs[pos].Text = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
+
+                        pos++;
+
+                    }
 
                 }
             }
