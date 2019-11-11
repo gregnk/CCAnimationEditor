@@ -2044,10 +2044,18 @@ namespace CCAnimationEditor
             // Divide the time by the amount of frames and apply the speed multiplier
             double.TryParse(animSpeedTxt.Text, out double speedDouble);
 
-            if (animationFile.Animations[animList.SelectedIndices[0]].Frames != null)
+            if (animList.SelectedIndices.Count == 1)
             {
-                int interval = (int)Math.Ceiling(animationFile.Animations[animList.SelectedIndices[0]].Time / animationFile.Animations[animList.SelectedIndices[0]].Frames.Length / speedDouble * 10000);
-                return interval;
+                if (animationFile.Animations[animList.SelectedIndices[0]].Frames != null)
+                {
+                    int interval = (int)Math.Ceiling(animationFile.Animations[animList.SelectedIndices[0]].Time / animationFile.Animations[animList.SelectedIndices[0]].Frames.Length / speedDouble * 10000);
+
+                    // Check if the interval is valid
+                    if (interval <= 0)
+                        return 1;
+                    else
+                        return interval;
+                }
             }
 
             return 1;
