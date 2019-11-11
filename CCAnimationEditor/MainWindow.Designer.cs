@@ -320,7 +320,7 @@
             // 
             this.animSpeedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.animSpeedLbl.AutoSize = true;
-            this.animSpeedLbl.Location = new System.Drawing.Point(217, 560);
+            this.animSpeedLbl.Location = new System.Drawing.Point(210, 560);
             this.animSpeedLbl.Name = "animSpeedLbl";
             this.animSpeedLbl.Size = new System.Drawing.Size(46, 19);
             this.animSpeedLbl.TabIndex = 23;
@@ -375,7 +375,7 @@
             // 
             this.dirLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dirLbl.AutoSize = true;
-            this.dirLbl.Location = new System.Drawing.Point(214, 533);
+            this.dirLbl.Location = new System.Drawing.Point(210, 531);
             this.dirLbl.Name = "dirLbl";
             this.dirLbl.Size = new System.Drawing.Size(26, 19);
             this.dirLbl.TabIndex = 20;
@@ -419,7 +419,7 @@
             // 
             this.frameLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.frameLbl.AutoSize = true;
-            this.frameLbl.Location = new System.Drawing.Point(216, 501);
+            this.frameLbl.Location = new System.Drawing.Point(209, 501);
             this.frameLbl.Name = "frameLbl";
             this.frameLbl.Size = new System.Drawing.Size(47, 19);
             this.frameLbl.TabIndex = 18;
