@@ -570,6 +570,10 @@ namespace CCAnimationEditor
 
         private void AnimCheckBox_Click(object sender, EventArgs e)
         {
+            MetroCheckBox chkBox = (MetroCheckBox)sender;
+            if (chkBox.UseCustomBackColor)
+                chkBox.UseCustomBackColor = false;
+
             UpdateAnimValues();
         }
 
@@ -580,65 +584,79 @@ namespace CCAnimationEditor
 
             PauseAnim();
 
+            List<Animation> anims = new List<Animation>();
+
             // Update the class values
-            Animation anim = animationFile.Animations[animList.SelectedIndices[0]];
+
+            if (animList.SelectedIndices.Count == 1)
+                anims.Add(animationFile.Animations[animList.SelectedIndices[0]]);
+
+            else if (animList.SelectedIndices.Count > 1)
+            {
+                foreach (int selectedAnimIndex in animList.SelectedIndices)
+                    anims.Add(animationFile.Animations[selectedAnimIndex]);
+            }
+
             int pos = 0;
 
-            foreach (var prop in anim.GetType().GetProperties())
+            foreach (Animation anim in anims)
             {
-                if (prop.GetValue(anim, null) != null)
+                foreach (var prop in anim.GetType().GetProperties())
                 {
-                    Console.WriteLine(prop.Name);
-
-                    // Strings
-                    if (prop.GetValue(anim) is string)
+                    if (prop.GetValue(anim, null) != null)
                     {
-                        Console.WriteLine("String " + pos);
-                        prop.SetValue(anim, animPropInputs[pos].Text);
+                        Console.WriteLine(prop.Name);
+
+                        // Strings
+                        if (prop.GetValue(anim) is string)
+                        {
+                            Console.WriteLine("String " + pos);
+                            prop.SetValue(anim, animPropInputs[pos].Text);
+                        }
+
+                        // Boolean (CheckBox)
+                        else if (prop.GetValue(anim) is bool)
+                        {
+                            Console.WriteLine("Bool " + pos);
+                            MetroCheckBox checkBox = (MetroCheckBox)animPropInputs[pos];
+
+                            prop.SetValue(anim, checkBox.Checked);
+                        }
+
+                        // Ints
+                        else if (prop.GetValue(anim) is int)
+                        {
+                            Console.WriteLine("Int " + pos);
+
+                            int.TryParse(animPropInputs[pos].Text, out int outInt);
+                            prop.SetValue(anim, outInt);
+                        }
+
+                        // Int arrays
+                        else if (prop.GetValue(anim) is int[] intArray)
+                        {
+                            Console.WriteLine("Int Array " + pos);
+                        }
+
+                        // 2D int arrays
+                        else if (prop.GetValue(anim) is int[][] intArray2)
+                        {
+
+                            Console.WriteLine("Int Array 2D " + pos);
+                        }
+
+                        // Floats
+                        else if (prop.GetValue(anim) is float)
+                        {
+                            Console.WriteLine("Float " + pos);
+
+                            float.TryParse(animPropInputs[pos].Text, out float outFloat);
+                            prop.SetValue(anim, outFloat);
+                        }
                     }
 
-                    // Boolean (CheckBox)
-                    else if (prop.GetValue(anim) is bool)
-                    {
-                        Console.WriteLine("Bool " + pos);
-                        MetroCheckBox checkBox = (MetroCheckBox)animPropInputs[pos];
-
-                        prop.SetValue(anim, checkBox.Checked);
-                    }
-
-                    // Ints
-                    else if (prop.GetValue(anim) is int)
-                    {
-                        Console.WriteLine("Int " + pos);
-
-                        int.TryParse(animPropInputs[pos].Text, out int outInt);
-                        prop.SetValue(anim, outInt);
-                    }
-
-                    // Int arrays
-                    else if (prop.GetValue(anim) is int[] intArray)
-                    {
-                        Console.WriteLine("Int Array " + pos);
-                    }
-
-                    // 2D int arrays
-                    else if (prop.GetValue(anim) is int[][] intArray2)
-                    {
-
-                        Console.WriteLine("Int Array 2D " + pos);
-                    }
-
-                    // Floats
-                    else if (prop.GetValue(anim) is float)
-                    {
-                        Console.WriteLine("Float " + pos);
-
-                        float.TryParse(animPropInputs[pos].Text, out float outFloat);
-                        prop.SetValue(anim, outFloat);
-                    }
+                    pos++;
                 }
-
-                pos++;
             }
 
             // Update the property values
@@ -1004,6 +1022,7 @@ namespace CCAnimationEditor
             // Multiple items selected
             else if (sheetList.SelectedIndices.Count > 1)
             {
+                // Compare each value to the first one
                 foreach (var prop in animationFile.Sheets[sheetList.SelectedIndices[0]].GetType().GetProperties())
                 {
                     sheetPropInputs[pos].Text = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
@@ -1012,8 +1031,8 @@ namespace CCAnimationEditor
                     for (int selectedIndex = 1; selectedIndex < sheetList.SelectedIndices.Count; selectedIndex++)
                     {
                         // Mark properties with different values
-                        string rs = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
-                        string ls = prop.GetValue(animationFile.Sheets[selectedIndex]).ToString();
+                        string right = prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString();
+                        string left = prop.GetValue(animationFile.Sheets[selectedIndex]).ToString();
 
                         if (prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[0]]).ToString() != prop.GetValue(animationFile.Sheets[sheetList.SelectedIndices[selectedIndex]]).ToString())
                         {
@@ -1173,18 +1192,38 @@ namespace CCAnimationEditor
             if (animList.SelectedIndices.Count == 0) return;
 
             int pos = 0;
+
+            // Reset the background colours
             foreach (var prop in animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperties())
             {
-                if (animList.SelectedIndices.Count > 1)
+                if (animPropInputs[pos] is MetroTextBox textBox)
+                    textBox.UseCustomBackColor = false;
+                else if (animPropInputs[pos] is MetroCheckBox chkBox)
+                    chkBox.UseCustomBackColor = false;
+                else if (animPropInputs[pos] is MetroComboBox cmbBox)
+                    cmbBox.UseCustomBackColor = false;
+
+                pos++;
+            }
+
+            pos = 0;
+
+            // Go through each property
+            foreach (var prop in animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperties())
+            {
+                // If multiple animations are selected then compare each value to the first one
+                if (animList.SelectedIndices.Count > 1 && !(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is null))
                 {
-                    if (!(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[]) && !(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[][]) && !(prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is null))
+                    if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is string
+                        || prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int
+                        || prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is float
+                        || prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is bool)
                     {
                         for (int selectedIndex = 1; selectedIndex < animList.SelectedIndices.Count; selectedIndex++)
                         {
-                            // TODO: Add this for other types of input controls
                             // Mark properties with different values
-                            string rs = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
-                            string ls = prop.GetValue(animationFile.Animations[selectedIndex]).ToString();
+                            string right = prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString();
+                            string left = prop.GetValue(animationFile.Animations[selectedIndex]).ToString();
 
                             if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]).ToString() != prop.GetValue(animationFile.Animations[animList.SelectedIndices[selectedIndex]]).ToString())
                             {
@@ -1192,6 +1231,10 @@ namespace CCAnimationEditor
 
                                 if (animPropInputs[pos] is MetroTextBox textBox)
                                     textBox.UseCustomBackColor = true;
+                                else if (animPropInputs[pos] is MetroCheckBox chkBox)
+                                    chkBox.UseCustomBackColor = true;
+                                else if (animPropInputs[pos] is MetroComboBox cmbBox)
+                                    cmbBox.UseCustomBackColor = true;
 
                                 break;
                             }
