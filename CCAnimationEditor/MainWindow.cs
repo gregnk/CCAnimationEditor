@@ -584,23 +584,24 @@ namespace CCAnimationEditor
 
             PauseAnim();
 
-            List<Animation> anims = new List<Animation>();
+            List<Animation> selectedAnims = new List<Animation>();
 
             // Update the class values
 
+            // Get the selected anims into a list
             if (animList.SelectedIndices.Count == 1)
-                anims.Add(animationFile.Animations[animList.SelectedIndices[0]]);
+                selectedAnims.Add(animationFile.Animations[animList.SelectedIndices[0]]);
 
             else if (animList.SelectedIndices.Count > 1)
             {
                 foreach (int selectedAnimIndex in animList.SelectedIndices)
-                    anims.Add(animationFile.Animations[selectedAnimIndex]);
+                    selectedAnims.Add(animationFile.Animations[selectedAnimIndex]);
             }
 
             int pos = 0;
 
             // BUG: This doesn't work, something to do with the index being out of bounds
-            foreach (Animation anim in anims)
+            foreach (Animation anim in selectedAnims)
             {
                 foreach (var prop in anim.GetType().GetProperties())
                 {
