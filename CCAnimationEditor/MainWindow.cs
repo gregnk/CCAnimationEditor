@@ -558,7 +558,6 @@ namespace CCAnimationEditor
             UpdateSheetList();
 
             // Set the selection
-
             foreach (int selectedSheetIndex in selectedIndices)
                 sheetList.Items[selectedSheetIndex].Selected = true;
 
