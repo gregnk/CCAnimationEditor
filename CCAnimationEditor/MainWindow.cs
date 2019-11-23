@@ -599,6 +599,7 @@ namespace CCAnimationEditor
 
             int pos = 0;
 
+            // BUG: This doesn't work, something to do with the index being out of bounds
             foreach (Animation anim in anims)
             {
                 foreach (var prop in anim.GetType().GetProperties())
