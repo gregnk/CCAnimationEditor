@@ -548,13 +548,21 @@ namespace CCAnimationEditor
                 }
             }
 
+            // Store the selected sheets
+            List<int> selectedIndices = new List<int>();
+            foreach (int selectedSheetIndex in sheetList.SelectedIndices)
+                selectedIndices.Add(selectedSheetIndex);
+
             // Update the property values
-            int index = sheetList.SelectedIndices[0];
             UpdateSheetControlValues();
             UpdateSheetList();
-            sheetList.Items[index].Selected = true;
-            DisplaySheet();
 
+            // Set the selection
+
+            foreach (int selectedSheetIndex in selectedIndices)
+                sheetList.Items[selectedSheetIndex].Selected = true;
+
+            DisplaySheet();
             SetUnsavedChanges();
         }
 
