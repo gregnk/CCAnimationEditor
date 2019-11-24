@@ -605,11 +605,11 @@ namespace CCAnimationEditor
                     selectedAnims.Add(animationFile.Animations[selectedAnimIndex]);
             }
 
-            int pos = 0;
-
-            // BUG: This doesn't work, something to do with the index being out of bounds
             foreach (Animation anim in selectedAnims)
             {
+                // Reset pos
+                int pos = 0;
+
                 foreach (var prop in anim.GetType().GetProperties())
                 {
                     if (prop.GetValue(anim, null) != null)
@@ -664,6 +664,7 @@ namespace CCAnimationEditor
                         }
                     }
 
+                    Console.WriteLine("==============");
                     pos++;
                 }
             }
