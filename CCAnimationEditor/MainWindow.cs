@@ -2044,7 +2044,7 @@ namespace CCAnimationEditor
 
         }
 
-        // Animation controls
+        // Animation player controls
         private void FrameTxt_KeyUp(object sender, KeyEventArgs e)
         {
             if (animList.SelectedIndices[0] < 0) return;
