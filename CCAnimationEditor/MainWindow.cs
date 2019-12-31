@@ -1893,7 +1893,6 @@ namespace CCAnimationEditor
 
         private void GenerateAnimArrayControls()
         {
-            // TODO: Add the array size property
             int row = 0;
             int pos = 0;
             int index;
