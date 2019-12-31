@@ -657,23 +657,62 @@ namespace CCAnimationEditor
 
                                 if (outLengthInt != intArray.Length)
                                 {
-                                    //// Resize the array
-                                    //Array.Resize(ref intArray, outLengthInt);
+                                    // Clear the array controls
+                                    for (int i = 0; i < intArray.Length; i++)
+                                    {
+                                        animPropsPnl.Controls.Remove(animPropLabels[pos + 1]);
+                                        animPropLabels.RemoveAt(pos + 1);
 
-                                    //// Get the array name
-                                    //string arrayName = animPropLabels[0].Text;
+                                        animPropsPnl.Controls.Remove(animPropInputs[pos + 1]);
+                                        animPropInputs.RemoveAt(pos + 1);
+                                    }
 
-                                    //// Set the array
-                                    //prop.SetValue(anim, intArray);
+                                    // Resize the array
+                                    Array.Resize(ref intArray, outLengthInt);
 
-                                    //// Regenerate the controls
-                                    //ResetAnimControls();
-                                    //GenerateAnimArrayControls(intArray, arrayName);
+                                    // Set the array
+                                    prop.SetValue(anim, intArray);
 
-                                    // TODO: Update the array sizing functions
-
+                                    // Regenerate the controls
                                     pos++;
-                                    pos += intArray.Length;
+                                    int arrayPos = 0;
+                                    int row = pos;
+
+                                    foreach (int item in intArray)
+                                    {
+                                        row++;
+
+                                        // Label (Array Position)
+                                        MetroLabel arrayPosLabel = new MetroLabel
+                                        {
+                                            Text = string.Format("[{0}]", arrayPos.ToString()),
+                                            Location = new Point(animPropLbl.Location.X + 10, animPropLbl.Location.Y + (ControlSpacing * row)),
+                                            Theme = MetroThemeStyle.Dark,
+                                            AutoSize = true,
+                                        };
+
+                                        animPropLabels.Insert(pos, arrayPosLabel);
+                                        animPropsPnl.Controls.Add(animPropLabels[pos]);
+
+                                        // TextBox (Value)
+                                        MetroTextBox textBox = new MetroTextBox
+                                        {
+                                            Location = new Point(animPropTxt.Location.X + 10, animPropTxt.Location.Y + (ControlSpacing * row)),
+                                            Theme = MetroThemeStyle.Dark,
+                                            Size = new Size(animPropTxt.Size.Width - 10, animPropTxt.Size.Height),
+                                        };
+
+                                        textBox.KeyUp += AnimTextBox_KeyUp;
+
+                                        animPropInputs.Insert(pos, textBox);
+                                        animPropsPnl.Controls.Add(animPropInputs[pos]);
+
+                                        pos++;
+                                        arrayPos++;
+
+                                    }
+
+                                    UpdateAnimEditorControlY();
                                 }
 
                                 else
