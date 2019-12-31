@@ -750,43 +750,6 @@ namespace CCAnimationEditor
             // Find the array in the object
             foreach (var prop in anim.GetType().GetProperties())
             {
-                // 1D arrays
-                if (prop.Name == arrayName && prop.GetValue(anim) is int[] array)
-                {
-                    // Size
-                    int.TryParse(animPropInputs[pos++].Text, out int outLengthInt);
-
-                    if (outLengthInt != array.Length)
-                    {
-                        // Resize the array
-                        Array.Resize(ref array, outLengthInt);
-
-                        // Get the array name
-                        string arrayName = animPropLabels[0].Text;
-
-                        // Set the array
-                        prop.SetValue(anim, array);
-
-                        // Regenerate the controls
-                        ResetAnimControls();
-                        GenerateAnimArrayControls(array, arrayName);
-                    }
-
-                    else
-                    {
-                        // Items
-                        for (int i = 0; i < array.Length; i++)
-                        {
-                            int.TryParse(animPropInputs[pos++].Text, out int outInt);
-                            array[i] = outInt;
-                        }
-
-                        prop.SetValue(anim, array);
-                    }
-
-                    break;
-                }
-
                 // 2D arrays
                 else if (prop.Name == arrayName && prop.GetValue(anim) is int[][] array2)
                 {
@@ -1934,7 +1897,6 @@ namespace CCAnimationEditor
             GenerateAnimArrayControls();
         }
 
-
         private void GenerateAnimArrayControls()
         {
             int row = 0;
@@ -2070,76 +2032,6 @@ namespace CCAnimationEditor
                     row++;
                 }
             }
-        }
-
-        private void GenerateAnimArrayControls(int[] array, string arrayName)
-        {
-            int pos = 0;
-            int row = 0;
-
-            // Label
-            MetroLabel label = new MetroLabel
-            {
-                Text = arrayName,
-                Location = new Point(animPropLbl.Location.X, animPropLbl.Location.Y + (ControlSpacing * row)),
-                Theme = MetroThemeStyle.Dark,
-                AutoSize = true
-            };
-
-            animPropLabels.Add(label);
-            animPropsPnl.Controls.Add(animPropLabels[pos]);
-
-            // TextBox (Size)
-            MetroTextBox sizeTextBox = new MetroTextBox
-            {
-                Location = new Point(animPropTxt.Location.X, animPropTxt.Location.Y + (ControlSpacing * row)),
-                Theme = MetroThemeStyle.Dark,
-                Size = animPropTxt.Size,
-            };
-
-            if (arrayName != "Frames")
-                sizeTextBox.Enabled = false;
-
-            sizeTextBox.KeyUp += AnimTextBox_KeyUp;
-
-            animPropInputs.Add(sizeTextBox);
-            animPropsPnl.Controls.Add(animPropInputs[pos++]);
-
-            int arrayPos = 0;
-            foreach (int item in array)
-            {
-                row++;
-
-                // Label (Array Position)
-                MetroLabel arrayPosLabel = new MetroLabel
-                {
-                    Text = string.Format("[{0}]", arrayPos.ToString()),
-                    Location = new Point(animPropLbl.Location.X + 10, animPropLbl.Location.Y + (ControlSpacing * row)),
-                    Theme = MetroThemeStyle.Dark,
-                    AutoSize = true,
-                };
-
-                animPropLabels.Add(arrayPosLabel);
-                animPropsPnl.Controls.Add(animPropLabels[pos]);
-
-                // TextBox (Value)
-                MetroTextBox textBox = new MetroTextBox
-                {
-                    Location = new Point(animPropTxt.Location.X + 10, animPropTxt.Location.Y + (ControlSpacing * row)),
-                    Theme = MetroThemeStyle.Dark,
-                    Size = new Size(animPropTxt.Size.Width - 10, animPropTxt.Size.Height)
-                };
-
-                textBox.KeyUp += AnimTextBox_KeyUp;
-
-                animPropInputs.Add(textBox);
-                animPropsPnl.Controls.Add(animPropInputs[pos]);
-
-                pos++;
-                arrayPos++;
-            }
-
-            UpdateAnimArrayControlValues();
         }
 
         // NOTE: This is really slow
@@ -2320,6 +2212,7 @@ namespace CCAnimationEditor
             else
                 MetroMessageBox.Show(this, "No animations are currently defined", "Error", MessageBoxButtons.OK);
         }
+
         private int GetAnimTimerInterval()
         {
             // Divide the time by the amount of frames and apply the speed multiplier
