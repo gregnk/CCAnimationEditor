@@ -1265,8 +1265,16 @@ namespace CCAnimationEditor
                 {
                     pos += 2;
 
+                    // Size
+                    MetroTextBox sizeTextBox = (MetroTextBox)animPropInputs[pos++];
+                    sizeTextBox.Text = array.Length.ToString();
+
                     for (int arrayPos = 0; arrayPos < array.Length; arrayPos++)
-                        pos++;
+                    {
+                        MetroTextBox arrayTextBox = (MetroTextBox)animPropInputs[pos++];
+                        arrayTextBox.Text = array[arrayPos].ToString();
+                    }
+                    
                 }
 
                 // 2D Arrays
