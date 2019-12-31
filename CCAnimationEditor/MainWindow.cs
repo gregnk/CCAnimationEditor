@@ -1963,7 +1963,7 @@ namespace CCAnimationEditor
                                 Visible = false
                             };
 
-                            arraySizeTxt.KeyUp += AnimArrayTextBox_KeyUp;
+                            arraySizeTxt.KeyUp += AnimTextBox_KeyUp;
 
                             animPropInputs.Insert(pos, arraySizeTxt);
                             animPropsPnl.Controls.Add(animPropInputs[pos]);
@@ -1996,7 +1996,7 @@ namespace CCAnimationEditor
                                     Visible = false
                                 };
 
-                                textBox.KeyUp += AnimArrayTextBox_KeyUp;
+                                textBox.KeyUp += AnimTextBox_KeyUp;
 
                                 animPropInputs.Insert(pos, textBox);
                                 animPropsPnl.Controls.Add(animPropInputs[pos]);
@@ -2056,7 +2056,7 @@ namespace CCAnimationEditor
             if (arrayName != "Frames")
                 sizeTextBox.Enabled = false;
 
-            sizeTextBox.KeyUp += AnimArrayTextBox_KeyUp;
+            sizeTextBox.KeyUp += AnimTextBox_KeyUp;
 
             animPropInputs.Add(sizeTextBox);
             animPropsPnl.Controls.Add(animPropInputs[pos++]);
@@ -2086,7 +2086,7 @@ namespace CCAnimationEditor
                     Size = new Size(animPropTxt.Size.Width - 10, animPropTxt.Size.Height)
                 };
 
-                textBox.KeyUp += AnimArrayTextBox_KeyUp;
+                textBox.KeyUp += AnimTextBox_KeyUp;
 
                 animPropInputs.Add(textBox);
                 animPropsPnl.Controls.Add(animPropInputs[pos]);
