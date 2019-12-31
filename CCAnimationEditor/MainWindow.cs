@@ -1263,7 +1263,7 @@ namespace CCAnimationEditor
                 // Arrays
                 if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[] array)
                 {
-                    pos++;
+                    pos += 2;
 
                     for (int arrayPos = 0; arrayPos < array.Length; arrayPos++)
                         pos++;
@@ -1554,7 +1554,7 @@ namespace CCAnimationEditor
 
         private void ShowArray(int[] array, int propIndex)
         {
-            for (int pos = 0; pos < array.Length; pos++)
+            for (int pos = 0; pos < array.Length + 2; pos++)
             {
                 animPropLabels[propIndex + pos + 1].Visible = true;
                 animPropInputs[propIndex + pos + 1].Visible = true;
@@ -1566,7 +1566,7 @@ namespace CCAnimationEditor
 
         private void HideArray(int[] array, int propIndex)
         {
-            for (int pos = 0; pos < array.Length; pos++)
+            for (int pos = 0; pos < array.Length + 2; pos++)
             {
                 animPropLabels[propIndex + pos + 1].Visible = false;
                 animPropInputs[propIndex + pos + 1].Visible = false;
@@ -1903,11 +1903,67 @@ namespace CCAnimationEditor
                 {
                     if (array != null)
                     {
-                        pos++;
-
                         // Skip if the array controls were already generated
-                        if (animPropLabels[pos].Text != "[0]")
+                        if (animPropLabels[pos + 1].Text != "Clear")
                         {
+                            pos++;
+                            row++;
+
+                            // Clear button
+                            MetroLabel arrayClearLabel = new MetroLabel
+                            {
+                                Text = "", // Blank, only used for row positioning
+                                Location = new Point(animPropLbl.Location.X + 10, animPropLbl.Location.Y + (ControlSpacing * row)),
+                                Theme = MetroThemeStyle.Dark,
+                                AutoSize = true,
+                                Visible = false
+                            };
+
+                            animPropLabels.Insert(pos, arrayClearLabel);
+                            animPropsPnl.Controls.Add(animPropLabels[pos]);
+
+                            MetroButton arrayClearBtn = new MetroButton
+                            {
+                                Text = "Clear",
+                                Location = new Point(animPropTxt.Location.X, animPropTxt.Location.Y + (ControlSpacing * row)),
+                                Size = animPropShowHideBtn.Size,
+                                Theme = MetroThemeStyle.Dark,
+                                Visible = false
+                            };
+
+                            animPropInputs.Insert(pos, arrayClearBtn);
+                            animPropsPnl.Controls.Add(animPropInputs[pos]);
+
+                            pos++;
+                            row++;
+
+                            // Size
+                            MetroLabel arraySizeLabel = new MetroLabel
+                            {
+                                Text = "", // Blank, only used for row positioning
+                                Location = new Point(animPropLbl.Location.X + 10, animPropLbl.Location.Y + (ControlSpacing * row)),
+                                Theme = MetroThemeStyle.Dark,
+                                AutoSize = true,
+                                Visible = false
+                            };
+
+                            animPropLabels.Insert(pos, arraySizeLabel);
+                            animPropsPnl.Controls.Add(animPropLabels[pos]);
+
+                            MetroTextBox arraySizeTxt = new MetroTextBox
+                            {
+                                Location = new Point(animPropTxt.Location.X + 10, animPropTxt.Location.Y + (ControlSpacing * row)),
+                                Theme = MetroThemeStyle.Dark,
+                                Size = new Size(animPropTxt.Size.Width - 10, animPropTxt.Size.Height),
+                                Visible = false
+                            };
+
+                            arraySizeTxt.KeyUp += AnimArrayTextBox_KeyUp;
+
+                            animPropInputs.Insert(pos, arraySizeTxt);
+                            animPropsPnl.Controls.Add(animPropInputs[pos]);
+
+                            pos++;
                             int arrayPos = 0;
                             foreach (int item in array)
                             {
@@ -1947,6 +2003,9 @@ namespace CCAnimationEditor
 
                         else
                         {
+                            pos += 3;
+                            row += 3;
+
                             foreach (int item in array)
                             {
                                 pos++;
