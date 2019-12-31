@@ -646,6 +646,50 @@ namespace CCAnimationEditor
                         else if (prop.GetValue(anim) is int[] intArray)
                         {
                             Console.WriteLine("Int Array " + pos);
+
+                            if (intArray != null)
+                            {
+                                // Skip show/hide and clear button
+                                pos += 2;
+
+                                // Size
+                                int.TryParse(animPropInputs[pos].Text, out int outLengthInt);
+
+                                if (outLengthInt != intArray.Length)
+                                {
+                                    //// Resize the array
+                                    //Array.Resize(ref intArray, outLengthInt);
+
+                                    //// Get the array name
+                                    //string arrayName = animPropLabels[0].Text;
+
+                                    //// Set the array
+                                    //prop.SetValue(anim, intArray);
+
+                                    //// Regenerate the controls
+                                    //ResetAnimControls();
+                                    //GenerateAnimArrayControls(intArray, arrayName);
+
+                                    // TODO: Update the array sizing functions
+
+                                    pos++;
+                                    pos += intArray.Length;
+                                }
+
+                                else
+                                {
+                                    // Items
+                                    for (int i = 0; i < intArray.Length; i++)
+                                    {
+                                        pos++;
+                                        int.TryParse(animPropInputs[pos].Text, out int outInt);
+                                        intArray[i] = outInt;
+                                    }
+
+                                    prop.SetValue(anim, intArray);
+                                }
+                            }
+
                         }
 
                         // 2D int arrays
