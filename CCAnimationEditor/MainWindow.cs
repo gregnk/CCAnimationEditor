@@ -1307,6 +1307,7 @@ namespace CCAnimationEditor
                 }
 
                 // Arrays
+                // TODO: add multi-selection support for this
                 if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[] array)
                 {
                     pos += 2;
@@ -1968,6 +1969,8 @@ namespace CCAnimationEditor
                                 Visible = false
                             };
 
+                            arrayClearBtn.Click += ArrayClearBtn_Click;
+
                             animPropInputs.Insert(pos, arrayClearBtn);
                             animPropsPnl.Controls.Add(animPropInputs[pos]);
 
@@ -2058,6 +2061,11 @@ namespace CCAnimationEditor
                     row++;
                 }
             }
+        }
+
+        private void ArrayClearBtn_Click(object sender, EventArgs e)
+        {
+            // TODO: Finish this
         }
 
         // NOTE: This is really slow
