@@ -751,7 +751,7 @@ namespace CCAnimationEditor
             foreach (var prop in anim.GetType().GetProperties())
             {
                 // 2D arrays
-                else if (prop.Name == arrayName && prop.GetValue(anim) is int[][] array2)
+                if (prop.Name == arrayName && prop.GetValue(anim) is int[][] array2)
                 {
                     // Skip level 1 size (same as angle)
                     pos++;
@@ -1356,21 +1356,8 @@ namespace CCAnimationEditor
             {
                 // Once found, update the values
 
-                // 1D Array
-                if (prop.Name == arrayName && prop.GetValue(anim) is int[] array)
-                {
-                    // Size
-                    animPropInputs[pos++].Text = array.Length.ToString();
-
-                    // Values
-                    foreach (int item in array)
-                        animPropInputs[pos++].Text = item.ToString();
-
-                    break;
-                }
-
                 // 2D Array
-                else if (prop.Name == arrayName && prop.GetValue(anim) is int[][] array2)
+                if (prop.Name == arrayName && prop.GetValue(anim) is int[][] array2)
                 {
                     // Size
                     animPropInputs[pos++].Text = array2.Length.ToString();
