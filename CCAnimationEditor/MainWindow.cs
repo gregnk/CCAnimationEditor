@@ -222,6 +222,7 @@ namespace CCAnimationEditor
                 // Load that file
                 if (animationFile.LoadFile(animationFilePath) == true)
                 {
+                    // Generate the controls
                     if (sheetList.Items.Count == 0)
                         GenerateSheetControls();
 
@@ -1263,6 +1264,9 @@ namespace CCAnimationEditor
                 if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[] array)
                 {
                     pos++;
+
+                    for (int arrayPos = 0; arrayPos < array.Length; arrayPos++)
+                        pos++;
                 }
 
                 // 2D Arrays
@@ -1374,9 +1378,9 @@ namespace CCAnimationEditor
             }
         }
 
-        private void AnimArrayEditBtn_Click(object sender, EventArgs e)
+        private void AnimArrayViewHideBtn_Click(object sender, EventArgs e)
         {
-            editingArray = true;
+            //editingArray = true;
             if (animationFile.Animations.Count != 0)
             {
                 // Determine what array the user selected
@@ -1409,7 +1413,10 @@ namespace CCAnimationEditor
 
                 if (array != null)
                 {
-                    SwitchToArrayEditor(array, propIndex);
+                    if (animPropInputs[propIndex].Text == "Show")
+                        ShowArray(array, propIndex);
+                    else if (animPropInputs[propIndex].Text == "Hide")
+                        HideArray(array, propIndex);
                 }
 
                 // Generate the array if it is null
@@ -1431,10 +1438,17 @@ namespace CCAnimationEditor
                         Array.Resize(ref array, animationFile.Animations[animList.SelectedIndices[0]].Frames.Length);
                     }
 
+                    // Add the array to the var
+                    // TODO: Fix this for multiple selections
                     animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperty(arrayName).SetValue(animationFile.Animations[animList.SelectedIndices[0]], array);
 
-                    // Switch to the array editor
-                    SwitchToArrayEditor(array, propIndex);
+                    AdjustAnimArraySizes();
+
+                    // Show the array
+                    if (animPropInputs[propIndex].Text == "Show")
+                        ShowArray(array, propIndex);
+                    else if (animPropInputs[propIndex].Text == "Hide")
+                        HideArray(array, propIndex);
                 }
             }
         }
@@ -1538,13 +1552,28 @@ namespace CCAnimationEditor
             DisplayAnim();
         }
 
-        private void SwitchToArrayEditor(int[] array, int propIndex)
+        private void ShowArray(int[] array, int propIndex)
         {
-            arrayName = animPropLabels[propIndex].Text;
-            ResetAnimControls();
-            GenerateAnimArrayControls(array, arrayName);
-            animBackBtn.Visible = true;
-            animClearBtn.Visible = true;
+            for (int pos = 0; pos < array.Length; pos++)
+            {
+                animPropLabels[propIndex + pos + 1].Visible = true;
+                animPropInputs[propIndex + pos + 1].Visible = true;
+            }
+
+            animPropInputs[propIndex].Text = "Hide";
+            UpdateAnimEditorControlY();
+        }
+
+        private void HideArray(int[] array, int propIndex)
+        {
+            for (int pos = 0; pos < array.Length; pos++)
+            {
+                animPropLabels[propIndex + pos + 1].Visible = false;
+                animPropInputs[propIndex + pos + 1].Visible = false;
+            }
+
+            animPropInputs[propIndex].Text = "Show";
+            UpdateAnimEditorControlY();
         }
 
         private void SwitchToArrayEditor(int[][] array, int propIndex)
@@ -1737,19 +1766,18 @@ namespace CCAnimationEditor
                 // Arrays
                 if (prop.GetValue(anim) is int[] array)
                 {
-                    MetroButton editBtn = new MetroButton
+                    MetroButton showHideBtn = new MetroButton
                     {
                         Location = new Point(animPropTxt.Location.X, animPropTxt.Location.Y + (ControlSpacing * row)),
-                        Size = animPropEditBtn.Size,
+                        Size = animPropShowHideBtn.Size,
                         Theme = MetroThemeStyle.Dark,
-                        Text = "Edit",
+                        Text = "Show",
                     };
 
-                    editBtn.Click += AnimArrayEditBtn_Click;
+                    showHideBtn.Click += AnimArrayViewHideBtn_Click;
 
-                    animPropInputs.Add(editBtn);
+                    animPropInputs.Add(showHideBtn);
                     animPropsPnl.Controls.Add(animPropInputs[pos]);
-
                 }
 
                 // 2D Arrays
@@ -1758,7 +1786,7 @@ namespace CCAnimationEditor
                     MetroButton editBtn = new MetroButton
                     {
                         Location = new Point(animPropTxt.Location.X, animPropTxt.Location.Y + (ControlSpacing * row)),
-                        Size = animPropEditBtn.Size,
+                        Size = animPropShowHideBtn.Size,
                         Theme = MetroThemeStyle.Dark,
                         Text = "Edit"
                     };
@@ -1850,6 +1878,89 @@ namespace CCAnimationEditor
 
                 row++;
                 pos++;
+            }
+
+            // Adjust the arrays to their proper sizes
+            AdjustAnimArraySizes();
+        }
+
+
+        private void AdjustAnimArraySizes()
+        {
+            // TODO: Add the array size property
+            int row = 0;
+            int pos = 0;
+            int index;
+
+            if (animList.SelectedIndices.Count > 0)
+                index = animList.SelectedIndices[0];
+            else
+                index = 0;
+
+            foreach (var prop in animationFile.Animations[index].GetType().GetProperties())
+            {
+                if (prop.GetValue(animationFile.Animations[index]) is int[] array)
+                {
+                    if (array != null)
+                    {
+                        pos++;
+
+                        // Skip if the array controls were already generated
+                        if (animPropLabels[pos].Text != "[0]")
+                        {
+                            int arrayPos = 0;
+                            foreach (int item in array)
+                            {
+                                row++;
+
+                                // Label (Array Position)
+                                MetroLabel arrayPosLabel = new MetroLabel
+                                {
+                                    Text = string.Format("[{0}]", arrayPos.ToString()),
+                                    Location = new Point(animPropLbl.Location.X + 10, animPropLbl.Location.Y + (ControlSpacing * row)),
+                                    Theme = MetroThemeStyle.Dark,
+                                    AutoSize = true,
+                                    Visible = false
+                                };
+
+                                animPropLabels.Insert(pos, arrayPosLabel);
+                                animPropsPnl.Controls.Add(animPropLabels[pos]);
+
+                                // TextBox (Value)
+                                MetroTextBox textBox = new MetroTextBox
+                                {
+                                    Location = new Point(animPropTxt.Location.X + 10, animPropTxt.Location.Y + (ControlSpacing * row)),
+                                    Theme = MetroThemeStyle.Dark,
+                                    Size = new Size(animPropTxt.Size.Width - 10, animPropTxt.Size.Height),
+                                    Visible = false
+                                };
+
+                                textBox.KeyUp += AnimArrayTextBox_KeyUp;
+
+                                animPropInputs.Insert(pos, textBox);
+                                animPropsPnl.Controls.Add(animPropInputs[pos]);
+
+                                pos++;
+                                arrayPos++;
+                            }
+                        }
+
+                        else
+                        {
+                            foreach (int item in array)
+                            {
+                                pos++;
+                                row++;
+                            }
+                        }
+                    }
+                }
+
+                else
+                {
+                    pos++;
+                    row++;
+                }
             }
         }
 
@@ -2121,6 +2232,32 @@ namespace CCAnimationEditor
             }
 
             return 1;
+        }
+
+        private void UpdateAnimEditorControlY()
+        {
+            // Reset the row alignment of each control
+            int row = 0;
+
+            foreach (Control label in animPropLabels)
+            {
+                if (label.Visible)
+                {
+                    label.Location = new Point(label.Location.X, animPropTxt.Location.Y + (ControlSpacing * row));
+                    row++;
+                }
+            }
+
+            row = 0;
+
+            foreach (Control input in animPropInputs)
+            {
+                if (input.Visible)
+                {
+                    input.Location = new Point(input.Location.X, animPropTxt.Location.Y + (ControlSpacing * row));
+                    row++;
+                }
+            }
         }
     }
 }

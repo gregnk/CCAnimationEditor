@@ -58,7 +58,7 @@
             this.frameLbl = new MetroFramework.Controls.MetroLabel();
             this.playPauseBtn = new MetroFramework.Controls.MetroButton();
             this.animPropsPnl = new MetroFramework.Controls.MetroPanel();
-            this.animPropEditBtn = new MetroFramework.Controls.MetroButton();
+            this.animPropShowHideBtn = new MetroFramework.Controls.MetroButton();
             this.animPropTxt = new MetroFramework.Controls.MetroTextBox();
             this.animPropLbl = new MetroFramework.Controls.MetroLabel();
             this.removeAnimBtn = new MetroFramework.Controls.MetroButton();
@@ -441,7 +441,7 @@
             this.animPropsPnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.animPropsPnl.AutoScroll = true;
-            this.animPropsPnl.Controls.Add(this.animPropEditBtn);
+            this.animPropsPnl.Controls.Add(this.animPropShowHideBtn);
             this.animPropsPnl.Controls.Add(this.animPropTxt);
             this.animPropsPnl.Controls.Add(this.animPropLbl);
             this.animPropsPnl.HorizontalScrollbar = true;
@@ -457,15 +457,15 @@
             this.animPropsPnl.VerticalScrollbarHighlightOnWheel = false;
             this.animPropsPnl.VerticalScrollbarSize = 10;
             // 
-            // animPropEditBtn
+            // animPropViewBtn
             // 
-            this.animPropEditBtn.Location = new System.Drawing.Point(144, 46);
-            this.animPropEditBtn.Name = "animPropEditBtn";
-            this.animPropEditBtn.Size = new System.Drawing.Size(188, 23);
-            this.animPropEditBtn.TabIndex = 18;
-            this.animPropEditBtn.Text = "Edit";
-            this.animPropEditBtn.UseSelectable = true;
-            this.animPropEditBtn.Visible = false;
+            this.animPropShowHideBtn.Location = new System.Drawing.Point(144, 46);
+            this.animPropShowHideBtn.Name = "animPropViewBtn";
+            this.animPropShowHideBtn.Size = new System.Drawing.Size(188, 23);
+            this.animPropShowHideBtn.TabIndex = 18;
+            this.animPropShowHideBtn.Text = "View";
+            this.animPropShowHideBtn.UseSelectable = true;
+            this.animPropShowHideBtn.Visible = false;
             // 
             // animPropTxt
             // 
@@ -775,7 +775,7 @@
         private MetroFramework.Controls.MetroLabel frameLbl;
         private MetroFramework.Controls.MetroButton playPauseBtn;
         private MetroFramework.Controls.MetroPanel animPropsPnl;
-        private MetroFramework.Controls.MetroButton animPropEditBtn;
+        private MetroFramework.Controls.MetroButton animPropShowHideBtn;
         private MetroFramework.Controls.MetroTextBox animPropTxt;
         private MetroFramework.Controls.MetroLabel animPropLbl;
         private MetroFramework.Controls.MetroButton removeAnimBtn;
