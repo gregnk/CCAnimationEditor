@@ -1335,8 +1335,6 @@ namespace CCAnimationEditor
                 }
             }
 
-
-
             // Set anim speed
             animTimer.Interval = GetAnimTimerInterval();
         }
