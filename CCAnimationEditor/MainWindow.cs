@@ -1442,7 +1442,7 @@ namespace CCAnimationEditor
                     // TODO: Fix this for multiple selections
                     animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperty(arrayName).SetValue(animationFile.Animations[animList.SelectedIndices[0]], array);
 
-                    AdjustAnimArraySizes();
+                    GenerateAnimArrayControls();
 
                     // Show the array
                     if (animPropInputs[propIndex].Text == "Show")
@@ -1881,11 +1881,11 @@ namespace CCAnimationEditor
             }
 
             // Adjust the arrays to their proper sizes
-            AdjustAnimArraySizes();
+            GenerateAnimArrayControls();
         }
 
 
-        private void AdjustAnimArraySizes()
+        private void GenerateAnimArrayControls()
         {
             // TODO: Add the array size property
             int row = 0;
