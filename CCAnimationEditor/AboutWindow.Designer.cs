@@ -62,10 +62,10 @@
             this.copyrightLbl.Location = new System.Drawing.Point(23, 164);
             this.copyrightLbl.MaximumSize = new System.Drawing.Size(750, 0);
             this.copyrightLbl.Name = "copyrightLbl";
-            this.copyrightLbl.Size = new System.Drawing.Size(296, 57);
+            this.copyrightLbl.Size = new System.Drawing.Size(294, 57);
             this.copyrightLbl.TabIndex = 1;
-            this.copyrightLbl.Text = "Developed by Gregory \"Gregarious\" Karastergios\r\n\r\nThis program is distributed und" +
-    "er the ISC License";
+            this.copyrightLbl.Text = "Developed by Gregory Karastergios\r\n\r\nThis program is distributed under the ISC Li" +
+    "cense";
             // 
             // versionLbl
             // 

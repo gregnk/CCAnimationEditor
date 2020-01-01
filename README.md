@@ -14,7 +14,7 @@ An animation editor for [CrossCode](https://cross-code.com)
 ![](http://gregnk.com/images/Screenshots/CCAnimationEditor/AnimationsSmall.png)
 
 ## Copyright
-(c) 2019 Gregory "Gregarious" Karastergios
+(c) 2019-2020 Gregory Karastergios
 
 This program is distributed under the ISC License. See LICENSE.md for more details.
 
