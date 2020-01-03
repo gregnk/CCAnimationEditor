@@ -178,12 +178,12 @@ namespace CCAnimationEditor
             }
 
             // Reset the loaded file
-            animationFile = new AnimationFile();
-
-            // Set some default values
-            animationFile.Doctype = "MULTI_DIR_ANIMATION";
-            animationFile.Sheets = new List<Sheet>();
-            animationFile.Animations = new List<Animation>();
+            animationFile = new AnimationFile
+            {
+                Doctype = "MULTI_DIR_ANIMATION",
+                Sheets = new List<Sheet>(),
+                Animations = new List<Animation>()
+            };
 
             ResetSheetControls();
             ResetAnimControls();
