@@ -15,8 +15,7 @@ using System.Windows.Forms;
 
 // IDEA: Add an "Export to GIF" function
 // TODO: Add some documentation as to what each property does
-// FEATURE: Make the UI setup more efficient
-// FEATURE: Add the ability to edit multiple items at once
+// TODO: Finished multi-animation editing (it's still not stable)
 
 namespace CCAnimationEditor
 {
@@ -1307,7 +1306,8 @@ namespace CCAnimationEditor
                 }
 
                 // Arrays
-                // TODO: add multi-selection support for this
+                // TODO: add multi-selection support for arrays
+                // BUG: This keeps crashing the editor when switching anims
                 if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[] array)
                 {
                     pos += 2;
@@ -1577,7 +1577,7 @@ namespace CCAnimationEditor
         }
 
         // Functions for switching between the array editor and animation editor on the animations panel
-        // FEATURE: Have arrays be edited on the same page
+        // FEATURE: Have arrays be edited on the same page (2d arrays are left)
         // FEATURE: Implement the multi-item editing for arrays
 
         private void SwitchToAnimEditor()
