@@ -2068,6 +2068,32 @@ namespace CCAnimationEditor
             // TODO: Finish this
         }
 
+        private void UpdateAnimEditorControlY()
+        {
+            // Reset the row alignment of each control
+            int row = 0;
+
+            foreach (Control label in animPropLabels)
+            {
+                if (label.Visible)
+                {
+                    label.Location = new Point(label.Location.X, animPropTxt.Location.Y + (ControlSpacing * row));
+                    row++;
+                }
+            }
+
+            row = 0;
+
+            foreach (Control input in animPropInputs)
+            {
+                if (input.Visible)
+                {
+                    input.Location = new Point(input.Location.X, animPropTxt.Location.Y + (ControlSpacing * row));
+                    row++;
+                }
+            }
+        }
+
         // NOTE: This is really slow
         private void GenerateAnim2dArrayControls(int[][] array, string arrayName)
         {
@@ -2267,32 +2293,6 @@ namespace CCAnimationEditor
             }
 
             return 1;
-        }
-
-        private void UpdateAnimEditorControlY()
-        {
-            // Reset the row alignment of each control
-            int row = 0;
-
-            foreach (Control label in animPropLabels)
-            {
-                if (label.Visible)
-                {
-                    label.Location = new Point(label.Location.X, animPropTxt.Location.Y + (ControlSpacing * row));
-                    row++;
-                }
-            }
-
-            row = 0;
-
-            foreach (Control input in animPropInputs)
-            {
-                if (input.Visible)
-                {
-                    input.Location = new Point(input.Location.X, animPropTxt.Location.Y + (ControlSpacing * row));
-                    row++;
-                }
-            }
         }
     }
 }
