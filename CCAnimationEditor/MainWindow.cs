@@ -403,11 +403,15 @@ namespace CCAnimationEditor
         // Automatic list update call functions
         private void SheetList_Click(object sender, EventArgs e)
         {
-            DisplaySheet();
-            UpdateSheetControlValues();
+            SwitchSheetSelection();
         }
 
         private void SheetList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            SwitchSheetSelection();
+        }
+
+        private void SwitchSheetSelection()
         {
             DisplaySheet();
             UpdateSheetControlValues();
@@ -415,21 +419,15 @@ namespace CCAnimationEditor
 
         private void AnimList_Click(object sender, EventArgs e)
         {
-            if (editingArray)
-            {
-                editingArray = false;
-                ResetAnimControls();
-                GenerateAnimControls();
-                animBackBtn.Visible = false;
-                animClearBtn.Visible = false;
-            }
-
-            animFrameIndex = 0;
-            DisplayAnim();
-            UpdateAnimControlValues();
+            SwitchAnimSelection();
         }
 
         private void AnimList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SwitchAnimSelection();
+        }
+
+        private void SwitchAnimSelection()
         {
             if (editingArray)
             {
