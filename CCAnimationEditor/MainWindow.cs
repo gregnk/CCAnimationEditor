@@ -1420,7 +1420,6 @@ namespace CCAnimationEditor
 
         private void AnimArrayViewHideBtn_Click(object sender, EventArgs e)
         {
-            //editingArray = true;
             if (animationFile.Animations.Count != 0)
             {
                 // Determine what array the user selected
