@@ -652,6 +652,7 @@ namespace CCAnimationEditor
                                 // Size
                                 int.TryParse(animPropInputs[pos].Text, out int outLengthInt);
 
+                                // Resize array
                                 if (outLengthInt != intArray.Length)
                                 {
                                     // Clear the array controls
