@@ -1980,7 +1980,7 @@ namespace CCAnimationEditor
                             // Size
                             MetroLabel arraySizeLabel = new MetroLabel
                             {
-                                Text = "", // Blank, only used for row positioning
+                                Text = "Size",
                                 Location = new Point(animPropLbl.Location.X + 10, animPropLbl.Location.Y + (ControlSpacing * row)),
                                 Theme = MetroThemeStyle.Dark,
                                 AutoSize = true,
