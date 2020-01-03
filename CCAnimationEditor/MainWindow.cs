@@ -1306,7 +1306,7 @@ namespace CCAnimationEditor
 
                 // Arrays
                 // TODO: add multi-selection support for arrays
-                // BUG: This keeps crashing the editor when switching anims
+                // BUG: This keeps crashing the editor when switching anims because the array controls don't get updated
                 if (prop.GetValue(animationFile.Animations[animList.SelectedIndices[0]]) is int[] array)
                 {
                     pos += 2;
