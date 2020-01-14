@@ -86,6 +86,9 @@ namespace CCAnimationEditor
                 // TODO: Actually implement the Offset value into the editor
                 if (Offset != null)
                 {
+                    writer.WritePropertyName("offset");
+                    writer.WriteStartObject();
+
                     writer.WritePropertyName("x");
                     writer.WriteValue(Offset.X);
 
