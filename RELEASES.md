@@ -1,5 +1,8 @@
 # CCAnimationEditor Releases
 
+## v0.2.3 (2020-01-14)
+* Fixed a bug related to how offset values are saved
+
 ## v0.2.2 (2019-09-21)
 
 * Fixed several bugs related to saving and loading new files created in the editor
