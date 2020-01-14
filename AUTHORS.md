@@ -1,7 +1,7 @@
 # CCAnimationEditor Authors
 **Development** 
 
-Gregory "Gregarious" Karastergios
+Gregory Karastergios
 
 **Technical Support** 
 
