@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("CCAnimationEditor")]
-[assembly: AssemblyCopyright("Copyright © 2019 Gregory Karastergios")]
+[assembly: AssemblyCopyright("Copyright © 2019-2020 Gregory Karastergios")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
