@@ -4,6 +4,7 @@ using MetroFramework.Forms;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -388,7 +389,7 @@ namespace CCAnimationEditor
         // Menu bar - Help items
         private void DocumentationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Process.Start("https://github.com/gregnk/CCAnimationEditor/wiki");
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)

@@ -45,6 +45,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.animTimer = new System.Windows.Forms.Timer(this.components);
             this.animationsTab = new MetroFramework.Controls.MetroTabPage();
+            this.copyAnimBtn = new MetroFramework.Controls.MetroButton();
             this.animClearBtn = new MetroFramework.Controls.MetroButton();
             this.animBackBtn = new MetroFramework.Controls.MetroButton();
             this.animSpeedTxt = new MetroFramework.Controls.MetroTextBox();
@@ -64,6 +65,7 @@
             this.animCmb = new MetroFramework.Controls.MetroComboBox();
             this.animLbl = new MetroFramework.Controls.MetroLabel();
             this.sheetsTab = new MetroFramework.Controls.MetroTabPage();
+            this.copySheetBtn = new MetroFramework.Controls.MetroButton();
             this.toggleSheetBgBtn = new MetroFramework.Controls.MetroButton();
             this.sheetPropTxt = new MetroFramework.Controls.MetroTextBox();
             this.sheetPropLbl = new MetroFramework.Controls.MetroLabel();
@@ -72,10 +74,8 @@
             this.sheetCmb = new MetroFramework.Controls.MetroComboBox();
             this.sheetLbl = new MetroFramework.Controls.MetroLabel();
             this.editorTabs = new MetroFramework.Controls.MetroTabControl();
-            this.copySheetBtn = new MetroFramework.Controls.MetroButton();
             this.sheetImgPnl = new CCAnimationEditor.MetroPanelCustom();
             this.animImgPnl = new CCAnimationEditor.MetroPanelCustom();
-            this.copyAnimBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.styleManager)).BeginInit();
             this.fileContextMenu.SuspendLayout();
             this.helpContextMenu.SuspendLayout();
@@ -180,20 +180,19 @@
             this.documentationToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpContextMenu.Name = "aboutContextMenu";
-            this.helpContextMenu.Size = new System.Drawing.Size(158, 48);
+            this.helpContextMenu.Size = new System.Drawing.Size(181, 70);
             // 
             // documentationToolStripMenuItem
             // 
             this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
-            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.documentationToolStripMenuItem.Text = "Documentation";
-            this.documentationToolStripMenuItem.Visible = false;
             this.documentationToolStripMenuItem.Click += new System.EventHandler(this.DocumentationToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -232,6 +231,17 @@
             this.animationsTab.VerticalScrollbarBarColor = true;
             this.animationsTab.VerticalScrollbarHighlightOnWheel = false;
             this.animationsTab.VerticalScrollbarSize = 10;
+            // 
+            // copyAnimBtn
+            // 
+            this.copyAnimBtn.Location = new System.Drawing.Point(373, 15);
+            this.copyAnimBtn.Name = "copyAnimBtn";
+            this.copyAnimBtn.Size = new System.Drawing.Size(31, 29);
+            this.copyAnimBtn.TabIndex = 27;
+            this.copyAnimBtn.Text = "++";
+            this.copyAnimBtn.UseSelectable = true;
+            this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
+            this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
             // 
             // animClearBtn
             // 
@@ -546,6 +556,17 @@
             this.sheetsTab.VerticalScrollbarHighlightOnWheel = false;
             this.sheetsTab.VerticalScrollbarSize = 10;
             // 
+            // copySheetBtn
+            // 
+            this.copySheetBtn.Location = new System.Drawing.Point(373, 15);
+            this.copySheetBtn.Name = "copySheetBtn";
+            this.copySheetBtn.Size = new System.Drawing.Size(31, 29);
+            this.copySheetBtn.TabIndex = 24;
+            this.copySheetBtn.Text = "++";
+            this.copySheetBtn.UseSelectable = true;
+            this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
+            this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
+            // 
             // toggleSheetBgBtn
             // 
             this.toggleSheetBgBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -653,17 +674,6 @@
             this.editorTabs.Tag = "";
             this.editorTabs.UseSelectable = true;
             // 
-            // copySheetBtn
-            // 
-            this.copySheetBtn.Location = new System.Drawing.Point(373, 15);
-            this.copySheetBtn.Name = "copySheetBtn";
-            this.copySheetBtn.Size = new System.Drawing.Size(31, 29);
-            this.copySheetBtn.TabIndex = 24;
-            this.copySheetBtn.Text = "++";
-            this.copySheetBtn.UseSelectable = true;
-            this.copySheetBtn.Click += new System.EventHandler(this.CopySheetBtn_Click);
-            this.copySheetBtn.MouseHover += new System.EventHandler(this.CopySheetBtn_MouseHover);
-            // 
             // sheetImgPnl
             // 
             this.sheetImgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -707,17 +717,6 @@
             this.animImgPnl.VerticalScrollbarBarColor = true;
             this.animImgPnl.VerticalScrollbarHighlightOnWheel = false;
             this.animImgPnl.VerticalScrollbarSize = 10;
-            // 
-            // copyAnimBtn
-            // 
-            this.copyAnimBtn.Location = new System.Drawing.Point(373, 15);
-            this.copyAnimBtn.Name = "copyAnimBtn";
-            this.copyAnimBtn.Size = new System.Drawing.Size(31, 29);
-            this.copyAnimBtn.TabIndex = 27;
-            this.copyAnimBtn.Text = "++";
-            this.copyAnimBtn.UseSelectable = true;
-            this.copyAnimBtn.Click += new System.EventHandler(this.CopyAnimBtn_Click);
-            this.copyAnimBtn.MouseHover += new System.EventHandler(this.CopyAnimBtn_MouseHover);
             // 
             // MainWindow
             // 
