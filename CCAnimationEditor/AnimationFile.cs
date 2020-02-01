@@ -231,6 +231,12 @@ namespace CCAnimationEditor
                                     WriteIntArray(writer, anim.Frames);
                                 }
 
+                                if (anim.FramesAlpha != null)
+                                {
+                                    writer.WritePropertyName("framesAlpha");
+                                    WriteIntArray(writer, anim.Frames);
+                                }
+
                                 if (anim.DirFrames != null)
                                 {
                                     writer.WritePropertyName("dirFrames");

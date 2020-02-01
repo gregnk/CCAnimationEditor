@@ -1511,7 +1511,7 @@ namespace CCAnimationEditor
                 AnchorOffsetX = new int[1],
                 AnchorOffsetY = new int[1],
                 AnchorOffsetZ = new int[1],
-                AlphaFrames = new int[1],
+                FramesAlpha = new int[1],
                 Repeat = false,
                 Frames = new int[1],
                 DirFrames = new int[2][]
