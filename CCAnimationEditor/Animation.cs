@@ -17,7 +17,7 @@ namespace CCAnimationEditor
         private float time = -1;
         private bool repeat;
         private int[] frames;
-        private int[] alphaFrames;
+        private int[] framesAlpha;
         private int[][] dirFrames;
 
         public string Name { get => name; set => name = value; }
@@ -32,7 +32,7 @@ namespace CCAnimationEditor
         public float Time { get => time; set => time = value; }
         public bool Repeat { get => repeat; set => repeat = value; }
         public int[] Frames { get => frames; set => frames = value; }
-        public int[] AlphaFrames { get => alphaFrames; set => alphaFrames = value; }
+        public int[] FramesAlpha { get => framesAlpha; set => framesAlpha = value; }
         public int[][] DirFrames { get => dirFrames; set => dirFrames = value; }
     }
 }
