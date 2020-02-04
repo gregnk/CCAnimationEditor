@@ -73,7 +73,7 @@ namespace CCAnimationEditor
                 return false;
         }
 
-        // TODO: Change this to download the program automatically
+        // IDEA: Change this to download the program automatically
         public static void DownloadLatestVersion()
         {
             Process.Start(string.Format("https://github.com/gregnk/CCAnimationEditor/releases/download/{0}/CCAnimationEditor-{0}.zip", GetLatestVersionString()));

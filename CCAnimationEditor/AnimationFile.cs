@@ -24,7 +24,7 @@ namespace CCAnimationEditor
         public int Dirs { get => dirs; set => dirs = value; }
         public List<Animation> Animations { get => animations; set => animations = value; }
 
-        // TODO: Add an option for formatting
+        // IDEA: Add an option for formatting
         public void SaveFile(string fileName)
         {
             StringBuilder sb = new StringBuilder();

@@ -16,7 +16,6 @@ namespace CCAnimationEditor
         private int[] anchorOffsetZ;
         private float time = -1;
         private bool repeat;
-        private int pivot;
         private int[] frames;
         private int[] framesAlpha;
         private int[][] dirFrames;
@@ -32,7 +31,6 @@ namespace CCAnimationEditor
         public int[] AnchorOffsetZ { get => anchorOffsetZ; set => anchorOffsetZ = value; }
         public float Time { get => time; set => time = value; }
         public bool Repeat { get => repeat; set => repeat = value; }
-        public int Pivot { get => pivot; set => pivot = value; }
         public int[] Frames { get => frames; set => frames = value; }
         public int[] FramesAlpha { get => framesAlpha; set => framesAlpha = value; }
         public int[][] DirFrames { get => dirFrames; set => dirFrames = value; }
