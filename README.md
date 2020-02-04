@@ -9,9 +9,9 @@ An animation editor for [CrossCode](https://cross-code.com)
 
 ## Screenshots
 
-![](http://gregnk.com/images/Screenshots/CCAnimationEditor/SheetsSmall.png)
+![](http://gregnk.com/images/Screenshots/CCAnimationEditor/Sheets.png)
 
-![](http://gregnk.com/images/Screenshots/CCAnimationEditor/AnimationsSmall.png)
+![](http://gregnk.com/images/Screenshots/CCAnimationEditor/Animations.png)
 
 ## Copyright
 (c) 2019-2020 Gregory Karastergios
