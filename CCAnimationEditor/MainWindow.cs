@@ -43,6 +43,7 @@ namespace CCAnimationEditor
         private bool playAnim = false;
         private int animDir = 0;
         private int animFrameIndex = 0;
+        private int oldSelectedAnimIndex = 0;
 
         private bool editingArray = false;
         private string arrayName;
@@ -441,6 +442,8 @@ namespace CCAnimationEditor
 
             animFrameIndex = 0;
             DisplayAnim();
+
+            ClearAllAnimArrayControls();
             UpdateAnimControlValues();
         }
 
@@ -1250,6 +1253,7 @@ namespace CCAnimationEditor
                 animImgPnl.BackgroundImage = Properties.Resources.SrcNotFound;
         }
 
+        // BUG: Somewhere in here the selection of animList is being modified, calling SwitchAnimSelection()
         private void UpdateAnimControlValues()
         {
             if (animList.SelectedIndices.Count == 0) return;
@@ -1321,7 +1325,7 @@ namespace CCAnimationEditor
                         MetroTextBox arrayTextBox = (MetroTextBox)animPropInputs[pos++];
                         arrayTextBox.Text = array[arrayPos].ToString();
                     }
-                    
+
                 }
 
                 // 2D Arrays
@@ -1932,8 +1936,9 @@ namespace CCAnimationEditor
             if (animList.SelectedIndices.Count > 0)
                 index = animList.SelectedIndices[0];
             else
-                index = 0;
+                index = 0; // Set to index to first anim if nothing is selected
 
+            // Go though each array
             foreach (var prop in animationFile.Animations[index].GetType().GetProperties())
             {
                 if (prop.GetValue(animationFile.Animations[index]) is int[] array)
@@ -2059,6 +2064,40 @@ namespace CCAnimationEditor
                     pos++;
                     row++;
                 }
+            }
+
+            // NOTE: This does not work with multi-selection
+            if (animList.SelectedIndices.Count == 1)
+                oldSelectedAnimIndex = animList.SelectedIndices[0];
+        }
+
+        private void ClearAllAnimArrayControls()
+        {
+            // HACK
+            if (animPropInputs[0].Text != "")
+            {
+                int pos = 0;
+                Animation selectedAnim = animationFile.Animations[oldSelectedAnimIndex];
+
+                // Go though each array being displayed
+                foreach (var prop in selectedAnim.GetType().GetProperties())
+                {
+                    if (selectedAnim.GetType().GetProperty(prop.Name).GetValue(selectedAnim) is int[] array)
+                    {
+                        for (int i = 0; i < array.Length + 2; i++)
+                        {
+                            animPropsPnl.Controls.Remove(animPropLabels[pos + 1]);
+                            animPropLabels.RemoveAt(pos + 1);
+
+                            animPropsPnl.Controls.Remove(animPropInputs[pos + 1]);
+                            animPropInputs.RemoveAt(pos + 1);
+                        }
+                    }
+
+                    pos++;
+                }
+
+                GenerateAnimArrayControls();
             }
         }
 
