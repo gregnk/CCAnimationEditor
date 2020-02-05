@@ -1253,10 +1253,10 @@ namespace CCAnimationEditor
                 animImgPnl.BackgroundImage = Properties.Resources.SrcNotFound;
         }
 
-        // BUG: Somewhere in here the selection of animList is being modified, calling SwitchAnimSelection()
         private void UpdateAnimControlValues()
         {
-            if (animList.SelectedIndices.Count == 0) return;
+            // BUG: This calls SwitchAnimSelection() from within here, find different failsafe code
+            if (animList.SelectedIndices.Count < 1) return;
 
             int pos = 0;
 
