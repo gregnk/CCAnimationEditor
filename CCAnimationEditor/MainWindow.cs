@@ -46,6 +46,7 @@ namespace CCAnimationEditor
         private int oldSelectedAnimIndex = 0;
 
         private bool editingArray = false;
+        private bool switchingSelection = false;
         private string arrayName;
 
         // Spacing for auto-generated controls
@@ -415,8 +416,19 @@ namespace CCAnimationEditor
 
         private void SwitchSheetSelection()
         {
-            DisplaySheet();
-            UpdateSheetControlValues();
+            // Failsafe to prevent 2 runs
+            if (!switchingSelection)
+            {
+                switchingSelection = true;
+
+                DisplaySheet();
+                UpdateSheetControlValues();
+
+                switchingSelection = false;
+            }
+
+            else
+                switchingSelection = false;
         }
 
         private void AnimList_Click(object sender, EventArgs e)
@@ -429,7 +441,6 @@ namespace CCAnimationEditor
             SwitchAnimSelection();
         }
 
-        // BUG: The trigger functions keep getting called twice, find a way to prevent that
         private void SwitchAnimSelection()
         {
             if (editingArray)
@@ -441,11 +452,20 @@ namespace CCAnimationEditor
                 animClearBtn.Visible = false;
             }
 
-            animFrameIndex = 0;
-            DisplayAnim();
+            // Failsafe to prevent 2 runs
+            if (!switchingSelection)
+            {
+                switchingSelection = true;
 
-            ClearAllAnimArrayControls();
-            UpdateAnimControlValues();
+                animFrameIndex = 0;
+                DisplayAnim();
+
+                ClearAllAnimArrayControls();
+                UpdateAnimControlValues();
+            }
+
+            else
+                switchingSelection = false;
         }
 
         private void AnimSheetCmb_SelectionChangeCommitted(object sender, EventArgs e)
