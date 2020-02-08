@@ -1,7 +1,7 @@
 # CCAnimationEditor 3rd Party Licenses
 
 ## Json.NET
-[https://github.com/JamesNK/Newtonsoft.Json/](https://github.com/JamesNK/Newtonsoft.Json/)
+<https://github.com/JamesNK/Newtonsoft.Json/>
 
 (c) 2007 James Newton-King
 
@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ## MarkdownSharp
-[https://github.com/StackExchange/MarkdownSharp/](https://github.com/StackExchange/MarkdownSharp/)
+<https://github.com/StackExchange/MarkdownSharp/>
 
 (c) 2018 Stack Exchange
 
@@ -47,7 +47,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## Md2Html
-[https://github.com/gregnk/Md2Html](https://github.com/gregnk/Md2Html)
+<https://github.com/gregnk/Md2Html>
 
 (c) 2019 Gregory Karastergios
 
@@ -57,7 +57,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+<http://www.apache.org/licenses/LICENSE-2.0>
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -66,7 +66,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ## MetroFramework
-[https://github.com/dennismagno/metroframework-modern-ui](https://github.com/dennismagno/metroframework-modern-ui)
+<https://github.com/dennismagno/metroframework-modern-ui>
 
 (c) 2011 Sven Walter
 
