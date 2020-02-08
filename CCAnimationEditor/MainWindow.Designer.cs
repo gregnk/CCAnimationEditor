@@ -244,8 +244,7 @@
             this.animList.UseCompatibleStateImageBehavior = false;
             this.animList.UseSelectable = true;
             this.animList.View = System.Windows.Forms.View.Details;
-            this.animList.SelectedIndexChanged += new System.EventHandler(this.AnimList_SelectedIndexChanged);
-            this.animList.Click += new System.EventHandler(this.AnimList_Click);
+            this.animList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.AnimList_ItemSelectionChanged);
             // 
             // copyAnimBtn
             // 

@@ -431,16 +431,10 @@ namespace CCAnimationEditor
                 switchingSelection = false;
         }
 
-        private void AnimList_Click(object sender, EventArgs e)
+        private void AnimList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             SwitchAnimSelection();
         }
-
-        private void AnimList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SwitchAnimSelection();
-        }
-
         private void SwitchAnimSelection()
         {
             // Legacy code, to be removed once 2D array editing is revamped
