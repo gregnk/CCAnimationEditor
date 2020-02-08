@@ -429,6 +429,7 @@ namespace CCAnimationEditor
             SwitchAnimSelection();
         }
 
+        // BUG: The trigger functions keep getting called twice, find a way to prevent that
         private void SwitchAnimSelection()
         {
             if (editingArray)
@@ -1255,7 +1256,6 @@ namespace CCAnimationEditor
 
         private void UpdateAnimControlValues()
         {
-            // BUG: This calls SwitchAnimSelection() from within here, find different failsafe code
             if (animList.SelectedIndices.Count < 1) return;
 
             int pos = 0;
