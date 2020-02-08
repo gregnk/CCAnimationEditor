@@ -178,19 +178,19 @@
             this.documentationToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpContextMenu.Name = "aboutContextMenu";
-            this.helpContextMenu.Size = new System.Drawing.Size(181, 70);
+            this.helpContextMenu.Size = new System.Drawing.Size(158, 48);
             // 
             // documentationToolStripMenuItem
             // 
             this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
-            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.documentationToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.documentationToolStripMenuItem.Text = "Documentation";
             this.documentationToolStripMenuItem.Click += new System.EventHandler(this.DocumentationToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -456,10 +456,10 @@
             this.animPropsPnl.VerticalScrollbarHighlightOnWheel = false;
             this.animPropsPnl.VerticalScrollbarSize = 10;
             // 
-            // animPropViewBtn
+            // animPropShowHideBtn
             // 
             this.animPropShowHideBtn.Location = new System.Drawing.Point(144, 46);
-            this.animPropShowHideBtn.Name = "animPropViewBtn";
+            this.animPropShowHideBtn.Name = "animPropShowHideBtn";
             this.animPropShowHideBtn.Size = new System.Drawing.Size(188, 23);
             this.animPropShowHideBtn.TabIndex = 18;
             this.animPropShowHideBtn.Text = "View";
