@@ -435,6 +435,7 @@ namespace CCAnimationEditor
         {
             SwitchAnimSelection();
         }
+
         private void SwitchAnimSelection()
         {
             // Legacy code, to be removed once 2D array editing is revamped
