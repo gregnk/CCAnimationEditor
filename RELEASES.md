@@ -3,6 +3,7 @@
 ## v0.2.4 (2020-02-12)
 * Added a link to the documentation page
 * Fixed a few variables
+* Set Y_FLAT as the default shapeType for animations
 
 ## v0.2.3 (2020-01-14)
 * Fixed a bug related to how offset values are saved
