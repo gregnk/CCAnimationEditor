@@ -1502,12 +1502,7 @@ namespace CCAnimationEditor
                     animationFile.Animations[animList.SelectedIndices[0]].GetType().GetProperty(arrayName).SetValue(animationFile.Animations[animList.SelectedIndices[0]], array);
 
                     GenerateAnimArrayControls();
-
-                    // Show the array
-                    if (animPropInputs[propIndex].Text == "Show")
-                        ShowArray(array, propIndex);
-                    else if (animPropInputs[propIndex].Text == "Hide")
-                        HideArray(array, propIndex);
+                    ShowArray(array, propIndex);
                 }
             }
         }
