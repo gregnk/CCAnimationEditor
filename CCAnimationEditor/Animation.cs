@@ -8,7 +8,7 @@ namespace CCAnimationEditor
         private string name = "newAnim";
         private int dirs = -1;
         private string sheet;
-        private string shapeType;
+        private string shapeType = "Y_FLAT";
         private int[] flipX;
         private int[] tileOffsets;
         private int[] anchorOffsetX;
