@@ -1962,7 +1962,7 @@ namespace CCAnimationEditor
                     if (array != null)
                     {
                         // Skip if the array controls were already generated
-                        if (animPropLabels[pos + 1].Text != "Clear")
+                        if (animPropLabels[pos + 2].Text != "Size")
                         {
                             pos++;
                             row++;
