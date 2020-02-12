@@ -15,7 +15,6 @@ using System.Windows.Forms;
 // TODO: This file is an absolute fucking mess, clean this entire thing up and put it into different class files
 
 // TODO: Add an "Export to GIF" function
-// TODO: Add some documentation as to what each property does
 // TODO: Make the UI setup more efficient
 // TODO: Add the ability to edit multiple items at once
 
@@ -389,7 +388,7 @@ namespace CCAnimationEditor
         // Menu bar - Help items
         private void DocumentationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/gregnk/CCAnimationEditor/wiki");
+            Process.Start("https://github.com/gregnk/CCAnimationEditor/wiki/CCAnimationEditor-User-Docs");
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
