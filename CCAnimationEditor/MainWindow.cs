@@ -438,7 +438,8 @@ namespace CCAnimationEditor
 
         private void SwitchAnimSelection()
         {
-            // Legacy code, to be removed once 2D array editing is revamped
+            // Legacy code
+            // TODO: Remove this once 2D array editing is revamped
             if (editingArray)
             {
                 editingArray = false;
