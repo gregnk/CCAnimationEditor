@@ -17,6 +17,7 @@ using System.Windows.Forms;
 // TODO: Add an "Export to GIF" function
 // TODO: Make the UI setup more efficient
 // TODO: Add the ability to edit multiple items at once
+// TODO: Get rid of all the hard-coded UI properties (like with fixed-size arrays)
 
 namespace CCAnimationEditor
 {
