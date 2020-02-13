@@ -16,6 +16,7 @@ using System.Windows.Forms;
 
 // IDEA: Add an "Export to GIF" function
 // TODO: Finished multi-animation editing (it's still not stable)
+// TODO: Get rid of all the hard-coded UI properties (like with fixed-size arrays)
 
 namespace CCAnimationEditor
 {
