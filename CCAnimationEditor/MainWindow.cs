@@ -427,22 +427,26 @@ namespace CCAnimationEditor
 
         private void SwitchAnimSelection()
         {
-            // Legacy code
-            // TODO: Remove this once 2D array editing is revamped
-            if (editingArray)
+            // Prevent this from being ran on de-selection
+            if (animList.SelectedIndices.Count > 0)
             {
-                editingArray = false;
-                ResetAnimControls();
-                GenerateAnimControls();
-                animBackBtn.Visible = false;
-                animClearBtn.Visible = false;
+                // Legacy code
+                // TODO: Remove this once 2D array editing is revamped
+                if (editingArray)
+                {
+                    editingArray = false;
+                    ResetAnimControls();
+                    GenerateAnimControls();
+                    animBackBtn.Visible = false;
+                    animClearBtn.Visible = false;
+                }
+
+                animFrameIndex = 0;
+                DisplayAnim();
+
+                ClearAllAnimArrayControls();
+                UpdateAnimControlValues();
             }
-
-            animFrameIndex = 0;
-            DisplayAnim();
-
-            ClearAllAnimArrayControls();
-            UpdateAnimControlValues();
         }
 
         private void AnimSheetCmb_SelectionChangeCommitted(object sender, EventArgs e)
