@@ -2085,7 +2085,7 @@ namespace CCAnimationEditor
 
         private void ClearAllAnimArrayControls()
         {
-            // HACK
+            // HACK: this prevents the remove arrays function from being ran if a new file is made
             if (animPropInputs[0].Text != "")
             {
                 int pos = 0;
