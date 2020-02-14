@@ -50,6 +50,7 @@ namespace CCAnimationEditor
 
         // Spacing for auto-generated controls
         private const int ControlSpacing = 40;
+
         private ToolTip tt = new ToolTip();
 
         public MainWindow()
@@ -1276,7 +1277,7 @@ namespace CCAnimationEditor
 
         private void UpdateAnimControlValues()
         {
-            if (animList.SelectedIndices.Count > 1)
+            if (animList.SelectedIndices.Count > 0)
             {
 
                 int pos = 0;
