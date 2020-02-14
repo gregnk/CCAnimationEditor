@@ -46,7 +46,6 @@ namespace CCAnimationEditor
         private int oldSelectedAnimIndex = 0;
 
         private bool editingArray = false;
-        private bool switchingSelection = false;
         private string arrayName;
 
         // Spacing for auto-generated controls
