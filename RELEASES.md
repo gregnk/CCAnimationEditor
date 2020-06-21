@@ -1,5 +1,8 @@
 # CCAnimationEditor Releases
 
+## v0.2.5 (2020-06-21)
+* Fixed a bug related to saving anchorOffsetZ
+
 ## v0.2.4 (2020-02-12)
 * Added a link to the documentation page
 * Fixed a few variables
