@@ -196,7 +196,7 @@ namespace CCAnimationEditor
                             }
 
                             // AnchorOffsetZ
-                            if (groupList2[0].AnchorOffsetY != null)
+                            if (groupList2[0].AnchorOffsetZ != null)
                             {
                                 writer.WritePropertyName("anchorOffsetZ");
                                 WriteIntArray(writer, groupList2[0].AnchorOffsetZ);
