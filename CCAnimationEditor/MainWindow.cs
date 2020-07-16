@@ -1203,19 +1203,19 @@ namespace CCAnimationEditor
                 // Crop the image to the specified portion
                 try
                 {
+                    // Go up frames if it is secified to flip
                     if (anim.FlipX != null && anim.Frames != null)
                     {
-                        // HACK: This is an assumption (When do the frames go back up?)
                         if (anim.Dirs == 16)
                         {
                             if (anim.FlipX[animDir] == 1 && animDir >= 9)
-                                frameRowOffset -= animDir - 8;
+                                frameRowOffset -= (animDir - 8) * 2;
                         }
 
                         else if (anim.Dirs == 8)
                         {
                             if (anim.FlipX[animDir] == 1 && animDir >= 5)
-                                frameRowOffset -= animDir - 4;
+                                frameRowOffset -= (animDir - 4) * 2;
                         }
 
                             else if (anim.Dirs == 6)
@@ -1226,8 +1226,8 @@ namespace CCAnimationEditor
 
                         else if (anim.Dirs == 4)
                         {
-                            if (anim.FlipX[animDir] == 1 && animDir >= 3)
-                                frameRowOffset -= animDir - 2;
+                            if (anim.FlipX[animDir] == 1 && animDir == 3)
+                                frameRowOffset -= 2;
                         }
 
                             else if (anim.Dirs == 2)
