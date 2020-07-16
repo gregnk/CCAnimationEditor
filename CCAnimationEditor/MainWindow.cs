@@ -14,7 +14,7 @@ using System.Windows.Forms;
 // TODO: Implement support for patch files
 // TODO: This file is an absolute fucking mess, clean this entire thing up and put it into different class files
 
-// TODO: Add an "Export to GIF" function
+// TODO: Add an "Export to GIF/APNG" function
 // TODO: Make the UI setup more efficient
 // TODO: Add the ability to edit multiple items at once
 // TODO: Get rid of all the hard-coded UI properties (like with fixed-size arrays)
