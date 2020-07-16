@@ -1203,7 +1203,7 @@ namespace CCAnimationEditor
                 // Crop the image to the specified portion
                 try
                 {
-                    // Go up frames if it is secified to flip
+                    // Go up frames if it is specified to flip
                     if (anim.FlipX != null && anim.Frames != null)
                     {
                         if (anim.Dirs == 16)
