@@ -1,5 +1,9 @@
 # CCAnimationEditor Releases
 
+## v0.2.6 (2020-07-16)
+* Fixed a bug where some animation directions with flipX set to 1 would not display properly
+* The animation/sheet display panel will now refresh after settings are changed
+
 ## v0.2.5 (2020-06-21)
 * Fixed a bug related to saving anchorOffsetZ
 
