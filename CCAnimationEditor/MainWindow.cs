@@ -1181,7 +1181,7 @@ namespace CCAnimationEditor
                 for (int f = 0; f < frame; f++)
                 {
                     frameColOffset++;
-                    Console.WriteLine("{0}, {1}", frame, xFrames);
+                    Console.WriteLine("Frame {0}, {1} xFrames", frame, xFrames);
                     Console.WriteLine("frameColOffset++");
 
                         // Go to the next row on the sheet once we hit the end
@@ -1237,7 +1237,7 @@ namespace CCAnimationEditor
                             }
                         }
 
-                    Console.WriteLine("C {0}/{1}, R {2}/{3}", frameColOffset, xFrames, frameRowOffset, yFrames);
+                    Console.WriteLine("Col {0}/{1}, Row {2}/{3}", frameColOffset, xFrames, frameRowOffset, yFrames);
 
                         Bitmap animImgBmpCropped = animImgBmp.Clone(
                             new Rectangle(
