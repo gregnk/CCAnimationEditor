@@ -165,6 +165,11 @@ namespace CCAnimationEditor
         {
             SettingsWindow settings = new SettingsWindow();
             settings.ShowDialog();
+
+            // Refresh anim/sheet display after changning settings
+            DisplayAnim();
+            DisplaySheet();
+            
         }
 
         // Menu bar - File items
@@ -1171,13 +1176,13 @@ namespace CCAnimationEditor
                     int frame = (anim.Frames != null) ? anim.Frames[animFrameIndex] :
                         (anim.DirFrames != null) ? anim.DirFrames[animDir][animFrameIndex] : 0;
 
-                    // Determine where the frame is on the sheet
-                    // Cycle through each frame on the sheet
-                    for (int f = 0; f < frame; f++)
-                    {
-                        frameColOffset++;
-                        Console.WriteLine("{0}, {1}", frame, xFrames);
-                        Console.WriteLine("frameColOffset++");
+                // Determine where the frame is on the sheet
+                // Cycle through each frame on the sheet
+                for (int f = 0; f < frame; f++)
+                {
+                    frameColOffset++;
+                    Console.WriteLine("{0}, {1}", frame, xFrames);
+                    Console.WriteLine("frameColOffset++");
 
                         // Go to the next row on the sheet once we hit the end
                         if (frameColOffset >= xFrames)
@@ -1195,23 +1200,23 @@ namespace CCAnimationEditor
                         frameRowOffset += animDir;
                     }
 
-                    // Crop the image to the specified portion
-                    try
+                // Crop the image to the specified portion
+                try
+                {
+                    if (anim.FlipX != null && anim.Frames != null)
                     {
-                        if (anim.FlipX != null && anim.Frames != null)
+                        // HACK: This is an assumption (When do the frames go back up?)
+                        if (anim.Dirs == 16)
                         {
-                            // HACK: This is an assumption (When do the frames go back up?)
-                            if (anim.Dirs == 16)
-                            {
-                                if (anim.FlipX[animDir] == 1 && animDir >= 9)
-                                    frameRowOffset -= animDir - 8;
-                            }
+                            if (anim.FlipX[animDir] == 1 && animDir >= 9)
+                                frameRowOffset -= animDir - 8;
+                        }
 
-                            else if (anim.Dirs == 8)
-                            {
-                                if (anim.FlipX[animDir] == 1 && animDir >= 5)
-                                    frameRowOffset -= animDir - 4;
-                            }
+                        else if (anim.Dirs == 8)
+                        {
+                            if (anim.FlipX[animDir] == 1 && animDir >= 5)
+                                frameRowOffset -= animDir - 4;
+                        }
 
                             else if (anim.Dirs == 6)
                             {
@@ -1219,11 +1224,11 @@ namespace CCAnimationEditor
                                     frameRowOffset -= animDir - 3;
                             }
 
-                            else if (anim.Dirs == 4)
-                            {
-                                if (anim.FlipX[animDir] == 1 && animDir >= 3)
-                                    frameRowOffset -= animDir - 2;
-                            }
+                        else if (anim.Dirs == 4)
+                        {
+                            if (anim.FlipX[animDir] == 1 && animDir >= 3)
+                                frameRowOffset -= animDir - 2;
+                        }
 
                             else if (anim.Dirs == 2)
                             {
@@ -1232,7 +1237,7 @@ namespace CCAnimationEditor
                             }
                         }
 
-                        Console.WriteLine("C {0}/{1}, R {2}/{3}", frameColOffset, xFrames, frameRowOffset, yFrames);
+                    Console.WriteLine("C {0}/{1}, R {2}/{3}", frameColOffset, xFrames, frameRowOffset, yFrames);
 
                         Bitmap animImgBmpCropped = animImgBmp.Clone(
                             new Rectangle(
