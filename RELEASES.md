@@ -1,5 +1,8 @@
 # CCAnimationEditor Releases
 
+## v0.2.7 (2020-07-17)
+* Fixed version number in program assembly
+
 ## v0.2.6 (2020-07-16)
 * Fixed a bug where some animation directions with flipX set to 1 would not display properly
 * The animation/sheet display panel will now refresh after settings are changed
