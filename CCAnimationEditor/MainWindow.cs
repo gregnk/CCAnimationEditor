@@ -166,7 +166,7 @@ namespace CCAnimationEditor
             SettingsWindow settings = new SettingsWindow();
             settings.ShowDialog();
 
-            // Refresh anim/sheet display after changning settings
+            // Refresh anim/sheet display after changing settings
             DisplayAnim();
             DisplaySheet();
             
