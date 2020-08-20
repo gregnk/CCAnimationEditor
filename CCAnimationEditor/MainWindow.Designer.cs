@@ -231,6 +231,8 @@
             // 
             // animList
             // 
+            this.animList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.animList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.animList.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.animList.FullRowSelect = true;
@@ -248,6 +250,7 @@
             // 
             // copyAnimBtn
             // 
+            this.copyAnimBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.copyAnimBtn.Location = new System.Drawing.Point(3, 571);
             this.copyAnimBtn.Name = "copyAnimBtn";
             this.copyAnimBtn.Size = new System.Drawing.Size(189, 29);
@@ -508,6 +511,7 @@
             // 
             // removeAnimBtn
             // 
+            this.removeAnimBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.removeAnimBtn.Location = new System.Drawing.Point(3, 536);
             this.removeAnimBtn.Name = "removeAnimBtn";
             this.removeAnimBtn.Size = new System.Drawing.Size(189, 29);
@@ -518,6 +522,7 @@
             // 
             // addAnimBtn
             // 
+            this.addAnimBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addAnimBtn.Location = new System.Drawing.Point(3, 501);
             this.addAnimBtn.Name = "addAnimBtn";
             this.addAnimBtn.Size = new System.Drawing.Size(189, 29);
@@ -572,6 +577,8 @@
             // 
             // sheetList
             // 
+            this.sheetList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.sheetList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.sheetList.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.sheetList.FullRowSelect = true;
@@ -701,7 +708,7 @@
             this.editorTabs.Controls.Add(this.animationsTab);
             this.editorTabs.Location = new System.Drawing.Point(23, 92);
             this.editorTabs.Name = "editorTabs";
-            this.editorTabs.SelectedIndex = 1;
+            this.editorTabs.SelectedIndex = 0;
             this.editorTabs.Size = new System.Drawing.Size(1240, 645);
             this.editorTabs.TabIndex = 0;
             this.editorTabs.Tag = "";
