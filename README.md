@@ -1,4 +1,6 @@
 # CCAnimationEditor
+***NOTICE: This project has been suspended indefinitely due to technical and personal difficulties***
+
 An animation editor for [CrossCode](https://cross-code.com)
 
 [Project Page](http://gregnk.com/projects/CCAnimationEditor.html)
