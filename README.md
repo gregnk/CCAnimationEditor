@@ -3,8 +3,6 @@
 
 An animation editor for [CrossCode](https://cross-code.com)
 
-[Project Page](http://gregnk.com/projects/CCAnimationEditor.html)
-
 ## Features
 * Live animation preview
 * Automatic backup creation
