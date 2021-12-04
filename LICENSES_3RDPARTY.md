@@ -49,7 +49,7 @@ SOFTWARE.
 ## Md2Html
 <https://github.com/gregnk/Md2Html>
 
-(c) 2019 Gregory Karastergios
+(c) 2019, 2021 Gregory Karastergios
 
 (c) 2014 Alan Barber
 
