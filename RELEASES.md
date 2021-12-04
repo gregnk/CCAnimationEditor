@@ -1,7 +1,7 @@
 # CCAnimationEditor Releases
 
 ## v0.2.8 (2021-12-04)
-* Added a string validation check to the update checker (checks if the version string starts with "v")
+* Added a string validation check to the update checker (checks if the version string obtained from the server starts with "v")
 
 ## v0.2.7 (2020-07-17)
 * Fixed version number in program assembly
