@@ -67,7 +67,7 @@ namespace CCAnimationEditor
             // Check for the latest version
             string latestVerString = GetLatestVersionString();
 
-            if (latestVerString != GetVersionString() && latestVerString != null)
+            if (latestVerString != GetVersionString() && latestVerString != null && latestVerString.Substring(0) == "v")
                 return true;
             else
                 return false;
