@@ -1,5 +1,5 @@
 # CCAnimationEditor
-***NOTICE: This project has been discontinued. Only maintenance updates will be made until the repository is officially archived.***
+***NOTICE: Work on this project is currently suspended.***
 
 An animation editor for [CrossCode](https://cross-code.com)
 
